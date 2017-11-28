@@ -9,7 +9,7 @@ Trucking VS Connect² is a successor to VS Connect.
 ## How to use?
 This project is still in development. There will be a installation guide soon.
 
-## Where can I get a current build of SAMPLauncherNET?
+## Where can I get a current build of Trucking VS Connect²?
 There is no release of Trucking VS Connect² available yet.
 
 ## What features does it provide?
@@ -28,6 +28,9 @@ Note: You don't need to commit `TranslatorInterface.cs`.
 
 ### Code
 You can change anything within the source code to contribute.
+
+## License
+The [licence](https://github.com/BigETI/TruckingVSConnect2/blob/master/LICENCE.md) for this project can be found here: https://github.com/BigETI/TruckingVSConnect2/blob/master/LICENCE.md
 
 ## Projects associated with this project
 - https://github.com/BigETI/WinFormsTranslator
