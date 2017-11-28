@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Json;
 using System.Threading;
 
 /// <summary>
-/// Trucking VS Connect 2 namespace
+/// Trucking VS Connect² namespace
 /// </summary>
 namespace TruckingVSConnect2
 {
@@ -32,6 +32,24 @@ namespace TruckingVSConnect2
         /// </summary>
         [DataMember]
         private string password = "";
+
+        /// <summary>
+        /// Euro Truck SImulator 2 directory
+        /// </summary>
+        [DataMember]
+        private string ets2Directory = "";
+
+        /// <summary>
+        /// American Truck Simulator directory
+        /// </summary>
+        [DataMember]
+        private string atsDirectory = "";
+
+        /// <summary>
+        /// Use metric
+        /// </summary>
+        [DataMember]
+        private bool useMetricUnit = true;
 
         /// <summary>
         /// Instance
@@ -98,6 +116,60 @@ namespace TruckingVSConnect2
                 if ((Instance != null) && (value != null))
                 {
                     Instance.password = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Euro Truck Simulator directory
+        /// </summary>
+        public static string ETS2Directory
+        {
+            get
+            {
+                return (instance == null) ? "" : Instance.ets2Directory;
+            }
+            set
+            {
+                if ((Instance != null) && (value != null))
+                {
+                    Instance.ets2Directory = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// American Truck Simulator directory
+        /// </summary>
+        public static string ATSDirectory
+        {
+            get
+            {
+                return (instance == null) ? "" : Instance.atsDirectory;
+            }
+            set
+            {
+                if ((Instance != null) && (value != null))
+                {
+                    Instance.atsDirectory = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Use metric unit
+        /// </summary>
+        public static bool UseMetricUnit
+        {
+            get
+            {
+                return (instance == null) ? true : Instance.useMetricUnit;
+            }
+            set
+            {
+                if (Instance != null)
+                {
+                    Instance.useMetricUnit = value;
                 }
             }
         }

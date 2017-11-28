@@ -2,7 +2,7 @@
 using WinFormsTranslator;
 
 /// <summary>
-/// Trucking VS Connect 2 namespace
+/// Trucking VS Connect² namespace
 /// </summary>
 namespace TruckingVSConnect2
 {

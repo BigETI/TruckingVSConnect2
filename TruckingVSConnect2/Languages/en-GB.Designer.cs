@@ -61,7 +61,9 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Trucking VS Connect² is a free software and it is licenced with GPLv3.
+        ///
+        /// ähnelt.
         /// </summary>
         internal static string ABOUT_DESCRIPTION {
             get {
@@ -70,11 +72,20 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Assembly version ähnelt.
         /// </summary>
         internal static string ASSEMBLY_VERSION {
             get {
                 return ResourceManager.GetString("ASSEMBLY_VERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Austria ähnelt.
+        /// </summary>
+        internal static string AUSTRIA {
+            get {
+                return ResourceManager.GetString("AUSTRIA", resourceCulture);
             }
         }
         
@@ -88,11 +99,119 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Belgium ähnelt.
+        /// </summary>
+        internal static string BELGIUM {
+            get {
+                return ResourceManager.GetString("BELGIUM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cabin ähnelt.
+        /// </summary>
+        internal static string CABIN {
+            get {
+                return ResourceManager.GetString("CABIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cargo ähnelt.
+        /// </summary>
+        internal static string CARGO {
+            get {
+                return ResourceManager.GetString("CARGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Chassis ähnelt.
+        /// </summary>
+        internal static string CHASSIS {
+            get {
+                return ResourceManager.GetString("CHASSIS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cruise control ähnelt.
+        /// </summary>
+        internal static string CRUISE_CONTROL {
+            get {
+                return ResourceManager.GetString("CRUISE_CONTROL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Czech Replubic ähnelt.
+        /// </summary>
+        internal static string CZECH_REPUBLIC {
+            get {
+                return ResourceManager.GetString("CZECH_REPUBLIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Deadline ähnelt.
+        /// </summary>
+        internal static string DEADLINE {
+            get {
+                return ResourceManager.GetString("DEADLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Deliver cargo ähnelt.
+        /// </summary>
+        internal static string DELIVER_CARGO {
+            get {
+                return ResourceManager.GetString("DELIVER_CARGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Denmark ähnelt.
+        /// </summary>
+        internal static string DENMARK {
+            get {
+                return ResourceManager.GetString("DENMARK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Destination ähnelt.
+        /// </summary>
+        internal static string DESTINATION {
+            get {
+                return ResourceManager.GetString("DESTINATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Email or username... ähnelt.
         /// </summary>
         internal static string EMAIL_USERNAME_HINT {
             get {
                 return ResourceManager.GetString("EMAIL_USERNAME_HINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Engine ähnelt.
+        /// </summary>
+        internal static string ENGINE {
+            get {
+                return ResourceManager.GetString("ENGINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die England ähnelt.
+        /// </summary>
+        internal static string ENGLAND {
+            get {
+                return ResourceManager.GetString("ENGLAND", resourceCulture);
             }
         }
         
@@ -106,7 +225,7 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die File version ähnelt.
         /// </summary>
         internal static string FILE_VERSION {
             get {
@@ -124,11 +243,56 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die France ähnelt.
+        /// </summary>
+        internal static string FRANCE {
+            get {
+                return ResourceManager.GetString("FRANCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die German (Deutsch) ähnelt.
         /// </summary>
         internal static string GERMAN {
             get {
                 return ResourceManager.GetString("GERMAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Germany ähnelt.
+        /// </summary>
+        internal static string GERMANY {
+            get {
+                return ResourceManager.GetString("GERMANY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hungary ähnelt.
+        /// </summary>
+        internal static string HUNGARY {
+            get {
+                return ResourceManager.GetString("HUNGARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No delivery ähnelt.
+        /// </summary>
+        internal static string IDLE {
+            get {
+                return ResourceManager.GetString("IDLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Italy ähnelt.
+        /// </summary>
+        internal static string ITALY {
+            get {
+                return ResourceManager.GetString("ITALY", resourceCulture);
             }
         }
         
@@ -142,6 +306,78 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Log out ähnelt.
+        /// </summary>
+        internal static string LOG_OUT {
+            get {
+                return ResourceManager.GetString("LOG_OUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Logged in as ähnelt.
+        /// </summary>
+        internal static string LOGGED_IN_AS {
+            get {
+                return ResourceManager.GetString("LOGGED_IN_AS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Luxembourg ähnelt.
+        /// </summary>
+        internal static string LUXEMBOURG {
+            get {
+                return ResourceManager.GetString("LUXEMBOURG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die miles ähnelt.
+        /// </summary>
+        internal static string MILES {
+            get {
+                return ResourceManager.GetString("MILES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die minutes ähnelt.
+        /// </summary>
+        internal static string MINUTES {
+            get {
+                return ResourceManager.GetString("MINUTES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Netherlands ähnelt.
+        /// </summary>
+        internal static string NETHERLANDS {
+            get {
+                return ResourceManager.GetString("NETHERLANDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Norway ähnelt.
+        /// </summary>
+        internal static string NORWAY {
+            get {
+                return ResourceManager.GetString("NORWAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die of ähnelt.
+        /// </summary>
+        internal static string OF {
+            get {
+                return ResourceManager.GetString("OF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Password... ähnelt.
         /// </summary>
         internal static string PASSWORD_HINT {
@@ -151,11 +387,29 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Poland ähnelt.
+        /// </summary>
+        internal static string POLAND {
+            get {
+                return ResourceManager.GetString("POLAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Product version ähnelt.
         /// </summary>
         internal static string PRODUCT_VERSION {
             get {
                 return ResourceManager.GetString("PRODUCT_VERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Route ähnelt.
+        /// </summary>
+        internal static string ROUTE {
+            get {
+                return ResourceManager.GetString("ROUTE", resourceCulture);
             }
         }
         
@@ -169,11 +423,101 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Scotland ähnelt.
+        /// </summary>
+        internal static string SCOTLAND {
+            get {
+                return ResourceManager.GetString("SCOTLAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Select language ähnelt.
         /// </summary>
         internal static string SELECT_LANGUAGE {
             get {
                 return ResourceManager.GetString("SELECT_LANGUAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Slovakia ähnelt.
+        /// </summary>
+        internal static string SLOVAKIA {
+            get {
+                return ResourceManager.GetString("SLOVAKIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Source ähnelt.
+        /// </summary>
+        internal static string SOURCE {
+            get {
+                return ResourceManager.GetString("SOURCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Speed limit ähnelt.
+        /// </summary>
+        internal static string SPEED_LIMIT {
+            get {
+                return ResourceManager.GetString("SPEED_LIMIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Status ähnelt.
+        /// </summary>
+        internal static string STATUS {
+            get {
+                return ResourceManager.GetString("STATUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Sweden ähnelt.
+        /// </summary>
+        internal static string SWEDEN {
+            get {
+                return ResourceManager.GetString("SWEDEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Switch length unit ähnelt.
+        /// </summary>
+        internal static string SWITCH_LENGTH_UNIT {
+            get {
+                return ResourceManager.GetString("SWITCH_LENGTH_UNIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Switzerland ähnelt.
+        /// </summary>
+        internal static string SWITZERLAND {
+            get {
+                return ResourceManager.GetString("SWITZERLAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Trailer ähnelt.
+        /// </summary>
+        internal static string TRAILER {
+            get {
+                return ResourceManager.GetString("TRAILER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Transmission ähnelt.
+        /// </summary>
+        internal static string TRANSMISSION {
+            get {
+                return ResourceManager.GetString("TRANSMISSION", resourceCulture);
             }
         }
         
@@ -192,6 +536,60 @@ namespace TruckingVSConnect2.Languages {
         internal static string TRUCKING_VS_LOGIN {
             get {
                 return ResourceManager.GetString("TRUCKING_VS_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unknown ähnelt.
+        /// </summary>
+        internal static string UNKNOWN {
+            get {
+                return ResourceManager.GetString("UNKNOWN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unlimited ähnelt.
+        /// </summary>
+        internal static string UNLIMITED {
+            get {
+                return ResourceManager.GetString("UNLIMITED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Vehicle ähnelt.
+        /// </summary>
+        internal static string VEHICLE {
+            get {
+                return ResourceManager.GetString("VEHICLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wales ähnelt.
+        /// </summary>
+        internal static string WALES {
+            get {
+                return ResourceManager.GetString("WALES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wheels ähnelt.
+        /// </summary>
+        internal static string WHEELS {
+            get {
+                return ResourceManager.GetString("WHEELS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Yield ähnelt.
+        /// </summary>
+        internal static string YIELD {
+            get {
+                return ResourceManager.GetString("YIELD", resourceCulture);
             }
         }
     }

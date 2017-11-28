@@ -36,7 +36,7 @@
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.passwordSingleLineTextField = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.emailUsernameSingleLineTextField = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.loginButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.logInButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.forgotPasswordLinkLabel = new System.Windows.Forms.LinkLabel();
             this.autoLogInCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.saveEmailUsernameCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
@@ -68,7 +68,7 @@
             this.mainLayoutPanel.Controls.Add(this.logoPictureBox, 0, 1);
             this.mainLayoutPanel.Controls.Add(this.passwordSingleLineTextField, 0, 4);
             this.mainLayoutPanel.Controls.Add(this.emailUsernameSingleLineTextField, 0, 3);
-            this.mainLayoutPanel.Controls.Add(this.loginButton, 0, 8);
+            this.mainLayoutPanel.Controls.Add(this.logInButton, 0, 8);
             this.mainLayoutPanel.Controls.Add(this.forgotPasswordLinkLabel, 0, 7);
             this.mainLayoutPanel.Controls.Add(this.autoLogInCheckBox, 0, 6);
             this.mainLayoutPanel.Controls.Add(this.saveEmailUsernameCheckBox, 0, 5);
@@ -174,27 +174,27 @@
             this.emailUsernameSingleLineTextField.TabStop = false;
             this.emailUsernameSingleLineTextField.UseSystemPasswordChar = false;
             // 
-            // loginButton
+            // logInButton
             // 
-            this.loginButton.AutoSize = true;
-            this.loginButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.loginButton.Depth = 0;
-            this.loginButton.Icon = null;
-            this.loginButton.Location = new System.Drawing.Point(3, 471);
-            this.loginButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Primary = true;
-            this.loginButton.Size = new System.Drawing.Size(92, 36);
-            this.loginButton.TabIndex = 4;
-            this.loginButton.Text = "{$LOG_IN$}";
-            this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
+            this.logInButton.AutoSize = true;
+            this.logInButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.logInButton.Depth = 0;
+            this.logInButton.Icon = null;
+            this.logInButton.Location = new System.Drawing.Point(3, 471);
+            this.logInButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.logInButton.Name = "logInButton";
+            this.logInButton.Primary = true;
+            this.logInButton.Size = new System.Drawing.Size(92, 36);
+            this.logInButton.TabIndex = 4;
+            this.logInButton.Text = "{$LOG_IN$}";
+            this.logInButton.UseVisualStyleBackColor = true;
+            this.logInButton.Click += new System.EventHandler(this.logInButton_Click);
             // 
             // forgotPasswordLinkLabel
             // 
             this.forgotPasswordLinkLabel.ActiveLinkColor = System.Drawing.SystemColors.ControlText;
             this.forgotPasswordLinkLabel.AutoSize = true;
-            this.forgotPasswordLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forgotPasswordLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.forgotPasswordLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.forgotPasswordLinkLabel.LinkColor = System.Drawing.SystemColors.HighlightText;
             this.forgotPasswordLinkLabel.Location = new System.Drawing.Point(3, 420);
@@ -375,7 +375,7 @@
         private System.Windows.Forms.TableLayoutPanel mainLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel languagesFlowLayoutPanel;
         private MaterialSkin.Controls.MaterialSingleLineTextField emailUsernameSingleLineTextField;
-        private MaterialSkin.Controls.MaterialRaisedButton loginButton;
+        private MaterialSkin.Controls.MaterialRaisedButton logInButton;
         private System.Windows.Forms.LinkLabel forgotPasswordLinkLabel;
         private MaterialSkin.Controls.MaterialCheckBox saveEmailUsernameCheckBox;
         private System.Windows.Forms.PictureBox logoPictureBox;

@@ -118,48 +118,182 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ABOUT_DESCRIPTION" xml:space="preserve">
-    <value />
+    <value>Trucking VS Connect² is a free software and it is licenced with GPLv3.
+
+</value>
   </data>
   <data name="ASSEMBLY_VERSION" xml:space="preserve">
-    <value />
+    <value>Assembly version</value>
+  </data>
+  <data name="AUSTRIA" xml:space="preserve">
+    <value>Austria</value>
   </data>
   <data name="AUTO_LOG_IN" xml:space="preserve">
     <value>Remember me</value>
   </data>
+  <data name="BELGIUM" xml:space="preserve">
+    <value>Belgium</value>
+  </data>
+  <data name="CABIN" xml:space="preserve">
+    <value>Cabin</value>
+  </data>
+  <data name="CARGO" xml:space="preserve">
+    <value>Cargo</value>
+  </data>
+  <data name="CHASSIS" xml:space="preserve">
+    <value>Chassis</value>
+  </data>
+  <data name="CRUISE_CONTROL" xml:space="preserve">
+    <value>Cruise control</value>
+  </data>
+  <data name="CZECH_REPUBLIC" xml:space="preserve">
+    <value>Czech Replubic</value>
+  </data>
+  <data name="DEADLINE" xml:space="preserve">
+    <value>Deadline</value>
+  </data>
+  <data name="DELIVER_CARGO" xml:space="preserve">
+    <value>Deliver cargo</value>
+  </data>
+  <data name="DENMARK" xml:space="preserve">
+    <value>Denmark</value>
+  </data>
+  <data name="DESTINATION" xml:space="preserve">
+    <value>Destination</value>
+  </data>
   <data name="EMAIL_USERNAME_HINT" xml:space="preserve">
     <value>Email or username...</value>
+  </data>
+  <data name="ENGINE" xml:space="preserve">
+    <value>Engine</value>
+  </data>
+  <data name="ENGLAND" xml:space="preserve">
+    <value>England</value>
   </data>
   <data name="ENGLISH" xml:space="preserve">
     <value>English</value>
   </data>
   <data name="FILE_VERSION" xml:space="preserve">
-    <value />
+    <value>File version</value>
   </data>
   <data name="FORGOT_PASSWORD" xml:space="preserve">
     <value>Forgot password?</value>
   </data>
+  <data name="FRANCE" xml:space="preserve">
+    <value>France</value>
+  </data>
   <data name="GERMAN" xml:space="preserve">
     <value>German (Deutsch)</value>
+  </data>
+  <data name="GERMANY" xml:space="preserve">
+    <value>Germany</value>
+  </data>
+  <data name="HUNGARY" xml:space="preserve">
+    <value>Hungary</value>
+  </data>
+  <data name="IDLE" xml:space="preserve">
+    <value>No delivery</value>
+  </data>
+  <data name="ITALY" xml:space="preserve">
+    <value>Italy</value>
+  </data>
+  <data name="LOGGED_IN_AS" xml:space="preserve">
+    <value>Logged in as</value>
   </data>
   <data name="LOG_IN" xml:space="preserve">
     <value>Log in</value>
   </data>
+  <data name="LOG_OUT" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="LUXEMBOURG" xml:space="preserve">
+    <value>Luxembourg</value>
+  </data>
+  <data name="MILES" xml:space="preserve">
+    <value>miles</value>
+  </data>
+  <data name="MINUTES" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="NETHERLANDS" xml:space="preserve">
+    <value>Netherlands</value>
+  </data>
+  <data name="NORWAY" xml:space="preserve">
+    <value>Norway</value>
+  </data>
+  <data name="OF" xml:space="preserve">
+    <value>of</value>
+  </data>
   <data name="PASSWORD_HINT" xml:space="preserve">
     <value>Password...</value>
   </data>
+  <data name="POLAND" xml:space="preserve">
+    <value>Poland</value>
+  </data>
   <data name="PRODUCT_VERSION" xml:space="preserve">
-    <value />
+    <value>Product version</value>
+  </data>
+  <data name="ROUTE" xml:space="preserve">
+    <value>Route</value>
   </data>
   <data name="SAVE_EMAIL_USERNAME" xml:space="preserve">
     <value>Save email or username</value>
   </data>
+  <data name="SCOTLAND" xml:space="preserve">
+    <value>Scotland</value>
+  </data>
   <data name="SELECT_LANGUAGE" xml:space="preserve">
     <value>Select language</value>
+  </data>
+  <data name="SLOVAKIA" xml:space="preserve">
+    <value>Slovakia</value>
+  </data>
+  <data name="SOURCE" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="SPEED_LIMIT" xml:space="preserve">
+    <value>Speed limit</value>
+  </data>
+  <data name="STATUS" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SWEDEN" xml:space="preserve">
+    <value>Sweden</value>
+  </data>
+  <data name="SWITCH_LENGTH_UNIT" xml:space="preserve">
+    <value>Switch length unit</value>
+  </data>
+  <data name="SWITZERLAND" xml:space="preserve">
+    <value>Switzerland</value>
+  </data>
+  <data name="TRAILER" xml:space="preserve">
+    <value>Trailer</value>
+  </data>
+  <data name="TRANSMISSION" xml:space="preserve">
+    <value>Transmission</value>
   </data>
   <data name="TRUCKING_VS_CONNECT_2" xml:space="preserve">
     <value>Trucking VS Connect²</value>
   </data>
   <data name="TRUCKING_VS_LOGIN" xml:space="preserve">
     <value>Trucking VS login</value>
+  </data>
+  <data name="UNKNOWN" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="UNLIMITED" xml:space="preserve">
+    <value>Unlimited</value>
+  </data>
+  <data name="VEHICLE" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+  <data name="WALES" xml:space="preserve">
+    <value>Wales</value>
+  </data>
+  <data name="WHEELS" xml:space="preserve">
+    <value>Wheels</value>
+  </data>
+  <data name="YIELD" xml:space="preserve">
+    <value>Yield</value>
   </data>
 </root>

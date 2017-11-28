@@ -63,9 +63,29 @@ namespace TruckingVSConnect2.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Drivetrain {
+            get {
+                object obj = ResourceManager.GetObject("Drivetrain", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GitHubLargeIcon {
             get {
                 object obj = ResourceManager.GetObject("GitHubLargeIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NoCargo {
+            get {
+                object obj = ResourceManager.GetObject("NoCargo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

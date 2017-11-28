@@ -1,21 +1,24 @@
 ﻿using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsTranslator;
 
+/// <summary>
+/// Trucking VS Connect² namespace
+/// </summary>
 namespace TruckingVSConnect2
 {
+    /// <summary>
+    /// Login form class
+    /// </summary>
     public partial class LoginForm : MaterialForm
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public LoginForm()
         {
             InitializeComponent();
@@ -43,11 +46,16 @@ namespace TruckingVSConnect2
             productVersionLabel.Text += ": " + FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Log in button click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void logInButton_Click(object sender, EventArgs e)
         {
             string email_username = emailUsernameSingleLineTextField.Text.Trim();
             string password = passwordSingleLineTextField.Text;
-            TruckingVSAuth auth = TruckingVSAuth.Authenticate(email_username, password, true);
+            TruckingVSAPI auth = TruckingVSAPI.Authenticate(email_username, password, true);
             if (auth == null)
             {
                 // Login failed
@@ -57,22 +65,20 @@ namespace TruckingVSConnect2
             {
                 MainForm.Auth = auth;
                 Configuration.EmailUsername = saveEmailUsernameCheckBox.Checked ? email_username : "";
-                Configuration.Password = autoLogInCheckBox.Checked ? TruckingVSAuth.SHA256(password) : "";
+                Configuration.Password = autoLogInCheckBox.Checked ? TruckingVSAPI.SHA256String(password) : "";
                 Configuration.Save();
                 Close();
             }
         }
 
+        /// <summary>
+        /// Forgot password link label click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Link label link clicked event arguments</param>
         private void forgotPasswordLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            try
-            {
-                Process.Start("https://trucking-vs.de/account/forgot-password");
-            }
-            catch (Exception _e)
-            {
-                Console.Error.WriteLine(_e.Message);
-            }
+            Utils.Execute("https://trucking-vs.de/account/forgot-password");
         }
 
         /// <summary>
@@ -90,6 +96,11 @@ namespace TruckingVSConnect2
             autoLogInCheckBox.Enabled = c;
         }
 
+        /// <summary>
+        /// Languages combo box selected index changes event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
         private void languagesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int i = languagesComboBox.SelectedIndex;
@@ -103,28 +114,24 @@ namespace TruckingVSConnect2
             }
         }
 
+        /// <summary>
+        /// GitHub project large picture box click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
         private void gitHubProjectLargePictureBox_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Process.Start("https://github.com/BigETI/TruckingVSConnect2");
-            }
-            catch (Exception _e)
-            {
-                Console.Error.WriteLine(_e.Message);
-            }
+            Utils.Execute("https://github.com/BigETI/TruckingVSConnect2");
         }
 
+        /// <summary>
+        /// GitHub link label link clicked event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Link label clicked event arguments</param>
         private void gitHubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            try
-            {
-                Process.Start("https://github.com/BigETI/TruckingVSConnect2");
-            }
-            catch (Exception _e)
-            {
-                Console.Error.WriteLine(_e.Message);
-            }
+            Utils.Execute("https://github.com/BigETI/TruckingVSConnect2");
         }
     }
 }

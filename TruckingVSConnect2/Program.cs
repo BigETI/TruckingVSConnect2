@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /// <summary>
-/// Trucking VS Connect 2 namespace
+/// Trucking VS Connect² namespace
 /// </summary>
 namespace TruckingVSConnect2
 {
