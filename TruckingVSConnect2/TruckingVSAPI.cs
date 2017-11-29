@@ -22,7 +22,8 @@ namespace TruckingVSConnect2
         /// <summary>
         /// API URL
         /// </summary>
-        private static readonly Uri uri = new Uri("https://trucking-vs.de/app/connect-api.php");
+        private static readonly Uri uri = new Uri("http://bigeti.de/truckingvs/");
+        //private static readonly Uri uri = new Uri("https://trucking-vs.de/app/connect-api.php");
 
         /// <summary>
         /// API timeout
@@ -236,35 +237,17 @@ namespace TruckingVSConnect2
             TruckingVSAPI ret = null;
             string auth_code = HTTPPostRequest(new Dictionary<string, string>()
                 {
-                    {
-                        "event",
-                        "authUser"
-                    },
-                    {
-                        "auth",
-                        "0"
-                    },
-                    {
-                        "email",
-                        email
-                    },
-                    {
-                        "password",
-                        hashPassword ? SHA256String(password) : password
-                    }
+                    { "event", "authUser" },
+                    { "auth", "0" },
+                    { "email", email },
+                    { "password", hashPassword ? SHA256String(password) : password }
                 });
             if (auth_code != "false")
             {
                 string[] result = HTTPPostRequest(new Dictionary<string, string>()
                     {
-                        {
-                            "event",
-                            "getUserData"
-                        },
-                        {
-                            "auth",
-                            auth_code
-                        }
+                        { "event", "getUserData" },
+                        { "auth", auth_code }
                     }).Split(',');
                 if (result != null)
                 {
@@ -298,50 +281,17 @@ namespace TruckingVSConnect2
             {
                 jobID = HTTPPostRequest(new Dictionary<string, string>()
                     {
-                        {
-                            "event",
-                            "newJob"
-                        },
-                        {
-                            "auth",
-                            authCode
-                        },
-                        {
-                            "cargo",
-                            telemetryData.Job.Cargo
-                        },
-                        {
-                            "weight",
-                            ((int)(Math.Round(telemetryData.Job.Mass * 0.001))).ToString()
-                        },
-                        {
-                            "source",
-                            telemetryData.Job.CitySource
-                        },
-                        {
-                            "destination",
-                            telemetryData.Job.CityDestination
-                        },
-                        {
-                            "truck_manufacturer",
-                            telemetryData.Manufacturer
-                        },
-                        {
-                            "truck_model",
-                            telemetryData.Truck
-                        },
-                        {
-                            "fuel",
-                            telemetryData.Drivetrain.Fuel.ToString()
-                        },
-                        {
-                            "distance",
-                            telemetryData.Job.NavigationDistanceLeft.ToString()
-                        },
-                        {
-                            "trailer_damage",
-                            "0"
-                        }
+                        { "event", "newJob" },
+                        { "auth", authCode },
+                        { "cargo", telemetryData.Job.Cargo },
+                        { "weight", ((int)(Math.Round(telemetryData.Job.Mass * 0.001))).ToString() },
+                        { "source", telemetryData.Job.CitySource },
+                        { "destination", telemetryData.Job.CityDestination },
+                        { "truck_manufacturer", telemetryData.Manufacturer },
+                        { "truck_model", telemetryData.Truck },
+                        { "fuel", telemetryData.Drivetrain.Fuel.ToString() },
+                        { "distance", telemetryData.Job.NavigationDistanceLeft.ToString() },
+                        { "trailer_damage", "0" }
                     });
             }
         }
@@ -357,22 +307,10 @@ namespace TruckingVSConnect2
                 float delta_neg = distance - telemetryData.Job.NavigationDistanceLeft;
                 HTTPPostRequest(new Dictionary<string, string>()
                     {
-                        {
-                            "event",
-                            "updateJob"
-                        },
-                        {
-                            "auth",
-                            authCode
-                        },
-                        {
-                            "job_id",
-                            jobID
-                        },
-                        {
-                            "percentage",
-                            ((int)(Math.Round((100.0f * delta_neg) / distance))).ToString()
-                        }
+                        { "event", "updateJob" },
+                        { "auth", authCode },
+                        { "job_id", jobID },
+                        { "percentage", ((int)(Math.Round((100.0f * delta_neg) / distance))).ToString() }
                     });
             }
         }
@@ -408,18 +346,9 @@ namespace TruckingVSConnect2
             {
                 HTTPPostRequest(new Dictionary<string, string>()
                     {
-                        {
-                            "event",
-                            "cancelJob"
-                        },
-                        {
-                            "auth",
-                            authCode
-                        },
-                        {
-                            "job_id",
-                            jobID
-                        }
+                        { "event", "cancelJob" },
+                        { "auth", authCode },
+                        { "job_id", jobID }
                     });
                 jobID = null;
             }
@@ -433,7 +362,7 @@ namespace TruckingVSConnect2
         {
             if (jobData != null)
             {
-                lock (jobData)
+                lock (jobDataQueue)
                 {
                     jobDataQueue.Enqueue(jobData);
                 }

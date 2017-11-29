@@ -307,12 +307,8 @@ namespace TruckingVSConnect2
         /// <param name="e">Event arguments</param>
         private void Telemetry_JobStarted(object sender, EventArgs e)
         {
-            /*if (api != null)
-            {
-                isJobRunning = true;
-                startJob = true;
-            }*/
-            MessageBox.Show("Telemetry_JobStarted");
+            isJobRunning = true;
+            startJob = true;
         }
 
         /// <summary>
@@ -322,8 +318,7 @@ namespace TruckingVSConnect2
         /// <param name="e">Evenet arguments</param>
         private void Telemetry_JobFinished(object sender, EventArgs e)
         {
-            //isJobRunning = false;
-            MessageBox.Show("Telemetry_JobFinished");
+            isJobRunning = false;
         }
 
         /// <summary>

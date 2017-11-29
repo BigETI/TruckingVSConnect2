@@ -53,6 +53,8 @@
             this.cargoLabel = new MaterialSkin.Controls.MaterialLabel();
             this.vehicleLabel = new MaterialSkin.Controls.MaterialLabel();
             this.healthPanel = new System.Windows.Forms.Panel();
+            this.trailerLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.wheelsLabel = new MaterialSkin.Controls.MaterialLabel();
             this.transmissionLabel = new MaterialSkin.Controls.MaterialLabel();
             this.engineLabel = new MaterialSkin.Controls.MaterialLabel();
             this.chassisLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -61,8 +63,6 @@
             this.drivetrainPictureBox = new System.Windows.Forms.PictureBox();
             this.drivetrainImageList = new System.Windows.Forms.ImageList(this.components);
             this.cargoImageList = new System.Windows.Forms.ImageList(this.components);
-            this.wheelsLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.trailerLabel = new MaterialSkin.Controls.MaterialLabel();
             this.mainTableLayoutPanel.SuspendLayout();
             this.bodyTableLayoutPanel.SuspendLayout();
             this.headPanel.SuspendLayout();
@@ -392,6 +392,32 @@
             this.healthPanel.Size = new System.Drawing.Size(325, 412);
             this.healthPanel.TabIndex = 5;
             // 
+            // trailerLabel
+            // 
+            this.trailerLabel.AutoSize = true;
+            this.trailerLabel.Depth = 0;
+            this.trailerLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.trailerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.trailerLabel.Location = new System.Drawing.Point(3, 99);
+            this.trailerLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.trailerLabel.Name = "trailerLabel";
+            this.trailerLabel.Size = new System.Drawing.Size(67, 19);
+            this.trailerLabel.TabIndex = 7;
+            this.trailerLabel.Text = "TRAILER";
+            // 
+            // wheelsLabel
+            // 
+            this.wheelsLabel.AutoSize = true;
+            this.wheelsLabel.Depth = 0;
+            this.wheelsLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.wheelsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.wheelsLabel.Location = new System.Drawing.Point(3, 79);
+            this.wheelsLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.wheelsLabel.Name = "wheelsLabel";
+            this.wheelsLabel.Size = new System.Drawing.Size(68, 19);
+            this.wheelsLabel.TabIndex = 6;
+            this.wheelsLabel.Text = "WHEELS";
+            // 
             // transmissionLabel
             // 
             this.transmissionLabel.AutoSize = true;
@@ -484,32 +510,6 @@
             this.cargoImageList.Images.SetKeyName(3, "CargoDamaged.png");
             this.cargoImageList.Images.SetKeyName(4, "CargoHeavilyDamaged.png");
             this.cargoImageList.Images.SetKeyName(5, "CargoFullyDamaged.png");
-            // 
-            // wheelsLabel
-            // 
-            this.wheelsLabel.AutoSize = true;
-            this.wheelsLabel.Depth = 0;
-            this.wheelsLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.wheelsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.wheelsLabel.Location = new System.Drawing.Point(3, 79);
-            this.wheelsLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.wheelsLabel.Name = "wheelsLabel";
-            this.wheelsLabel.Size = new System.Drawing.Size(68, 19);
-            this.wheelsLabel.TabIndex = 6;
-            this.wheelsLabel.Text = "WHEELS";
-            // 
-            // trailerLabel
-            // 
-            this.trailerLabel.AutoSize = true;
-            this.trailerLabel.Depth = 0;
-            this.trailerLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.trailerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.trailerLabel.Location = new System.Drawing.Point(3, 99);
-            this.trailerLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.trailerLabel.Name = "trailerLabel";
-            this.trailerLabel.Size = new System.Drawing.Size(67, 19);
-            this.trailerLabel.TabIndex = 7;
-            this.trailerLabel.Text = "TRAILER";
             // 
             // MainForm
             // 
