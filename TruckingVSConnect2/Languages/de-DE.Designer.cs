@@ -144,6 +144,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Aktuell ähnelt.
+        /// </summary>
+        internal static string CURRENT {
+            get {
+                return ResourceManager.GetString("CURRENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Tschechische Republik ähnelt.
         /// </summary>
         internal static string CZECH_REPUBLIC {
@@ -293,6 +302,15 @@ namespace TruckingVSConnect2.Languages {
         internal static string ITALY {
             get {
                 return ResourceManager.GetString("ITALY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Beschränkung ähnelt.
+        /// </summary>
+        internal static string LIMIT {
+            get {
+                return ResourceManager.GetString("LIMIT", resourceCulture);
             }
         }
         
@@ -455,6 +473,24 @@ namespace TruckingVSConnect2.Languages {
         internal static string SOURCE {
             get {
                 return ResourceManager.GetString("SOURCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Geschwindigkeit in km/h ähnelt.
+        /// </summary>
+        internal static string SPEED_IN_KMH {
+            get {
+                return ResourceManager.GetString("SPEED_IN_KMH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Geschwindigkeit in meilen/h ähnelt.
+        /// </summary>
+        internal static string SPEED_IN_MPH {
+            get {
+                return ResourceManager.GetString("SPEED_IN_MPH", resourceCulture);
             }
         }
         

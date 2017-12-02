@@ -9,9 +9,9 @@ namespace TruckingVSConnect2
     public enum ETruckingVSAPIJobDataType
     {
         /// <summary>
-        /// Job started
+        /// New job
         /// </summary>
-        Started,
+        New,
 
         /// <summary>
         /// Job data updated

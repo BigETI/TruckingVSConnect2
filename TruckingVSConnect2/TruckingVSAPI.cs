@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Security.Cryptography;
@@ -15,15 +16,14 @@ using System.Web;
 namespace TruckingVSConnect2
 {
     /// <summary>
-    /// Trucking VS authenticator
+    /// Trucking VS API class
     /// </summary>
     public class TruckingVSAPI : IDisposable
     {
         /// <summary>
         /// API URL
         /// </summary>
-        private static readonly Uri uri = new Uri("http://bigeti.de/truckingvs/");
-        //private static readonly Uri uri = new Uri("https://trucking-vs.de/app/connect-api.php");
+        private static readonly Uri uri = new Uri("https://trucking-vs.de/app/connect-api.php");
 
         /// <summary>
         /// API timeout
@@ -149,8 +149,8 @@ namespace TruckingVSConnect2
                             TruckingVSAPIJobData job_data = jobDataQueue.Dequeue();
                             switch (job_data.Type)
                             {
-                                case ETruckingVSAPIJobDataType.Started:
-                                    StartJob(job_data.TelemetryData);
+                                case ETruckingVSAPIJobDataType.New:
+                                    NewJob(job_data.TelemetryData);
                                     break;
 
                                 case ETruckingVSAPIJobDataType.DataUpdated:
@@ -220,7 +220,7 @@ namespace TruckingVSConnect2
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine(e.Message);
+                Debug.Print(e.Message);
             }
             return ret;
         }
@@ -269,11 +269,12 @@ namespace TruckingVSConnect2
         }
 
         /// <summary>
-        /// Start job
+        /// New job
         /// </summary>
         /// <param name="telemetryData">Telemetry data</param>
-        private void StartJob(Ets2Telemetry telemetryData)
+        private void NewJob(Ets2Telemetry telemetryData)
         {
+            Debug.Print("NewJob");
             CancelJob();
             distance = telemetryData.Job.NavigationDistanceLeft;
             time = telemetryData.Job.NavigationTimeLeft;
@@ -304,6 +305,7 @@ namespace TruckingVSConnect2
         {
             if (jobID != null)
             {
+                Debug.Print("UpdateJobData : " + DateTime.Now.ToLongTimeString());
                 float delta_neg = distance - telemetryData.Job.NavigationDistanceLeft;
                 HTTPPostRequest(new Dictionary<string, string>()
                     {
@@ -323,6 +325,7 @@ namespace TruckingVSConnect2
         {
             if (jobID != null)
             {
+                Debug.Print("FinishJob");
                 string wear_trailer = string.Format("{0:0.00}", telemetryData.Damage.WearTrailer);
                 string wear_trailer_replaced = wear_trailer.Replace("0.", "");
                 HTTPPostRequest(new Dictionary<string, string>()
@@ -344,6 +347,7 @@ namespace TruckingVSConnect2
         {
             if (jobID != null)
             {
+                Debug.Print("CancelJob\r\n");
                 HTTPPostRequest(new Dictionary<string, string>()
                     {
                         { "event", "cancelJob" },

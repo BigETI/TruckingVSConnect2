@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -48,7 +49,7 @@ namespace TruckingVSConnect2
         /// <summary>
         /// Use metric
         /// </summary>
-        [DataMember]
+        [DataMember(EmitDefaultValue = true)]
         private bool useMetricUnit = true;
 
         /// <summary>
@@ -194,7 +195,7 @@ namespace TruckingVSConnect2
                         }
                         catch (Exception e)
                         {
-                            Console.Error.WriteLine(e.Message);
+                            Debug.Print(e.Message);
                         }
                     }
                     if (instance == null)
@@ -232,7 +233,7 @@ namespace TruckingVSConnect2
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine(e.Message);
+                Debug.Print(e.Message);
             }
         }
     }

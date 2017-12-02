@@ -4,6 +4,8 @@ using MaterialSkin.Controls;
 using System.Windows.Forms;
 using WinFormsTranslator;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 /// <summary>
 /// Trucking VS Connect² namespace
@@ -31,9 +33,19 @@ namespace TruckingVSConnect2
         private Ets2Telemetry telemetryData;
 
         /// <summary>
-        /// Is read or writing telemetry data
+        /// Current game time
         /// </summary>
-        private bool isReadWritingTelemetryData;
+        private uint currentGameTime;
+
+        /// <summary>
+        /// Last job data update timestamp
+        /// </summary>
+        DateTime lastUpdateTimestamp;
+
+        /// <summary>
+        /// Last job distance
+        /// </summary>
+        private float lastJobDistance;
 
         /// <summary>
         /// Update telemetry data
@@ -46,19 +58,14 @@ namespace TruckingVSConnect2
         private bool isJobRunning;
 
         /// <summary>
-        /// Start job
+        /// Current speed data
         /// </summary>
-        private bool startJob;
+        private List<double> currentSpeedData = new List<double>();
 
         /// <summary>
-        /// Finish job
+        /// Speed limit data
         /// </summary>
-        private bool finishJob;
-
-        /// <summary>
-        /// Finish job
-        /// </summary>
-        private bool cancelJob;
+        private List<double> speedLimitData = new List<double>();
 
         /// <summary>
         /// Cruise control translated
@@ -171,6 +178,16 @@ namespace TruckingVSConnect2
         private string trailerTranslated;
 
         /// <summary>
+        /// Chart point count limit
+        /// </summary>
+        private static readonly uint chartPointCountLimit = 200U;
+
+        /// <summary>
+        /// Chart counter
+        /// </summary>
+        private int chartTickCounter;
+
+        /// <summary>
         /// Authenticator
         /// </summary>
         public static TruckingVSAPI Auth
@@ -226,9 +243,11 @@ namespace TruckingVSConnect2
             material_skin_manager.ColorScheme = new ColorScheme(Primary.Blue700, Primary.Blue800, Primary.Blue500, Accent.LightBlue200, TextShade.WHITE);
 
             telemetry = new Ets2SdkTelemetry();
-            telemetry.JobStarted += Telemetry_JobStarted;
-            telemetry.JobFinished += Telemetry_JobFinished;
             telemetry.Data += Telemetry_Data;
+
+            speedChart.Legends[0].Title = Translator.GetTranslation(Configuration.UseMetricUnit ? "SPEED_IN_KMH" : "SPEED_IN_MPH");
+            speedChart.Series[0].Name = Translator.GetTranslation("CURRENT");
+            speedChart.Series[1].Name = Translator.GetTranslation("LIMIT");
         }
 
         /// <summary>
@@ -254,6 +273,8 @@ namespace TruckingVSConnect2
                 api.Dispose();
                 api = null;
             }
+            currentSpeedData.Clear();
+            speedLimitData.Clear();
         }
 
         /// <summary>
@@ -277,7 +298,6 @@ namespace TruckingVSConnect2
                 Hide();
                 if ((Configuration.EmailUsername.Length > 0) && (Configuration.Password.Length > 0))
                 {
-                    // Auto log in
                     api = TruckingVSAPI.Authenticate(Configuration.EmailUsername, Configuration.Password, false);
                     if (api == null)
                     {
@@ -301,60 +321,43 @@ namespace TruckingVSConnect2
         }
 
         /// <summary>
-        /// Telemetry job started event
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event arguments</param>
-        private void Telemetry_JobStarted(object sender, EventArgs e)
-        {
-            isJobRunning = true;
-            startJob = true;
-        }
-
-        /// <summary>
-        /// Telemetry job finished event
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Evenet arguments</param>
-        private void Telemetry_JobFinished(object sender, EventArgs e)
-        {
-            isJobRunning = false;
-        }
-
-        /// <summary>
         /// Telemetry data event
         /// </summary>
         /// <param name="data">Data</param>
         /// <param name="newTimestamp">New timestamp</param>
         private void Telemetry_Data(Ets2Telemetry data, bool newTimestamp)
         {
-            while (isReadWritingTelemetryData) ;
-            isReadWritingTelemetryData = true;
             telemetryData = data;
             if (api != null)
             {
-                if (startJob)
+                if (data.Job.OnJob)
                 {
-                    startJob = false;
-                    api.QueueJobData(new TruckingVSAPIJobData(data, ETruckingVSAPIJobDataType.Started));
-                }
-                else if (finishJob)
-                {
-                    finishJob = false;
-                    cancelJob = false;
-                    api.QueueJobData(new TruckingVSAPIJobData(data, ETruckingVSAPIJobDataType.Finished));
-                }
-                else if (cancelJob)
-                {
-                    cancelJob = false;
-                    api.QueueJobData(new TruckingVSAPIJobData(data, ETruckingVSAPIJobDataType.Canceled));
+                    DateTime now = DateTime.Now;
+                    if (isJobRunning)
+                    {
+                        if ((now - lastUpdateTimestamp).TotalSeconds >= 60.0)
+                        {
+                            lastUpdateTimestamp = now;
+                            api.QueueJobData(new TruckingVSAPIJobData(data, ETruckingVSAPIJobDataType.DataUpdated));
+                        }
+                    }
+                    else
+                    {
+                        if (data.Job.NavigationDistanceLeft > float.Epsilon)
+                        {
+                            isJobRunning = true;
+                            lastUpdateTimestamp = now;
+                            api.QueueJobData(new TruckingVSAPIJobData(data, ETruckingVSAPIJobDataType.New));
+                        }
+                    }
+                    lastJobDistance = data.Job.NavigationDistanceLeft;
                 }
                 else if (isJobRunning)
                 {
-                    api.QueueJobData(new TruckingVSAPIJobData(data, ETruckingVSAPIJobDataType.DataUpdated));
+                    isJobRunning = false;
+                    api.QueueJobData(new TruckingVSAPIJobData(data, (lastJobDistance <= 2000.0f) ? ETruckingVSAPIJobDataType.Finished : ETruckingVSAPIJobDataType.Canceled));
                 }
             }
-            isReadWritingTelemetryData = false;
             updateTelemetryData = true;
         }
 
@@ -367,94 +370,122 @@ namespace TruckingVSConnect2
         {
             if (api != null)
             {
-                while (isReadWritingTelemetryData) ;
-                isReadWritingTelemetryData = true;
-                if ((telemetryData != null) && updateTelemetryData)
+                Ets2Telemetry data = telemetryData;
+                if ((data != null) && updateTelemetryData)
                 {
-                    speedLabel.Text = (Configuration.UseMetricUnit ? (Math.Round(telemetryData.Drivetrain.SpeedKmh, 1) + " km/h") : (Math.Round(telemetryData.Drivetrain.SpeedMph, 1) + " " + milesTranslated  + "/h")) + (telemetryData.Drivetrain.CruiseControl ? ("; " + cruiseControlTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(telemetryData.Drivetrain.CruiseControlSpeedKmh, 1) + " km/h") : (Math.Round(telemetryData.Drivetrain.CruiseControlSpeedMph, 1) + " " + milesTranslated + "/h"))) : "");
-                    speedLimitLabel.Text = speedLimitTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round((telemetryData.Job.SpeedLimit * 3.6f), 1) + " km/h") : (Math.Round(telemetryData.Job.SpeedLimit * 2.2369362920544f, 1) + " " + milesTranslated + "/h"));
-                    vehicleLabel.Text = vehicleTranslated + ": " + telemetryData.Truck + ", " + telemetryData.Manufacturer;
-                    if (telemetryData.Job.OnJob)
+                    bool game_running = Utils.IsAGameRunning && (data.TruckId.Length > 0);
+                    dataPanel.Visible = game_running;
+                    healthPanel.Visible = game_running;
+                    speedPanel.Visible = game_running;
+                    speedChart.Visible = game_running;
+                    if (game_running)
                     {
-                        statusLabel.Text = statusTranslated + ": " + deliverCargoTranslated;
-                        cargoLabel.Text = cargoTranslated + ": " + telemetryData.Job.Cargo;
-                        sourceLabel.Text = sourceTranslated + ": " + telemetryData.Job.CompanySource + ", " + Cities.GetFullCityName(telemetryData.Job.CitySource);
-                        destinationLabel.Text = destinationTranslated + ": " + telemetryData.Job.CompanyDestination + ", " + Cities.GetFullCityName(telemetryData.Job.CityDestination);
-                        routeLabel.Text = routeTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(telemetryData.Job.NavigationDistanceLeft * 0.001f) + " km") : (Math.Round(telemetryData.Job.NavigationDistanceLeft * 0.0006213712f) + " " + milesTranslated)) + " " + ofTranslated + " " + api.Distance + "; " + Math.Ceiling(telemetryData.Job.NavigationTimeLeft / 60.0f) + " " + minutesTranslated + " " + ofTranslated + " " + Math.Ceiling(api.Time / 60.0f) + " " + minutesTranslated;
-                        yieldLabel.Text = yieldTranslated + ": " + telemetryData.Job.Income + "€; " + Math.Round(telemetryData.Job.Mass, 1) + " kg";
-                        deadlineLabel.Text = deadlineTranslated + ": " + ((telemetryData.Job.Deadline == -1) ? unlimitedTranslated : telemetryData.Job.Deadline.ToString());
-                    }
-                    else
-                    {
-                        statusLabel.Text = statusTranslated + ": " + idleTranslated;
-                        cargoLabel.Text = "";
-                        sourceLabel.Text = "";
-                        destinationLabel.Text = "";
-                        routeLabel.Text = "";
-                        yieldLabel.Text = "";
-                        deadlineLabel.Text = "";
-                    }
-                    cabinLabel.Text = cabinTranslated + ": " + Math.Round(100.0f - (telemetryData.Damage.WearCabin * 100.0f), 1) + "%";
-                    chassisLabel.Text = chassisTranslated + ": " + Math.Round(100.0f - (telemetryData.Damage.WearChassis * 100.0f), 1) + "%";
-                    engineLabel.Text = engineTranslated + ": " + Math.Round(100.0f - (telemetryData.Damage.WearEnigne * 100.0f), 1) + "%";
-                    transmissionLabel.Text = transmissionTranslated + ": " + Math.Round(100.0f - (telemetryData.Damage.WearTransmission * 100.0f), 1) + "%";
-                    wheelsLabel.Text = wheelsTranslated + ": " + Math.Round(100.0f - (telemetryData.Damage.WearWheels * 100.0f), 1) + "%";
-                    trailerLabel.Text = (telemetryData.Job.TrailerAttached) ? (trailerTranslated + ": " + Math.Round(100.0f - (telemetryData.Damage.WearTrailer * 100.0f), 1) + "%") : "";
-                    float damage = Math.Max(telemetryData.Damage.WearCabin, Math.Max(telemetryData.Damage.WearChassis, Math.Max(telemetryData.Damage.WearEnigne, Math.Max(telemetryData.Damage.WearTransmission, telemetryData.Damage.WearWheels))));
-                    int image_id = 0;
-                    if (damage >= 0.9f)
-                    {
-                        image_id = 4;
-                    }
-                    else if (damage >= 0.7f)
-                    {
-                        image_id = 3;
-                    }
-                    else if (damage >= 0.5f)
-                    {
-                        image_id = 2;
-                    }
-                    else if (damage >= 0.3f)
-                    {
-                        image_id = 1;
-                    }
-                    else if (damage >= 0.0f)
-                    {
-                        image_id = 0;
-                    }
-                    drivetrainPictureBox.Image = drivetrainImageList.Images[image_id];
-                    damage = telemetryData.Damage.WearTrailer;
-                    if (telemetryData.Job.TrailerAttached)
-                    {
-                        if (damage >= 0.9f)
+                        speedLabel.Text = (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.SpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.SpeedMph, 1) + " " + milesTranslated + "/h")) + (data.Drivetrain.CruiseControl ? ("; " + cruiseControlTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.CruiseControlSpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.CruiseControlSpeedMph, 1) + " " + milesTranslated + "/h"))) : "");
+                        speedLimitLabel.Text = speedLimitTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round((data.Job.SpeedLimit * 3.6f), 1) + " km/h") : (Math.Round(data.Job.SpeedLimit * 2.2369362920544f, 1) + " " + milesTranslated + "/h"));
+                        vehicleLabel.Text = vehicleTranslated + ": " + data.Truck + ", " + data.Manufacturer;
+                        if (data.Job.OnJob)
                         {
-                            image_id = 5;
+                            statusLabel.Text = statusTranslated + ": " + deliverCargoTranslated;
+                            cargoLabel.Text = cargoTranslated + ": " + data.Job.Cargo;
+                            sourceLabel.Text = sourceTranslated + ": " + data.Job.CompanySource + ", " + Cities.GetFullCityName(data.Job.CitySource);
+                            destinationLabel.Text = destinationTranslated + ": " + data.Job.CompanyDestination + ", " + Cities.GetFullCityName(data.Job.CityDestination);
+                            string distance_unit = (Configuration.UseMetricUnit ? " km" : " " + milesTranslated);
+                            routeLabel.Text = routeTranslated + ": " + Math.Round(Utils.ConvertLength(data.Job.NavigationDistanceLeft), 1) + distance_unit + " " + ofTranslated + " " + Math.Round(Utils.ConvertLength(api.Distance), 1) + distance_unit + "; " + Math.Ceiling(data.Job.NavigationTimeLeft / 60.0f) + " " + minutesTranslated + " " + ofTranslated + " " + Math.Ceiling(api.Time / 60.0f) + " " + minutesTranslated;
+                            yieldLabel.Text = yieldTranslated + ": " + data.Job.Income + "€; " + Math.Round(data.Job.Mass, 1) + " kg";
+                            deadlineLabel.Text = deadlineTranslated + ": " + ((data.Job.Deadline == -1) ? unlimitedTranslated : data.Job.Deadline.ToString());
                         }
-                        else if (damage >= 0.7f)
+                        else
+                        {
+                            statusLabel.Text = statusTranslated + ": " + idleTranslated;
+                            cargoLabel.Text = "";
+                            sourceLabel.Text = "";
+                            destinationLabel.Text = "";
+                            routeLabel.Text = "";
+                            yieldLabel.Text = "";
+                            deadlineLabel.Text = "";
+                        }
+                        cabinLabel.Text = cabinTranslated + ": " + Math.Round(100.0f - (data.Damage.WearCabin * 100.0f), 1) + "%";
+                        chassisLabel.Text = chassisTranslated + ": " + Math.Round(100.0f - (data.Damage.WearChassis * 100.0f), 1) + "%";
+                        engineLabel.Text = engineTranslated + ": " + Math.Round(100.0f - (data.Damage.WearEnigne * 100.0f), 1) + "%";
+                        transmissionLabel.Text = transmissionTranslated + ": " + Math.Round(100.0f - (data.Damage.WearTransmission * 100.0f), 1) + "%";
+                        wheelsLabel.Text = wheelsTranslated + ": " + Math.Round(100.0f - (data.Damage.WearWheels * 100.0f), 1) + "%";
+                        trailerLabel.Text = (data.Job.TrailerAttached) ? (trailerTranslated + ": " + Math.Round(100.0f - (data.Damage.WearTrailer * 100.0f), 1) + "%") : "";
+                        float damage = Math.Max(data.Damage.WearCabin, Math.Max(data.Damage.WearChassis, Math.Max(data.Damage.WearEnigne, Math.Max(data.Damage.WearTransmission, data.Damage.WearWheels))));
+                        int image_id = 0;
+                        if (damage >= 0.9f)
                         {
                             image_id = 4;
                         }
-                        else if (damage >= 0.5f)
+                        else if (damage >= 0.7f)
                         {
                             image_id = 3;
                         }
-                        else if (damage >= 0.3f)
+                        else if (damage >= 0.5f)
                         {
                             image_id = 2;
                         }
-                        else if (damage >= 0.0f)
+                        else if (damage >= 0.3f)
                         {
                             image_id = 1;
                         }
+                        else if (damage >= 0.0f)
+                        {
+                            image_id = 0;
+                        }
+                        drivetrainPictureBox.Image = drivetrainImageList.Images[image_id];
+                        damage = data.Damage.WearTrailer;
+                        if (data.Job.TrailerAttached)
+                        {
+                            if (damage >= 0.9f)
+                            {
+                                image_id = 5;
+                            }
+                            else if (damage >= 0.7f)
+                            {
+                                image_id = 4;
+                            }
+                            else if (damage >= 0.5f)
+                            {
+                                image_id = 3;
+                            }
+                            else if (damage >= 0.3f)
+                            {
+                                image_id = 2;
+                            }
+                            else if (damage >= 0.0f)
+                            {
+                                image_id = 1;
+                            }
+                        }
+                        else
+                        {
+                            image_id = 0;
+                        }
+                        cargoPictureBox.Image = cargoImageList.Images[image_id];
+                        while (currentSpeedData.Count >= chartPointCountLimit)
+                        {
+                            currentSpeedData.RemoveAt(0);
+                        }
+                        while (speedLimitData.Count >= chartPointCountLimit)
+                        {
+                            speedLimitData.RemoveAt(0);
+                        }
+                        if (currentGameTime != data.Time)
+                        {
+                            currentGameTime = data.Time;
+                            ++chartTickCounter;
+                            if ((chartTickCounter % 2) == 0)
+                            {
+                                chartTickCounter = 0;
+                                currentSpeedData.Add(Configuration.UseMetricUnit ? data.Drivetrain.SpeedKmh : data.Drivetrain.SpeedMph);
+                                speedLimitData.Add(Utils.ConvertSpeed(data.Job.SpeedLimit));
+                                speedChart.Series[0].Points.DataBindY(currentSpeedData);
+                                speedChart.Series[1].Points.DataBindY(speedLimitData);
+                            }
+                        }
+                        updateTelemetryData = false;
                     }
-                    else
-                    {
-                        image_id = 0;
-                    }
-                    cargoPictureBox.Image = cargoImageList.Images[image_id];
-                    updateTelemetryData = false;
                 }
-                isReadWritingTelemetryData = false;
             }
         }
 
@@ -485,9 +516,17 @@ namespace TruckingVSConnect2
             }
         }
 
+        /// <summary>
+        /// Switch length unit button click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
         private void switchLengthUnitButton_Click(object sender, EventArgs e)
         {
             Configuration.UseMetricUnit = !(Configuration.UseMetricUnit);
+            currentSpeedData.Clear();
+            speedLimitData.Clear();
+            speedChart.Legends[0].Title = Translator.GetTranslation(Configuration.UseMetricUnit ? "SPEED_IN_KMH" : "SPEED_IN_MPH");
         }
     }
 }

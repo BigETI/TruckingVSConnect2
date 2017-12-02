@@ -146,6 +146,9 @@
   <data name="CRUISE_CONTROL" xml:space="preserve">
     <value>Cruise control</value>
   </data>
+  <data name="CURRENT" xml:space="preserve">
+    <value>Current</value>
+  </data>
   <data name="CZECH_REPUBLIC" xml:space="preserve">
     <value>Czech Replubic</value>
   </data>
@@ -196,6 +199,9 @@
   </data>
   <data name="ITALY" xml:space="preserve">
     <value>Italy</value>
+  </data>
+  <data name="LIMIT" xml:space="preserve">
+    <value>Limit</value>
   </data>
   <data name="LOGGED_IN_AS" xml:space="preserve">
     <value>Logged in as</value>
@@ -250,6 +256,12 @@
   </data>
   <data name="SOURCE" xml:space="preserve">
     <value>Source</value>
+  </data>
+  <data name="SPEED_IN_KMH" xml:space="preserve">
+    <value>Speed in km/h</value>
+  </data>
+  <data name="SPEED_IN_MPH" xml:space="preserve">
+    <value>Speed in miles/h</value>
   </data>
   <data name="SPEED_LIMIT" xml:space="preserve">
     <value>Speed limit</value>

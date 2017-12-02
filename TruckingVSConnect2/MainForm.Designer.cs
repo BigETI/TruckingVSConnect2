@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -61,6 +65,7 @@
             this.cabinLabel = new MaterialSkin.Controls.MaterialLabel();
             this.cargoPictureBox = new System.Windows.Forms.PictureBox();
             this.drivetrainPictureBox = new System.Windows.Forms.PictureBox();
+            this.speedChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.drivetrainImageList = new System.Windows.Forms.ImageList(this.components);
             this.cargoImageList = new System.Windows.Forms.ImageList(this.components);
             this.mainTableLayoutPanel.SuspendLayout();
@@ -73,6 +78,7 @@
             this.healthPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drivetrainPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedChart)).BeginInit();
             this.SuspendLayout();
             // 
             // updateTimer
@@ -90,6 +96,7 @@
             this.mainTableLayoutPanel.ColumnCount = 1;
             this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTableLayoutPanel.Controls.Add(this.bodyTableLayoutPanel, 0, 0);
+            this.mainTableLayoutPanel.Controls.Add(this.speedChart, 0, 1);
             this.mainTableLayoutPanel.Location = new System.Drawing.Point(12, 64);
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 2;
@@ -206,6 +213,7 @@
             this.speedPanel.Name = "speedPanel";
             this.speedPanel.Size = new System.Drawing.Size(540, 138);
             this.speedPanel.TabIndex = 2;
+            this.speedPanel.Visible = false;
             // 
             // switchLengthUnitButton
             // 
@@ -284,6 +292,7 @@
             this.dataPanel.Name = "dataPanel";
             this.dataPanel.Size = new System.Drawing.Size(540, 262);
             this.dataPanel.TabIndex = 3;
+            this.dataPanel.Visible = false;
             // 
             // deadlineLabel
             // 
@@ -391,6 +400,7 @@
             this.healthPanel.Name = "healthPanel";
             this.healthPanel.Size = new System.Drawing.Size(325, 412);
             this.healthPanel.TabIndex = 5;
+            this.healthPanel.Visible = false;
             // 
             // trailerLabel
             // 
@@ -490,6 +500,56 @@
             this.drivetrainPictureBox.TabIndex = 0;
             this.drivetrainPictureBox.TabStop = false;
             // 
+            // speedChart
+            // 
+            this.speedChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.speedChart.BorderlineColor = System.Drawing.Color.Black;
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX2.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisX2.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY2.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            chartArea1.Name = "ChartArea";
+            this.speedChart.ChartAreas.Add(chartArea1);
+            this.speedChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            legend1.ForeColor = System.Drawing.Color.White;
+            legend1.Name = "Legend";
+            legend1.Title = "SPEED";
+            legend1.TitleForeColor = System.Drawing.Color.White;
+            this.speedChart.Legends.Add(legend1);
+            this.speedChart.Location = new System.Drawing.Point(3, 503);
+            this.speedChart.Name = "speedChart";
+            this.speedChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.speedChart.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.DeepSkyBlue,
+        System.Drawing.Color.DarkRed};
+            series1.BorderWidth = 5;
+            series1.ChartArea = "ChartArea";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.Legend = "Legend";
+            series1.Name = "CURRENT";
+            series2.BorderWidth = 5;
+            series2.ChartArea = "ChartArea";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series2.Legend = "Legend";
+            series2.Name = "LIMIT";
+            this.speedChart.Series.Add(series1);
+            this.speedChart.Series.Add(series2);
+            this.speedChart.Size = new System.Drawing.Size(883, 114);
+            this.speedChart.TabIndex = 2;
+            this.speedChart.Visible = false;
+            // 
             // drivetrainImageList
             // 
             this.drivetrainImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("drivetrainImageList.ImageStream")));
@@ -537,6 +597,7 @@
             this.healthPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drivetrainPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -575,6 +636,7 @@
         private MaterialSkin.Controls.MaterialLabel transmissionLabel;
         private MaterialSkin.Controls.MaterialLabel wheelsLabel;
         private MaterialSkin.Controls.MaterialLabel trailerLabel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart speedChart;
     }
 }
 
