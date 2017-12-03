@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using WinFormsTranslator;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 /// <summary>
 /// Trucking VS Connect² namespace
@@ -56,6 +55,11 @@ namespace TruckingVSConnect2
         /// Is job running
         /// </summary>
         private bool isJobRunning;
+
+        /// <summary>
+        /// Job data
+        /// </summary>
+        private string jobData;
 
         /// <summary>
         /// Current speed data
@@ -183,9 +187,9 @@ namespace TruckingVSConnect2
         private static readonly uint chartPointCountLimit = 200U;
 
         /// <summary>
-        /// Chart counter
+        /// Chart update tick counter
         /// </summary>
-        private int chartTickCounter;
+        private int chartUpdateTickCounter;
 
         /// <summary>
         /// Authenticator
@@ -321,6 +325,16 @@ namespace TruckingVSConnect2
         }
 
         /// <summary>
+        /// Get job data
+        /// </summary>
+        /// <param name="telemetryData">Telemetry data</param>
+        /// <returns>Job data</returns>
+        private string GetJobData(Ets2Telemetry telemetryData)
+        {
+            return telemetryData.Job.Cargo + ";" + telemetryData.Job.CitySource + ";" + telemetryData.Job.CityDestination + ";" + telemetryData.Job.Mass;
+        }
+
+        /// <summary>
         /// Telemetry data event
         /// </summary>
         /// <param name="data">Data</param>
@@ -338,7 +352,18 @@ namespace TruckingVSConnect2
                         if ((now - lastUpdateTimestamp).TotalSeconds >= 60.0)
                         {
                             lastUpdateTimestamp = now;
-                            api.QueueJobData(new TruckingVSAPIJobData(data, ETruckingVSAPIJobDataType.DataUpdated));
+                            string job_data = GetJobData(data);
+                            if (jobData == job_data)
+                            {
+                                api.QueueJobData(new TruckingVSAPIJobData(data, ETruckingVSAPIJobDataType.DataUpdated));
+                            }
+                            else
+                            {
+                                api.QueueJobData(new TruckingVSAPIJobData(data, (lastJobDistance <= 2000.0f) ? ETruckingVSAPIJobDataType.Finished : ETruckingVSAPIJobDataType.Canceled));
+                                lastUpdateTimestamp = now;
+                                jobData = job_data;
+                                api.QueueJobData(new TruckingVSAPIJobData(data, ETruckingVSAPIJobDataType.New));
+                            }
                         }
                     }
                     else
@@ -347,6 +372,7 @@ namespace TruckingVSConnect2
                         {
                             isJobRunning = true;
                             lastUpdateTimestamp = now;
+                            jobData = GetJobData(data);
                             api.QueueJobData(new TruckingVSAPIJobData(data, ETruckingVSAPIJobDataType.New));
                         }
                     }
@@ -381,7 +407,7 @@ namespace TruckingVSConnect2
                     if (game_running)
                     {
                         speedLabel.Text = (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.SpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.SpeedMph, 1) + " " + milesTranslated + "/h")) + (data.Drivetrain.CruiseControl ? ("; " + cruiseControlTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.CruiseControlSpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.CruiseControlSpeedMph, 1) + " " + milesTranslated + "/h"))) : "");
-                        speedLimitLabel.Text = speedLimitTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round((data.Job.SpeedLimit * 3.6f), 1) + " km/h") : (Math.Round(data.Job.SpeedLimit * 2.2369362920544f, 1) + " " + milesTranslated + "/h"));
+                        speedLimitLabel.Text = speedLimitTranslated + ": " + ((data.Job.SpeedLimit == -1.0f) ? unlimitedTranslated : Math.Round(Utils.ConvertSpeed(data.Job.SpeedLimit), 1) +  (Configuration.UseMetricUnit ? " km/h" : (" " + milesTranslated + "/h")));
                         vehicleLabel.Text = vehicleTranslated + ": " + data.Truck + ", " + data.Manufacturer;
                         if (data.Job.OnJob)
                         {
@@ -473,12 +499,12 @@ namespace TruckingVSConnect2
                         if (currentGameTime != data.Time)
                         {
                             currentGameTime = data.Time;
-                            ++chartTickCounter;
-                            if ((chartTickCounter % 2) == 0)
+                            ++chartUpdateTickCounter;
+                            if ((chartUpdateTickCounter % 2) == 0)
                             {
-                                chartTickCounter = 0;
+                                chartUpdateTickCounter = 0;
                                 currentSpeedData.Add(Configuration.UseMetricUnit ? data.Drivetrain.SpeedKmh : data.Drivetrain.SpeedMph);
-                                speedLimitData.Add(Utils.ConvertSpeed(data.Job.SpeedLimit));
+                                speedLimitData.Add(Utils.ConvertSpeed((data.Job.SpeedLimit == -1.0f) ? 0.0f : data.Job.SpeedLimit));
                                 speedChart.Series[0].Points.DataBindY(currentSpeedData);
                                 speedChart.Series[1].Points.DataBindY(speedLimitData);
                             }

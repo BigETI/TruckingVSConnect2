@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3A3F2D5D-62F6-4FAB-80D6-C0D176D2DCBC}</ProjectGuid>
+    <ProjectGuid>{8BBAD299-9033-4A81-AA3C-EF82D10B4BC1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TruckingVSConnect2</RootNamespace>
-    <AssemblyName>TruckingVSConnect2</AssemblyName>
+    <RootNamespace>TruckingVSConnect2Updater</RootNamespace>
+    <AssemblyName>TruckingVSConnect2Updater</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -22,8 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,21 +32,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>TruckingVSConnect2.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ets2SdkClient">
-      <HintPath>libs\Ets2SdkClient.dll</HintPath>
-    </Reference>
     <Reference Include="MaterialSkin">
       <HintPath>..\libs\MaterialSkin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,10 +56,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cities.cs" />
-    <Compile Include="Country.cs" />
-    <Compile Include="ETruckingVSAPIJobDataType.cs" />
-    <Compile Include="TruckingVSAPI.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Languages\de-DE.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -81,12 +67,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>en-GB.resx</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,9 +75,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskbarProgress.cs" />
     <Compile Include="TranslatorInterface.cs" />
-    <Compile Include="TruckingVSAPIJobData.cs" />
-    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Languages\de-DE.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>de-DE.Designer.cs</LastGenOutput>
@@ -105,9 +84,6 @@
     <EmbeddedResource Include="Languages\en-GB.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>en-GB.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -134,14 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="GitHubLargeIcon.png" />
-    <None Include="Drivetrain.png" />
-    <None Include="Cargo.png" />
-    <None Include="NoCargo.png" />
-    <Content Include="TruckingVSConnect2.ico" />
-    <None Include="TruckingVSLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -234,6 +234,33 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error ähnelt.
+        /// </summary>
+        internal static string ERROR {
+            get {
+                return ResourceManager.GetString("ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fatal error! ähnelt.
+        /// </summary>
+        internal static string FATAL_ERROR {
+            get {
+                return ResourceManager.GetString("FATAL_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die A fatal error has occured ähnelt.
+        /// </summary>
+        internal static string FATAL_ERROR_MESSAGE {
+            get {
+                return ResourceManager.GetString("FATAL_ERROR_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Dateiversion ähnelt.
         /// </summary>
         internal static string FILE_VERSION {
@@ -590,6 +617,27 @@ namespace TruckingVSConnect2.Languages {
         internal static string UNLIMITED {
             get {
                 return ResourceManager.GetString("UNLIMITED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Update verfügbar ähnelt.
+        /// </summary>
+        internal static string UPDATE_AVAILABLE {
+            get {
+                return ResourceManager.GetString("UPDATE_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ein neues Update für Trucking VS Connect² ist verfügbar.
+        ///Version: {0}
+        ///
+        ///Möchtest du es wirklich installieren? ähnelt.
+        /// </summary>
+        internal static string UPDATE_MESSAGE {
+            get {
+                return ResourceManager.GetString("UPDATE_MESSAGE", resourceCulture);
             }
         }
         

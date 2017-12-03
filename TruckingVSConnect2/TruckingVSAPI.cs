@@ -285,7 +285,7 @@ namespace TruckingVSConnect2
                         { "event", "newJob" },
                         { "auth", authCode },
                         { "cargo", telemetryData.Job.Cargo },
-                        { "weight", ((int)(Math.Round(telemetryData.Job.Mass * 0.001))).ToString() },
+                        { "weight", Math.Round(telemetryData.Job.Mass * 0.001).ToString() },
                         { "source", telemetryData.Job.CitySource },
                         { "destination", telemetryData.Job.CityDestination },
                         { "truck_manufacturer", telemetryData.Manufacturer },
@@ -312,7 +312,7 @@ namespace TruckingVSConnect2
                         { "event", "updateJob" },
                         { "auth", authCode },
                         { "job_id", jobID },
-                        { "percentage", ((int)(Math.Round((100.0f * delta_neg) / distance))).ToString() }
+                        { "percentage", Math.Round((100.0f * delta_neg) / distance).ToString() }
                     });
             }
         }
@@ -326,15 +326,13 @@ namespace TruckingVSConnect2
             if (jobID != null)
             {
                 Debug.Print("FinishJob");
-                string wear_trailer = string.Format("{0:0.00}", telemetryData.Damage.WearTrailer);
-                string wear_trailer_replaced = wear_trailer.Replace("0.", "");
                 HTTPPostRequest(new Dictionary<string, string>()
                     {
                         { "event", "finishJob" },
                         { "auth", authCode },
                         { "job_id", jobID },
                         { "fuel_average", telemetryData.Drivetrain.FuelAvgConsumption.ToString() },
-                        { "trailer_damage", (wear_trailer.StartsWith("1.") ? "100" : (wear_trailer_replaced.StartsWith("0") ? wear_trailer_replaced.Replace("0", "") : wear_trailer_replaced)).Replace(",", "") },
+                        { "trailer_damage", Math.Round(telemetryData.Damage.WearTrailer * 100.0f).ToString() },
                         { "income", telemetryData.Job.Income.ToString() }
                     });
             }

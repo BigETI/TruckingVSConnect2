@@ -176,6 +176,15 @@
   <data name="ENGLISH" xml:space="preserve">
     <value>Englisch (English)</value>
   </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="FATAL_ERROR" xml:space="preserve">
+    <value>Fatal error!</value>
+  </data>
+  <data name="FATAL_ERROR_MESSAGE" xml:space="preserve">
+    <value>A fatal error has occured</value>
+  </data>
   <data name="FILE_VERSION" xml:space="preserve">
     <value>Dateiversion</value>
   </data>
@@ -295,6 +304,15 @@
   </data>
   <data name="UNLIMITED" xml:space="preserve">
     <value>Keine Begrenzung</value>
+  </data>
+  <data name="UPDATE_AVAILABLE" xml:space="preserve">
+    <value>Update verfügbar</value>
+  </data>
+  <data name="UPDATE_MESSAGE" xml:space="preserve">
+    <value>Ein neues Update für Trucking VS Connect² ist verfügbar.
+Version: {0}
+
+Möchtest du es wirklich installieren?</value>
   </data>
   <data name="VEHICLE" xml:space="preserve">
     <value>Fahrzeug</value>

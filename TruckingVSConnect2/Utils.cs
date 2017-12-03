@@ -38,13 +38,13 @@ namespace TruckingVSConnect2
         }
 
         /// <summary>
-        /// Convert speed
+        /// Convert m/s to km/h or mph
         /// </summary>
         /// <param name="speed">Speed</param>
         /// <returns>Converted speed as km/h or mph</returns>
         public static float ConvertSpeed(float speed)
         {
-            return (speed * (Configuration.UseMetricUnit ? 3.6f : 2.236936f));
+            return (speed * (Configuration.UseMetricUnit ? 3.6f : 2.2369362920544f));
         }
 
         /// <summary>
