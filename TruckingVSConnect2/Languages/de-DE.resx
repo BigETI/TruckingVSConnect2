@@ -176,6 +176,9 @@
   <data name="ENGLISH" xml:space="preserve">
     <value>Englisch (English)</value>
   </data>
+  <data name="ENOUGH_FUEL" xml:space="preserve">
+    <value>Ausreichender Treibstoffinhalt</value>
+  </data>
   <data name="ERROR" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -193,6 +196,15 @@
   </data>
   <data name="FRANCE" xml:space="preserve">
     <value>Frankreich</value>
+  </data>
+  <data name="FUEL" xml:space="preserve">
+    <value>Treibstoff</value>
+  </data>
+  <data name="FUEL_DISTANCE" xml:space="preserve">
+    <value>Strecke</value>
+  </data>
+  <data name="FUEL_STATUS" xml:space="preserve">
+    <value>Zustand</value>
   </data>
   <data name="GERMAN" xml:space="preserve">
     <value>Deutsch</value>
@@ -221,6 +233,9 @@
   <data name="LOG_OUT" xml:space="preserve">
     <value>Abmelden</value>
   </data>
+  <data name="LOW_FUEL" xml:space="preserve">
+    <value>Geringer Treibstoffinhalt</value>
+  </data>
   <data name="LUXEMBOURG" xml:space="preserve">
     <value>Luxemburg</value>
   </data>
@@ -242,11 +257,17 @@
   <data name="PASSWORD_HINT" xml:space="preserve">
     <value>Passwort...</value>
   </data>
+  <data name="PLEASE_REFILL_FUEL" xml:space="preserve">
+    <value>Bitte Treibstoff nachfüllen!</value>
+  </data>
   <data name="POLAND" xml:space="preserve">
     <value>Polen</value>
   </data>
   <data name="PRODUCT_VERSION" xml:space="preserve">
     <value>Produktversion</value>
+  </data>
+  <data name="REFILL_LATER" xml:space="preserve">
+    <value>Später nachfüllen</value>
   </data>
   <data name="ROUTE" xml:space="preserve">
     <value>Fahrtstrecke</value>
@@ -274,6 +295,9 @@
   </data>
   <data name="SPEED_LIMIT" xml:space="preserve">
     <value>Geschwindigkeitsbegrenzung</value>
+  </data>
+  <data name="START_GAME_NOW" xml:space="preserve">
+    <value>Du kannst das Spiel nun starten.</value>
   </data>
   <data name="STATUS" xml:space="preserve">
     <value>Status</value>

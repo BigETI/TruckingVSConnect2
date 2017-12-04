@@ -234,6 +234,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enough fuel ähnelt.
+        /// </summary>
+        internal static string ENOUGH_FUEL {
+            get {
+                return ResourceManager.GetString("ENOUGH_FUEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Error ähnelt.
         /// </summary>
         internal static string ERROR {
@@ -284,6 +293,33 @@ namespace TruckingVSConnect2.Languages {
         internal static string FRANCE {
             get {
                 return ResourceManager.GetString("FRANCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fuel ähnelt.
+        /// </summary>
+        internal static string FUEL {
+            get {
+                return ResourceManager.GetString("FUEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Distance ähnelt.
+        /// </summary>
+        internal static string FUEL_DISTANCE {
+            get {
+                return ResourceManager.GetString("FUEL_DISTANCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Status ähnelt.
+        /// </summary>
+        internal static string FUEL_STATUS {
+            get {
+                return ResourceManager.GetString("FUEL_STATUS", resourceCulture);
             }
         }
         
@@ -369,6 +405,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Low fuel ähnelt.
+        /// </summary>
+        internal static string LOW_FUEL {
+            get {
+                return ResourceManager.GetString("LOW_FUEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Luxembourg ähnelt.
         /// </summary>
         internal static string LUXEMBOURG {
@@ -432,6 +477,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Please refill fuel! ähnelt.
+        /// </summary>
+        internal static string PLEASE_REFILL_FUEL {
+            get {
+                return ResourceManager.GetString("PLEASE_REFILL_FUEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Poland ähnelt.
         /// </summary>
         internal static string POLAND {
@@ -446,6 +500,15 @@ namespace TruckingVSConnect2.Languages {
         internal static string PRODUCT_VERSION {
             get {
                 return ResourceManager.GetString("PRODUCT_VERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Refill later ähnelt.
+        /// </summary>
+        internal static string REFILL_LATER {
+            get {
+                return ResourceManager.GetString("REFILL_LATER", resourceCulture);
             }
         }
         
@@ -527,6 +590,15 @@ namespace TruckingVSConnect2.Languages {
         internal static string SPEED_LIMIT {
             get {
                 return ResourceManager.GetString("SPEED_LIMIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You can start this game now. ähnelt.
+        /// </summary>
+        internal static string START_GAME_NOW {
+            get {
+                return ResourceManager.GetString("START_GAME_NOW", resourceCulture);
             }
         }
         

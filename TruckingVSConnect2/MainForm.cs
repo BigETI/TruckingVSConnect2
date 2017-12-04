@@ -182,6 +182,41 @@ namespace TruckingVSConnect2
         private string trailerTranslated;
 
         /// <summary>
+        /// Fuel translated
+        /// </summary>
+        private string fuelTranslated;
+
+        /// <summary>
+        /// Fuel distance translated
+        /// </summary>
+        private string fuelDistanceTranslated;
+
+        /// <summary>
+        /// Fuel status translated
+        /// </summary>
+        private string fuelStatusTranslated;
+
+        /// <summary>
+        /// Please refill fuel translated
+        /// </summary>
+        private string pleaseRefillFuelTranslated;
+
+        /// <summary>
+        /// Low fuel translated
+        /// </summary>
+        private string lowFuelTranslated;
+
+        /// <summary>
+        /// Enough fuel translated
+        /// </summary>
+        private string enoughFuelTranslated;
+
+        /// <summary>
+        /// Refill later translated
+        /// </summary>
+        private string refillLaterTranslated;
+
+        /// <summary>
         /// Chart point count limit
         /// </summary>
         private static readonly uint chartPointCountLimit = 200U;
@@ -240,6 +275,13 @@ namespace TruckingVSConnect2
             transmissionTranslated = Translator.GetTranslation("TRANSMISSION");
             wheelsTranslated = Translator.GetTranslation("WHEELS");
             trailerTranslated = Translator.GetTranslation("TRAILER");
+            fuelTranslated = Translator.GetTranslation("FUEL");
+            fuelDistanceTranslated = Translator.GetTranslation("FUEL_DISTANCE");
+            fuelStatusTranslated = Translator.GetTranslation("FUEL_STATUS");
+            pleaseRefillFuelTranslated = Translator.GetTranslation("PLEASE_REFILL_FUEL");
+            lowFuelTranslated = Translator.GetTranslation("LOW_FUEL");
+            enoughFuelTranslated = Translator.GetTranslation("ENOUGH_FUEL");
+            refillLaterTranslated = Translator.GetTranslation("REFILL_LATER");
 
             MaterialSkinManager material_skin_manager = MaterialSkinManager.Instance;
             material_skin_manager.AddFormToManage(this);
@@ -404,6 +446,7 @@ namespace TruckingVSConnect2
                     healthPanel.Visible = game_running;
                     speedPanel.Visible = game_running;
                     speedChart.Visible = game_running;
+                    startGameNowLabel.Visible = !game_running;
                     if (game_running)
                     {
                         speedLabel.Text = (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.SpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.SpeedMph, 1) + " " + milesTranslated + "/h")) + (data.Drivetrain.CruiseControl ? ("; " + cruiseControlTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.CruiseControlSpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.CruiseControlSpeedMph, 1) + " " + milesTranslated + "/h"))) : "");
@@ -496,6 +539,10 @@ namespace TruckingVSConnect2
                         {
                             speedLimitData.RemoveAt(0);
                         }
+                        double fuel_percentage = Math.Round((data.Drivetrain.Fuel * 100.0f) / data.Drivetrain.FuelMax, 1);
+                        fuelLabel.Text = fuelTranslated + ": " + Math.Round(data.Drivetrain.Fuel, 1) + " l " + ofTranslated + " " + Math.Round(data.Drivetrain.FuelMax, 1) + " l (" + Math.Round(data.Drivetrain.FuelAvgConsumption, 1) + " l/km); " + fuel_percentage + "%";
+                        fuelDistanceLabel.Text = fuelDistanceTranslated + ": " + Math.Round(data.Drivetrain.FuelRange, 1) + (Configuration.UseMetricUnit ? " km" : (" " + milesTranslated));
+                        fuelStatusLabel.Text = fuelStatusTranslated + ": " + ((fuel_percentage <= 6.25) ? pleaseRefillFuelTranslated : (data.Job.OnJob ? ((data.Drivetrain.FuelRange < (data.Job.NavigationDistanceLeft * 0.001f)) ? refillLaterTranslated : enoughFuelTranslated) : ((fuel_percentage < 12.5) ? lowFuelTranslated : enoughFuelTranslated)));
                         if (currentGameTime != data.Time)
                         {
                             currentGameTime = data.Time;

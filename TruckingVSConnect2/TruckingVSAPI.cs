@@ -278,7 +278,7 @@ namespace TruckingVSConnect2
             CancelJob();
             distance = telemetryData.Job.NavigationDistanceLeft;
             time = telemetryData.Job.NavigationTimeLeft;
-            if (Math.Abs(distance) >= float.Epsilon)
+            if (distance > float.Epsilon)
             {
                 jobID = HTTPPostRequest(new Dictionary<string, string>()
                     {
@@ -306,14 +306,17 @@ namespace TruckingVSConnect2
             if (jobID != null)
             {
                 Debug.Print("UpdateJobData : " + DateTime.Now.ToLongTimeString());
-                float delta_neg = distance - telemetryData.Job.NavigationDistanceLeft;
-                HTTPPostRequest(new Dictionary<string, string>()
-                    {
-                        { "event", "updateJob" },
-                        { "auth", authCode },
-                        { "job_id", jobID },
-                        { "percentage", Math.Round((100.0f * delta_neg) / distance).ToString() }
-                    });
+                int percentage = (int)(Math.Round(((distance - telemetryData.Job.NavigationDistanceLeft) * 100.0f) / distance));
+                if (percentage > 0)
+                {
+                    HTTPPostRequest(new Dictionary<string, string>()
+                        {
+                            { "event", "updateJob" },
+                            { "auth", authCode },
+                            { "job_id", jobID },
+                            { "percentage", percentage.ToString() }
+                        });
+                }
             }
         }
 
@@ -335,6 +338,7 @@ namespace TruckingVSConnect2
                         { "trailer_damage", Math.Round(telemetryData.Damage.WearTrailer * 100.0f).ToString() },
                         { "income", telemetryData.Job.Income.ToString() }
                     });
+                jobID = null;
             }
         }
 

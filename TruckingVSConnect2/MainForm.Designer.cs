@@ -39,6 +39,7 @@
             this.bodyTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.logOutButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.headPanel = new System.Windows.Forms.Panel();
+            this.startGameNowLabel = new MaterialSkin.Controls.MaterialLabel();
             this.loggedInAsLabel = new MaterialSkin.Controls.MaterialLabel();
             this.loggedInAsTitleLabel = new MaterialSkin.Controls.MaterialLabel();
             this.gravatarPictureBox = new System.Windows.Forms.PictureBox();
@@ -57,6 +58,8 @@
             this.cargoLabel = new MaterialSkin.Controls.MaterialLabel();
             this.vehicleLabel = new MaterialSkin.Controls.MaterialLabel();
             this.healthPanel = new System.Windows.Forms.Panel();
+            this.fuelLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.fuelStatusLabel = new MaterialSkin.Controls.MaterialLabel();
             this.trailerLabel = new MaterialSkin.Controls.MaterialLabel();
             this.wheelsLabel = new MaterialSkin.Controls.MaterialLabel();
             this.transmissionLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -68,6 +71,7 @@
             this.speedChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.drivetrainImageList = new System.Windows.Forms.ImageList(this.components);
             this.cargoImageList = new System.Windows.Forms.ImageList(this.components);
+            this.fuelDistanceLabel = new MaterialSkin.Controls.MaterialLabel();
             this.mainTableLayoutPanel.SuspendLayout();
             this.bodyTableLayoutPanel.SuspendLayout();
             this.headPanel.SuspendLayout();
@@ -143,6 +147,7 @@
             // 
             // headPanel
             // 
+            this.headPanel.Controls.Add(this.startGameNowLabel);
             this.headPanel.Controls.Add(this.loggedInAsLabel);
             this.headPanel.Controls.Add(this.loggedInAsTitleLabel);
             this.headPanel.Controls.Add(this.gravatarPictureBox);
@@ -151,6 +156,20 @@
             this.headPanel.Name = "headPanel";
             this.headPanel.Size = new System.Drawing.Size(546, 70);
             this.headPanel.TabIndex = 1;
+            // 
+            // startGameNowLabel
+            // 
+            this.startGameNowLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.startGameNowLabel.AutoSize = true;
+            this.startGameNowLabel.Depth = 0;
+            this.startGameNowLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.startGameNowLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.startGameNowLabel.Location = new System.Drawing.Point(73, 48);
+            this.startGameNowLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.startGameNowLabel.Name = "startGameNowLabel";
+            this.startGameNowLabel.Size = new System.Drawing.Size(171, 19);
+            this.startGameNowLabel.TabIndex = 3;
+            this.startGameNowLabel.Text = "{$START_GAME_NOW$}";
             // 
             // loggedInAsLabel
             // 
@@ -387,6 +406,9 @@
             // 
             // healthPanel
             // 
+            this.healthPanel.Controls.Add(this.fuelDistanceLabel);
+            this.healthPanel.Controls.Add(this.fuelLabel);
+            this.healthPanel.Controls.Add(this.fuelStatusLabel);
             this.healthPanel.Controls.Add(this.trailerLabel);
             this.healthPanel.Controls.Add(this.wheelsLabel);
             this.healthPanel.Controls.Add(this.transmissionLabel);
@@ -401,6 +423,34 @@
             this.healthPanel.Size = new System.Drawing.Size(325, 412);
             this.healthPanel.TabIndex = 5;
             this.healthPanel.Visible = false;
+            // 
+            // fuelLabel
+            // 
+            this.fuelLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.fuelLabel.AutoSize = true;
+            this.fuelLabel.Depth = 0;
+            this.fuelLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.fuelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.fuelLabel.Location = new System.Drawing.Point(3, 352);
+            this.fuelLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.fuelLabel.Name = "fuelLabel";
+            this.fuelLabel.Size = new System.Drawing.Size(44, 19);
+            this.fuelLabel.TabIndex = 9;
+            this.fuelLabel.Text = "FUEL";
+            // 
+            // fuelStatusLabel
+            // 
+            this.fuelStatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.fuelStatusLabel.AutoSize = true;
+            this.fuelStatusLabel.Depth = 0;
+            this.fuelStatusLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.fuelStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.fuelStatusLabel.Location = new System.Drawing.Point(3, 390);
+            this.fuelStatusLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.fuelStatusLabel.Name = "fuelStatusLabel";
+            this.fuelStatusLabel.Size = new System.Drawing.Size(107, 19);
+            this.fuelStatusLabel.TabIndex = 8;
+            this.fuelStatusLabel.Text = "FUEL_STATUS";
             // 
             // trailerLabel
             // 
@@ -571,6 +621,19 @@
             this.cargoImageList.Images.SetKeyName(4, "CargoHeavilyDamaged.png");
             this.cargoImageList.Images.SetKeyName(5, "CargoFullyDamaged.png");
             // 
+            // fuelDistanceLabel
+            // 
+            this.fuelDistanceLabel.AutoSize = true;
+            this.fuelDistanceLabel.Depth = 0;
+            this.fuelDistanceLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.fuelDistanceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.fuelDistanceLabel.Location = new System.Drawing.Point(3, 371);
+            this.fuelDistanceLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.fuelDistanceLabel.Name = "fuelDistanceLabel";
+            this.fuelDistanceLabel.Size = new System.Drawing.Size(123, 19);
+            this.fuelDistanceLabel.TabIndex = 10;
+            this.fuelDistanceLabel.Text = "FUEL_DISTANCE";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -637,6 +700,10 @@
         private MaterialSkin.Controls.MaterialLabel wheelsLabel;
         private MaterialSkin.Controls.MaterialLabel trailerLabel;
         private System.Windows.Forms.DataVisualization.Charting.Chart speedChart;
+        private MaterialSkin.Controls.MaterialLabel fuelLabel;
+        private MaterialSkin.Controls.MaterialLabel fuelStatusLabel;
+        private MaterialSkin.Controls.MaterialLabel startGameNowLabel;
+        private MaterialSkin.Controls.MaterialLabel fuelDistanceLabel;
     }
 }
 

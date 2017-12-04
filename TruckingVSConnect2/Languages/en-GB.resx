@@ -176,6 +176,9 @@
   <data name="ENGLISH" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="ENOUGH_FUEL" xml:space="preserve">
+    <value>Enough fuel</value>
+  </data>
   <data name="ERROR" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -193,6 +196,15 @@
   </data>
   <data name="FRANCE" xml:space="preserve">
     <value>France</value>
+  </data>
+  <data name="FUEL" xml:space="preserve">
+    <value>Fuel</value>
+  </data>
+  <data name="FUEL_DISTANCE" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="FUEL_STATUS" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="GERMAN" xml:space="preserve">
     <value>German (Deutsch)</value>
@@ -221,6 +233,9 @@
   <data name="LOG_OUT" xml:space="preserve">
     <value>Log out</value>
   </data>
+  <data name="LOW_FUEL" xml:space="preserve">
+    <value>Low fuel</value>
+  </data>
   <data name="LUXEMBOURG" xml:space="preserve">
     <value>Luxembourg</value>
   </data>
@@ -242,11 +257,17 @@
   <data name="PASSWORD_HINT" xml:space="preserve">
     <value>Password...</value>
   </data>
+  <data name="PLEASE_REFILL_FUEL" xml:space="preserve">
+    <value>Please refill fuel!</value>
+  </data>
   <data name="POLAND" xml:space="preserve">
     <value>Poland</value>
   </data>
   <data name="PRODUCT_VERSION" xml:space="preserve">
     <value>Product version</value>
+  </data>
+  <data name="REFILL_LATER" xml:space="preserve">
+    <value>Refill later</value>
   </data>
   <data name="ROUTE" xml:space="preserve">
     <value>Route</value>
@@ -274,6 +295,9 @@
   </data>
   <data name="SPEED_LIMIT" xml:space="preserve">
     <value>Speed limit</value>
+  </data>
+  <data name="START_GAME_NOW" xml:space="preserve">
+    <value>You can start this game now.</value>
   </data>
   <data name="STATUS" xml:space="preserve">
     <value>Status</value>

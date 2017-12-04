@@ -113,7 +113,7 @@
             this.languagesComboBox.Name = "languagesComboBox";
             this.languagesComboBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.languagesComboBox.Size = new System.Drawing.Size(200, 28);
-            this.languagesComboBox.TabIndex = 14;
+            this.languagesComboBox.TabIndex = 1;
             this.languagesComboBox.SelectedIndexChanged += new System.EventHandler(this.languagesComboBox_SelectedIndexChanged);
             // 
             // materialLabel1
@@ -126,7 +126,7 @@
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(174, 19);
-            this.materialLabel1.TabIndex = 15;
+            this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "{$SELECT_LANGUAGE$}";
             // 
             // logoPictureBox
@@ -153,7 +153,7 @@
             this.passwordSingleLineTextField.SelectionLength = 0;
             this.passwordSingleLineTextField.SelectionStart = 0;
             this.passwordSingleLineTextField.Size = new System.Drawing.Size(570, 23);
-            this.passwordSingleLineTextField.TabIndex = 3;
+            this.passwordSingleLineTextField.TabIndex = 2;
             this.passwordSingleLineTextField.TabStop = false;
             this.passwordSingleLineTextField.UseSystemPasswordChar = false;
             // 
@@ -170,7 +170,7 @@
             this.emailUsernameSingleLineTextField.SelectionLength = 0;
             this.emailUsernameSingleLineTextField.SelectionStart = 0;
             this.emailUsernameSingleLineTextField.Size = new System.Drawing.Size(570, 23);
-            this.emailUsernameSingleLineTextField.TabIndex = 2;
+            this.emailUsernameSingleLineTextField.TabIndex = 1;
             this.emailUsernameSingleLineTextField.TabStop = false;
             this.emailUsernameSingleLineTextField.UseSystemPasswordChar = false;
             // 
@@ -185,7 +185,7 @@
             this.logInButton.Name = "logInButton";
             this.logInButton.Primary = true;
             this.logInButton.Size = new System.Drawing.Size(92, 36);
-            this.logInButton.TabIndex = 4;
+            this.logInButton.TabIndex = 6;
             this.logInButton.Text = "{$LOG_IN$}";
             this.logInButton.UseVisualStyleBackColor = true;
             this.logInButton.Click += new System.EventHandler(this.logInButton_Click);
@@ -219,7 +219,7 @@
             this.autoLogInCheckBox.Name = "autoLogInCheckBox";
             this.autoLogInCheckBox.Ripple = true;
             this.autoLogInCheckBox.Size = new System.Drawing.Size(143, 30);
-            this.autoLogInCheckBox.TabIndex = 9;
+            this.autoLogInCheckBox.TabIndex = 4;
             this.autoLogInCheckBox.Text = "{$AUTO_LOG_IN$}";
             this.autoLogInCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -235,7 +235,7 @@
             this.saveEmailUsernameCheckBox.Name = "saveEmailUsernameCheckBox";
             this.saveEmailUsernameCheckBox.Ripple = true;
             this.saveEmailUsernameCheckBox.Size = new System.Drawing.Size(214, 30);
-            this.saveEmailUsernameCheckBox.TabIndex = 7;
+            this.saveEmailUsernameCheckBox.TabIndex = 3;
             this.saveEmailUsernameCheckBox.Text = "{$SAVE_EMAIL_USERNAME$}";
             this.saveEmailUsernameCheckBox.UseVisualStyleBackColor = true;
             this.saveEmailUsernameCheckBox.CheckedChanged += new System.EventHandler(this.saveEmailUsernameCheckBox_CheckedChanged);
@@ -273,7 +273,7 @@
             this.aboutLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.aboutLabel.Name = "aboutLabel";
             this.aboutLabel.Size = new System.Drawing.Size(184, 19);
-            this.aboutLabel.TabIndex = 8;
+            this.aboutLabel.TabIndex = 0;
             this.aboutLabel.Text = "{$ABOUT_DESCRIPTION$}";
             // 
             // gitHubLinkLabel
@@ -286,7 +286,7 @@
             this.gitHubLinkLabel.Location = new System.Drawing.Point(137, 19);
             this.gitHubLinkLabel.Name = "gitHubLinkLabel";
             this.gitHubLinkLabel.Size = new System.Drawing.Size(342, 20);
-            this.gitHubLinkLabel.TabIndex = 9;
+            this.gitHubLinkLabel.TabIndex = 1;
             this.gitHubLinkLabel.TabStop = true;
             this.gitHubLinkLabel.Text = "https://github.com/BigETI/TruckingVSConnect2";
             this.gitHubLinkLabel.VisitedLinkColor = System.Drawing.SystemColors.HighlightText;
@@ -314,7 +314,7 @@
             this.assemblyVersionLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.assemblyVersionLabel.Name = "assemblyVersionLabel";
             this.assemblyVersionLabel.Size = new System.Drawing.Size(180, 19);
-            this.assemblyVersionLabel.TabIndex = 15;
+            this.assemblyVersionLabel.TabIndex = 7;
             this.assemblyVersionLabel.Text = "{$ASSEMBLY_VERSION$}";
             // 
             // fileVersionLabel
@@ -327,7 +327,7 @@
             this.fileVersionLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.fileVersionLabel.Name = "fileVersionLabel";
             this.fileVersionLabel.Size = new System.Drawing.Size(133, 19);
-            this.fileVersionLabel.TabIndex = 13;
+            this.fileVersionLabel.TabIndex = 8;
             this.fileVersionLabel.Text = "{$FILE_VERSION$}";
             // 
             // productVersionLabel
@@ -340,7 +340,7 @@
             this.productVersionLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.productVersionLabel.Name = "productVersionLabel";
             this.productVersionLabel.Size = new System.Drawing.Size(171, 19);
-            this.productVersionLabel.TabIndex = 14;
+            this.productVersionLabel.TabIndex = 9;
             this.productVersionLabel.Text = "{$PRODUCT_VERSION$}";
             // 
             // LoginForm
