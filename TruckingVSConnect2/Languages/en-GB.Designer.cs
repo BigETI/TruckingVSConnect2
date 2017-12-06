@@ -324,6 +324,18 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Game directory for {0} was not found. Do you want to specify it by yourself?
+        ///
+        ///No, if the game is not installed.
+        ///Cancel, if you want to specify it later. ähnelt.
+        /// </summary>
+        internal static string GAME_DIRECTORY_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("GAME_DIRECTORY_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die German (Deutsch) ähnelt.
         /// </summary>
         internal static string GERMAN {

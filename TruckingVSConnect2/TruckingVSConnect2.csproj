@@ -61,6 +61,9 @@
     <Reference Include="UpdaterNET">
       <HintPath>..\libs\UpdaterNET.dll</HintPath>
     </Reference>
+    <Reference Include="VDF">
+      <HintPath>libs\VDF.dll</HintPath>
+    </Reference>
     <Reference Include="WinFormsTranslator">
       <HintPath>..\libs\WinFormsTranslator.dll</HintPath>
     </Reference>
@@ -68,7 +71,9 @@
   <ItemGroup>
     <Compile Include="Cities.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="EGame.cs" />
     <Compile Include="ETruckingVSAPIJobDataType.cs" />
+    <Compile Include="PluginManager.cs" />
     <Compile Include="TruckingVSAPI.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Languages\de-DE.Designer.cs">

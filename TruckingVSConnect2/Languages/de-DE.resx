@@ -206,6 +206,12 @@
   <data name="FUEL_STATUS" xml:space="preserve">
     <value>Zustand</value>
   </data>
+  <data name="GAME_DIRECTORY_NOT_FOUND" xml:space="preserve">
+    <value>Das Spielverzeichnis für {0} wurde nicht gefunden. Möchtest du es selber festlegen?
+
+Nein, wenn das Spiel nicht installiert worden ist.
+Abbrechen, wenn du es später festlegen möchtest.</value>
+  </data>
   <data name="GERMAN" xml:space="preserve">
     <value>Deutsch</value>
   </data>

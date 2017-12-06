@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Security.Cryptography;
 
 /// <summary>
 /// Trucking VS Connect² namespace
@@ -20,6 +22,37 @@ namespace TruckingVSConnect2
         /// Running game name
         /// </summary>
         private static string runningGameName;
+
+        /// <summary>
+        /// SHA512 from file
+        /// </summary>
+        /// <param name="path">Path</param>
+        /// <returns>SHA512 in Base64</returns>
+        public static string SHA512FromFile(string path)
+        {
+            string ret = "";
+            try
+            {
+                if (File.Exists(path))
+                {
+                    using (SHA512 sha512 = System.Security.Cryptography.SHA512.Create())
+                    {
+                        if (File.Exists(path))
+                        {
+                            using (StreamReader reader = new StreamReader(path))
+                            {
+                                ret = Convert.ToBase64String(sha512.ComputeHash(reader.BaseStream));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Print(e.Message);
+            }
+            return ret;
+        }
 
         /// <summary>
         /// Execute command
@@ -103,6 +136,26 @@ namespace TruckingVSConnect2
             {
                 return (RunningGameName != null);
             }
+        }
+
+        /// <summary>
+        /// Get game name
+        /// </summary>
+        /// <param name="game">Game</param>
+        /// <returns>Game name</returns>
+        public static string GetGameName(EGame game)
+        {
+            string ret = "";
+            switch (game)
+            {
+                case EGame.ETS2:
+                    ret = "Euro Truck Simulator 2";
+                    break;
+                case EGame.ATS:
+                    ret = "American Truck Simulator";
+                    break;
+            }
+            return ret;
         }
     }
 }

@@ -72,6 +72,11 @@ namespace TruckingVSConnect2
         private List<double> speedLimitData = new List<double>();
 
         /// <summary>
+        /// Start game now translated
+        /// </summary>
+        private string startGameNowTranslated;
+
+        /// <summary>
         /// Cruise control translated
         /// </summary>
         private string cruiseControlTranslated;
@@ -253,6 +258,7 @@ namespace TruckingVSConnect2
 
             Translator.TranslatorInterface = new TranslatorInterface();
             Translator.LoadTranslation(this);
+            startGameNowTranslated = Translator.GetTranslation("START_GAME_NOW");
             cruiseControlTranslated = Translator.GetTranslation("CRUISE_CONTROL");
             speedLimitTranslated = Translator.GetTranslation("SPEED_LIMIT");
             vehicleTranslated = Translator.GetTranslation("VEHICLE");
@@ -287,6 +293,8 @@ namespace TruckingVSConnect2
             material_skin_manager.AddFormToManage(this);
             material_skin_manager.Theme = MaterialSkinManager.Themes.DARK;
             material_skin_manager.ColorScheme = new ColorScheme(Primary.Blue700, Primary.Blue800, Primary.Blue500, Accent.LightBlue200, TextShade.WHITE);
+
+            PluginManager.InstallPlugins();
 
             telemetry = new Ets2SdkTelemetry();
             telemetry.Data += Telemetry_Data;
@@ -446,7 +454,7 @@ namespace TruckingVSConnect2
                     healthPanel.Visible = game_running;
                     speedPanel.Visible = game_running;
                     speedChart.Visible = game_running;
-                    startGameNowLabel.Visible = !game_running;
+                    gameNameLabel.Text = Utils.IsAGameRunning ? Utils.RunningGameName : startGameNowTranslated;
                     if (game_running)
                     {
                         speedLabel.Text = (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.SpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.SpeedMph, 1) + " " + milesTranslated + "/h")) + (data.Drivetrain.CruiseControl ? ("; " + cruiseControlTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.CruiseControlSpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.CruiseControlSpeedMph, 1) + " " + milesTranslated + "/h"))) : "");

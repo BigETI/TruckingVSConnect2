@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.bodyTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.logOutButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.headPanel = new System.Windows.Forms.Panel();
-            this.startGameNowLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.gameNameLabel = new MaterialSkin.Controls.MaterialLabel();
             this.loggedInAsLabel = new MaterialSkin.Controls.MaterialLabel();
             this.loggedInAsTitleLabel = new MaterialSkin.Controls.MaterialLabel();
             this.gravatarPictureBox = new System.Windows.Forms.PictureBox();
@@ -58,6 +58,7 @@
             this.cargoLabel = new MaterialSkin.Controls.MaterialLabel();
             this.vehicleLabel = new MaterialSkin.Controls.MaterialLabel();
             this.healthPanel = new System.Windows.Forms.Panel();
+            this.fuelDistanceLabel = new MaterialSkin.Controls.MaterialLabel();
             this.fuelLabel = new MaterialSkin.Controls.MaterialLabel();
             this.fuelStatusLabel = new MaterialSkin.Controls.MaterialLabel();
             this.trailerLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -71,7 +72,6 @@
             this.speedChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.drivetrainImageList = new System.Windows.Forms.ImageList(this.components);
             this.cargoImageList = new System.Windows.Forms.ImageList(this.components);
-            this.fuelDistanceLabel = new MaterialSkin.Controls.MaterialLabel();
             this.mainTableLayoutPanel.SuspendLayout();
             this.bodyTableLayoutPanel.SuspendLayout();
             this.headPanel.SuspendLayout();
@@ -147,7 +147,7 @@
             // 
             // headPanel
             // 
-            this.headPanel.Controls.Add(this.startGameNowLabel);
+            this.headPanel.Controls.Add(this.gameNameLabel);
             this.headPanel.Controls.Add(this.loggedInAsLabel);
             this.headPanel.Controls.Add(this.loggedInAsTitleLabel);
             this.headPanel.Controls.Add(this.gravatarPictureBox);
@@ -157,19 +157,19 @@
             this.headPanel.Size = new System.Drawing.Size(546, 70);
             this.headPanel.TabIndex = 1;
             // 
-            // startGameNowLabel
+            // gameNameLabel
             // 
-            this.startGameNowLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.startGameNowLabel.AutoSize = true;
-            this.startGameNowLabel.Depth = 0;
-            this.startGameNowLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.startGameNowLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.startGameNowLabel.Location = new System.Drawing.Point(73, 48);
-            this.startGameNowLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.startGameNowLabel.Name = "startGameNowLabel";
-            this.startGameNowLabel.Size = new System.Drawing.Size(171, 19);
-            this.startGameNowLabel.TabIndex = 3;
-            this.startGameNowLabel.Text = "{$START_GAME_NOW$}";
+            this.gameNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gameNameLabel.AutoSize = true;
+            this.gameNameLabel.Depth = 0;
+            this.gameNameLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.gameNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gameNameLabel.Location = new System.Drawing.Point(73, 48);
+            this.gameNameLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.gameNameLabel.Name = "gameNameLabel";
+            this.gameNameLabel.Size = new System.Drawing.Size(171, 19);
+            this.gameNameLabel.TabIndex = 3;
+            this.gameNameLabel.Text = "{$START_GAME_NOW$}";
             // 
             // loggedInAsLabel
             // 
@@ -424,6 +424,20 @@
             this.healthPanel.TabIndex = 5;
             this.healthPanel.Visible = false;
             // 
+            // fuelDistanceLabel
+            // 
+            this.fuelDistanceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.fuelDistanceLabel.AutoSize = true;
+            this.fuelDistanceLabel.Depth = 0;
+            this.fuelDistanceLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.fuelDistanceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.fuelDistanceLabel.Location = new System.Drawing.Point(3, 371);
+            this.fuelDistanceLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.fuelDistanceLabel.Name = "fuelDistanceLabel";
+            this.fuelDistanceLabel.Size = new System.Drawing.Size(123, 19);
+            this.fuelDistanceLabel.TabIndex = 10;
+            this.fuelDistanceLabel.Text = "FUEL_DISTANCE";
+            // 
             // fuelLabel
             // 
             this.fuelLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -554,48 +568,48 @@
             // 
             this.speedChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.speedChart.BorderlineColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisX.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.AxisX2.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX2.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY2.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            chartArea1.Name = "ChartArea";
-            this.speedChart.ChartAreas.Add(chartArea1);
+            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea2.AxisX.LineColor = System.Drawing.Color.Gray;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
+            chartArea2.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea2.AxisX2.LineColor = System.Drawing.Color.DimGray;
+            chartArea2.AxisX2.TitleForeColor = System.Drawing.Color.White;
+            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea2.AxisY.LineColor = System.Drawing.Color.Gray;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
+            chartArea2.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea2.AxisY2.LineColor = System.Drawing.Color.DimGray;
+            chartArea2.AxisY2.TitleForeColor = System.Drawing.Color.White;
+            chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            chartArea2.Name = "ChartArea";
+            this.speedChart.ChartAreas.Add(chartArea2);
             this.speedChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            legend1.ForeColor = System.Drawing.Color.White;
-            legend1.Name = "Legend";
-            legend1.Title = "SPEED";
-            legend1.TitleForeColor = System.Drawing.Color.White;
-            this.speedChart.Legends.Add(legend1);
+            legend2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            legend2.ForeColor = System.Drawing.Color.White;
+            legend2.Name = "Legend";
+            legend2.Title = "SPEED";
+            legend2.TitleForeColor = System.Drawing.Color.White;
+            this.speedChart.Legends.Add(legend2);
             this.speedChart.Location = new System.Drawing.Point(3, 503);
             this.speedChart.Name = "speedChart";
             this.speedChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.speedChart.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.DeepSkyBlue,
         System.Drawing.Color.DarkRed};
-            series1.BorderWidth = 5;
-            series1.ChartArea = "ChartArea";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series1.Legend = "Legend";
-            series1.Name = "CURRENT";
-            series2.BorderWidth = 5;
-            series2.ChartArea = "ChartArea";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Legend = "Legend";
-            series2.Name = "LIMIT";
-            this.speedChart.Series.Add(series1);
-            this.speedChart.Series.Add(series2);
+            series3.BorderWidth = 5;
+            series3.ChartArea = "ChartArea";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series3.Legend = "Legend";
+            series3.Name = "CURRENT";
+            series4.BorderWidth = 5;
+            series4.ChartArea = "ChartArea";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series4.Legend = "Legend";
+            series4.Name = "LIMIT";
+            this.speedChart.Series.Add(series3);
+            this.speedChart.Series.Add(series4);
             this.speedChart.Size = new System.Drawing.Size(883, 114);
             this.speedChart.TabIndex = 2;
             this.speedChart.Visible = false;
@@ -620,19 +634,6 @@
             this.cargoImageList.Images.SetKeyName(3, "CargoDamaged.png");
             this.cargoImageList.Images.SetKeyName(4, "CargoHeavilyDamaged.png");
             this.cargoImageList.Images.SetKeyName(5, "CargoFullyDamaged.png");
-            // 
-            // fuelDistanceLabel
-            // 
-            this.fuelDistanceLabel.AutoSize = true;
-            this.fuelDistanceLabel.Depth = 0;
-            this.fuelDistanceLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.fuelDistanceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.fuelDistanceLabel.Location = new System.Drawing.Point(3, 371);
-            this.fuelDistanceLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.fuelDistanceLabel.Name = "fuelDistanceLabel";
-            this.fuelDistanceLabel.Size = new System.Drawing.Size(123, 19);
-            this.fuelDistanceLabel.TabIndex = 10;
-            this.fuelDistanceLabel.Text = "FUEL_DISTANCE";
             // 
             // MainForm
             // 
@@ -702,7 +703,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart speedChart;
         private MaterialSkin.Controls.MaterialLabel fuelLabel;
         private MaterialSkin.Controls.MaterialLabel fuelStatusLabel;
-        private MaterialSkin.Controls.MaterialLabel startGameNowLabel;
+        private MaterialSkin.Controls.MaterialLabel gameNameLabel;
         private MaterialSkin.Controls.MaterialLabel fuelDistanceLabel;
     }
 }
