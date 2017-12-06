@@ -143,6 +143,12 @@
   <data name="CHASSIS" xml:space="preserve">
     <value>Chassis</value>
   </data>
+  <data name="CLOSE_GAME" xml:space="preserve">
+    <value>Close game</value>
+  </data>
+  <data name="CLOSE_GAME_MESSAGE" xml:space="preserve">
+    <value>{0} is still running. Close this game before installing the necessary plugins.</value>
+  </data>
   <data name="CRUISE_CONTROL" xml:space="preserve">
     <value>Cruise control</value>
   </data>
@@ -207,6 +213,9 @@
     <value>Status</value>
   </data>
   <data name="GAME_DIRECTORY_NOT_FOUND" xml:space="preserve">
+    <value>Game directory not found</value>
+  </data>
+  <data name="GAME_DIRECTORY_NOT_FOUND_MESSAGE" xml:space="preserve">
     <value>Game directory for {0} was not found. Do you want to specify it by yourself?
 
 No, if the game is not installed.

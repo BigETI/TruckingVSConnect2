@@ -143,6 +143,12 @@
   <data name="CHASSIS" xml:space="preserve">
     <value>Fahrwerk</value>
   </data>
+  <data name="CLOSE_GAME" xml:space="preserve">
+    <value>Spiel beenden</value>
+  </data>
+  <data name="CLOSE_GAME_MESSAGE" xml:space="preserve">
+    <value>{0} läuft immer noch. Schließe das Spiel, bevor die wichtigen Plugins installiert werden.</value>
+  </data>
   <data name="CRUISE_CONTROL" xml:space="preserve">
     <value>Tempomat</value>
   </data>
@@ -207,6 +213,9 @@
     <value>Zustand</value>
   </data>
   <data name="GAME_DIRECTORY_NOT_FOUND" xml:space="preserve">
+    <value>Spielverzeichnis nicht gefunden</value>
+  </data>
+  <data name="GAME_DIRECTORY_NOT_FOUND_MESSAGE" xml:space="preserve">
     <value>Das Spielverzeichnis für {0} wurde nicht gefunden. Möchtest du es selber festlegen?
 
 Nein, wenn das Spiel nicht installiert worden ist.

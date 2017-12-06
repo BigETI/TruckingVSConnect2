@@ -135,6 +135,24 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Close game ähnelt.
+        /// </summary>
+        internal static string CLOSE_GAME {
+            get {
+                return ResourceManager.GetString("CLOSE_GAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} is still running. Close this game before installing the necessary plugins. ähnelt.
+        /// </summary>
+        internal static string CLOSE_GAME_MESSAGE {
+            get {
+                return ResourceManager.GetString("CLOSE_GAME_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Cruise control ähnelt.
         /// </summary>
         internal static string CRUISE_CONTROL {
@@ -324,14 +342,23 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Game directory not found ähnelt.
+        /// </summary>
+        internal static string GAME_DIRECTORY_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("GAME_DIRECTORY_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Game directory for {0} was not found. Do you want to specify it by yourself?
         ///
         ///No, if the game is not installed.
         ///Cancel, if you want to specify it later. ähnelt.
         /// </summary>
-        internal static string GAME_DIRECTORY_NOT_FOUND {
+        internal static string GAME_DIRECTORY_NOT_FOUND_MESSAGE {
             get {
-                return ResourceManager.GetString("GAME_DIRECTORY_NOT_FOUND", resourceCulture);
+                return ResourceManager.GetString("GAME_DIRECTORY_NOT_FOUND_MESSAGE", resourceCulture);
             }
         }
         

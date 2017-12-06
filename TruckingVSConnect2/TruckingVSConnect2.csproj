@@ -145,6 +145,12 @@
     <None Include="Drivetrain.png" />
     <None Include="Cargo.png" />
     <None Include="NoCargo.png" />
+    <None Include="plugins\Win32\ets2-telemetry.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="plugins\Win64\ets2-telemetry.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="TruckingVSConnect2.ico" />
     <None Include="TruckingVSLogo.png" />
   </ItemGroup>

@@ -135,6 +135,24 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Spiel beenden ähnelt.
+        /// </summary>
+        internal static string CLOSE_GAME {
+            get {
+                return ResourceManager.GetString("CLOSE_GAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} läuft immer noch. Schließe das Spiel, bevor die wichtigen Plugins installiert werden. ähnelt.
+        /// </summary>
+        internal static string CLOSE_GAME_MESSAGE {
+            get {
+                return ResourceManager.GetString("CLOSE_GAME_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Tempomat ähnelt.
         /// </summary>
         internal static string CRUISE_CONTROL {
@@ -324,14 +342,23 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Spielverzeichnis nicht gefunden ähnelt.
+        /// </summary>
+        internal static string GAME_DIRECTORY_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("GAME_DIRECTORY_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Das Spielverzeichnis für {0} wurde nicht gefunden. Möchtest du es selber festlegen?
         ///
         ///Nein, wenn das Spiel nicht installiert worden ist.
         ///Abbrechen, wenn du es später festlegen möchtest. ähnelt.
         /// </summary>
-        internal static string GAME_DIRECTORY_NOT_FOUND {
+        internal static string GAME_DIRECTORY_NOT_FOUND_MESSAGE {
             get {
-                return ResourceManager.GetString("GAME_DIRECTORY_NOT_FOUND", resourceCulture);
+                return ResourceManager.GetString("GAME_DIRECTORY_NOT_FOUND_MESSAGE", resourceCulture);
             }
         }
         

@@ -216,18 +216,15 @@ namespace TruckingVSConnect2
                 {
                     if (Configuration.GetAskForDirectoryIfGameDirectoryNotFound(game))
                     {
-                        DialogResult result = MessageBox.Show(string.Format(Translator.GetTranslation("GAME_DIRECTORY_NOT_FOUND"), game_name));
+                        DialogResult result = MessageBox.Show(string.Format(Translator.GetTranslation("GAME_DIRECTORY_NOT_FOUND_MESSAGE"), game_name), Translator.GetTranslation("GAME_DIRECTORY_NOT_FOUND"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                         switch (result)
                         {
                             case DialogResult.Yes:
                                 using (FolderBrowserDialog dialog = new FolderBrowserDialog())
                                 {
-                                    result = dialog.ShowDialog();
-                                    switch (result)
+                                    if (dialog.ShowDialog() == DialogResult.OK)
                                     {
-                                        case DialogResult.OK:
-                                            ret = dialog.SelectedPath;
-                                            break;
+                                        ret = dialog.SelectedPath;
                                     }
                                 }
                                 break;
@@ -351,9 +348,26 @@ namespace TruckingVSConnect2
                 string hash = Utils.SHA512FromFile(destination);
                 if (hash != source_hash)
                 {
+                    if (TellToCloseGame())
+                    {
+                        try
+                        {
+                            File.Delete(destination);
+                            File.Copy(source, destination);
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.Print(e.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (TellToCloseGame())
+                {
                     try
                     {
-                        File.Delete(destination);
                         File.Copy(source, destination);
                     }
                     catch (Exception e)
@@ -362,17 +376,24 @@ namespace TruckingVSConnect2
                     }
                 }
             }
-            else
+        }
+
+        /// <summary>
+        /// Tell to close the game
+        /// </summary>
+        /// <returns>"true" if action should be performed, otherwise "false"</returns>
+        private static bool TellToCloseGame()
+        {
+            bool ret = true;
+            while (Utils.IsAGameRunning)
             {
-                try
+                if (MessageBox.Show(string.Format(Translator.GetTranslation("CLOSE_GAME_MESSAGE"), Utils.RunningGameName), Translator.GetTranslation("CLOSE_GAME"), MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
                 {
-                    File.Copy(source, destination);
-                }
-                catch (Exception e)
-                {
-                    Debug.Print(e.Message);
+                    ret = false;
+                    break;
                 }
             }
+            return ret;
         }
     }
 }
