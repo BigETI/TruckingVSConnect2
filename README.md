@@ -10,10 +10,10 @@ Trucking VS Connect² is a successor to VS Connect.
 This project is still in development. There will be a installation guide soon.
 
 ## Where can I get a current build of Trucking VS Connect²?
-There is no release of Trucking VS Connect² available yet.
+Check out the latest [releases](https://github.com/BigETI/TruckingVSConnect2/releases) at https://github.com/BigETI/TruckingVSConnect2/releases
 
 ## What features does it provide?
-Features will be listed soon.
+All the [features](https://github.com/BigETI/TruckingVSConnect2/blob/master/FEATURES.md) are listed at https://github.com/BigETI/TruckingVSConnect2/blob/master/FEATURES.md
 
 ## How do I contribute to this project?
 Fork this project, commit your changes and create a pull request.
@@ -36,3 +36,4 @@ The [licence](https://github.com/BigETI/TruckingVSConnect2/blob/master/LICENCE.m
 - https://github.com/BigETI/WinFormsTranslator
 - https://github.com/BigETI/UpdaterNET
 - https://github.com/nlhans/ets2-sdk-plugin
+- https://github.com/sanmadjack/VDF
