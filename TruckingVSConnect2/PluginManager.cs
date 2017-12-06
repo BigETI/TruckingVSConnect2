@@ -130,7 +130,9 @@ namespace TruckingVSConnect2
                     steamGamesPaths = new List<string>();
                     try
                     {
-                        string config_file = Path.Combine(Registry.GetValue("HKEY_CURRENT_USER\\Software\\Valve\\Steam", "SteamPath", "").ToString(), "config\\config.vdf");
+                        string steam_path = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Valve\\Steam", "SteamPath", "").ToString();
+                        steamGamesPaths.Add(steam_path);
+                        string config_file = Path.Combine(steam_path, "config\\config.vdf");
                         if (File.Exists(config_file))
                         {
                             SteamConfigFile cfg = new SteamConfigFile(config_file);
@@ -204,8 +206,11 @@ namespace TruckingVSConnect2
                     ret = Path.Combine(steam_games_path, "steamapps\\common\\", game_name, "bin");
                     if (Directory.Exists(ret))
                     {
-                        Configuration.SetGameDirectory(game, ret);
-                        break;
+                        if (Directory.GetFiles(steam_games_path, "*.exe", SearchOption.TopDirectoryOnly).Length > 0)
+                        {
+                            Configuration.SetGameDirectory(game, ret);
+                            break;
+                        }
                     }
                     else
                     {
