@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using WinFormsTranslator;
 using System;
 using System.Collections.Generic;
+using UpdaterNET;
+using System.Diagnostics;
 
 /// <summary>
 /// Trucking VS Connect² namespace
@@ -255,7 +257,6 @@ namespace TruckingVSConnect2
         public MainForm()
         {
             InitializeComponent();
-
             Translator.TranslatorInterface = new TranslatorInterface();
             Translator.LoadTranslation(this);
             startGameNowTranslated = Translator.GetTranslation("START_GAME_NOW");
@@ -458,7 +459,7 @@ namespace TruckingVSConnect2
                     if (game_running)
                     {
                         speedLabel.Text = (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.SpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.SpeedMph, 1) + " " + milesTranslated + "/h")) + (data.Drivetrain.CruiseControl ? ("; " + cruiseControlTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.CruiseControlSpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.CruiseControlSpeedMph, 1) + " " + milesTranslated + "/h"))) : "");
-                        speedLimitLabel.Text = speedLimitTranslated + ": " + ((data.Job.SpeedLimit == -1.0f) ? unlimitedTranslated : Math.Round(Utils.ConvertSpeed(data.Job.SpeedLimit), 1) +  (Configuration.UseMetricUnit ? " km/h" : (" " + milesTranslated + "/h")));
+                        speedLimitLabel.Text = speedLimitTranslated + ": " + ((data.Job.SpeedLimit == -1.0f) ? unlimitedTranslated : Math.Round(Utils.ConvertSpeed(data.Job.SpeedLimit), 1) + (Configuration.UseMetricUnit ? " km/h" : (" " + milesTranslated + "/h")));
                         vehicleLabel.Text = vehicleTranslated + ": " + data.Truck + ", " + data.Manufacturer;
                         if (data.Job.OnJob)
                         {
