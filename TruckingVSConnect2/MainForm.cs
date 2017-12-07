@@ -5,8 +5,7 @@ using System.Windows.Forms;
 using WinFormsTranslator;
 using System;
 using System.Collections.Generic;
-using UpdaterNET;
-using System.Diagnostics;
+using System.Drawing;
 
 /// <summary>
 /// Trucking VS Connect² namespace
@@ -94,6 +93,11 @@ namespace TruckingVSConnect2
         private string vehicleTranslated;
 
         /// <summary>
+        /// In translated
+        /// </summary>
+        private string inTranslated;
+
+        /// <summary>
         /// Status translated
         /// </summary>
         private string statusTranslated;
@@ -124,14 +128,9 @@ namespace TruckingVSConnect2
         private string routeTranslated;
 
         /// <summary>
-        /// Minutes translated
+        /// Time translated
         /// </summary>
-        private string milesTranslated;
-
-        /// <summary>
-        /// Miles translated
-        /// </summary>
-        private string minutesTranslated;
+        private string timeTranslated;
 
         /// <summary>
         /// Of translated
@@ -142,6 +141,11 @@ namespace TruckingVSConnect2
         /// Yield translated
         /// </summary>
         private string yieldTranslated;
+
+        /// <summary>
+        /// Weight translated
+        /// </summary>
+        private string weightTranslated;
 
         /// <summary>
         /// Deadline translated
@@ -196,7 +200,7 @@ namespace TruckingVSConnect2
         /// <summary>
         /// Fuel distance translated
         /// </summary>
-        private string fuelDistanceTranslated;
+        private string fuelRemainingDistanceTranslated;
 
         /// <summary>
         /// Fuel status translated
@@ -263,16 +267,17 @@ namespace TruckingVSConnect2
             cruiseControlTranslated = Translator.GetTranslation("CRUISE_CONTROL");
             speedLimitTranslated = Translator.GetTranslation("SPEED_LIMIT");
             vehicleTranslated = Translator.GetTranslation("VEHICLE");
+            inTranslated = Translator.GetTranslation("IN");
             statusTranslated = Translator.GetTranslation("STATUS");
             deliverCargoTranslated = Translator.GetTranslation("DELIVER_CARGO");
             cargoTranslated = Translator.GetTranslation("CARGO");
             sourceTranslated = Translator.GetTranslation("SOURCE");
             destinationTranslated = Translator.GetTranslation("DESTINATION");
             routeTranslated = Translator.GetTranslation("ROUTE");
-            milesTranslated = Translator.GetTranslation("MILES");
-            minutesTranslated = Translator.GetTranslation("MINUTES");
+            timeTranslated = Translator.GetTranslation("TIME");
             ofTranslated = Translator.GetTranslation("OF");
             yieldTranslated = Translator.GetTranslation("YIELD");
+            weightTranslated = Translator.GetTranslation("WEIGHT");
             deadlineTranslated = Translator.GetTranslation("DEADLINE");
             idleTranslated = Translator.GetTranslation("IDLE");
             unlimitedTranslated = Translator.GetTranslation("UNLIMITED");
@@ -283,7 +288,7 @@ namespace TruckingVSConnect2
             wheelsTranslated = Translator.GetTranslation("WHEELS");
             trailerTranslated = Translator.GetTranslation("TRAILER");
             fuelTranslated = Translator.GetTranslation("FUEL");
-            fuelDistanceTranslated = Translator.GetTranslation("FUEL_DISTANCE");
+            fuelRemainingDistanceTranslated = Translator.GetTranslation("FUEL_DISTANCE");
             fuelStatusTranslated = Translator.GetTranslation("FUEL_STATUS");
             pleaseRefillFuelTranslated = Translator.GetTranslation("PLEASE_REFILL_FUEL");
             lowFuelTranslated = Translator.GetTranslation("LOW_FUEL");
@@ -458,18 +463,21 @@ namespace TruckingVSConnect2
                     gameNameLabel.Text = Utils.IsAGameRunning ? Utils.RunningGameName : startGameNowTranslated;
                     if (game_running)
                     {
-                        speedLabel.Text = (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.SpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.SpeedMph, 1) + " " + milesTranslated + "/h")) + (data.Drivetrain.CruiseControl ? ("; " + cruiseControlTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.CruiseControlSpeedKmh, 1) + " km/h") : (Math.Round(data.Drivetrain.CruiseControlSpeedMph, 1) + " " + milesTranslated + "/h"))) : "");
-                        speedLimitLabel.Text = speedLimitTranslated + ": " + ((data.Job.SpeedLimit == -1.0f) ? unlimitedTranslated : Math.Round(Utils.ConvertSpeed(data.Job.SpeedLimit), 1) + (Configuration.UseMetricUnit ? " km/h" : (" " + milesTranslated + "/h")));
-                        vehicleLabel.Text = vehicleTranslated + ": " + data.Truck + ", " + data.Manufacturer;
+                        speedLabel.Text = (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.SpeedKmh) + " km/h") : (Math.Round(data.Drivetrain.SpeedMph) + " mph")) + (data.Drivetrain.CruiseControl ? ("; " + cruiseControlTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.CruiseControlSpeedKmh) + " km/h") : (Math.Round(data.Drivetrain.CruiseControlSpeedMph) + " mph"))) : "");
+                        float delta_speed_limit = data.Drivetrain.Speed - data.Job.SpeedLimit;
+                        speedLabel.ForeColor = ((data.Job.SpeedLimit <= 0.0f) ? Color.White : Utils.ColorGradient(Color.White, Color.Red, delta_speed_limit / 1.4f));
+                        speedLimitLabel.Text = speedLimitTranslated + ": " + ((data.Job.SpeedLimit == -1.0f) ? unlimitedTranslated : Math.Round(Utils.ConvertSpeed(data.Job.SpeedLimit)) + (Configuration.UseMetricUnit ? " km/h" : " mph"));
+                        vehicleLabel.Text = vehicleTranslated + ": " + data.Manufacturer + " " + data.Truck;
                         if (data.Job.OnJob)
                         {
                             statusLabel.Text = statusTranslated + ": " + deliverCargoTranslated;
                             cargoLabel.Text = cargoTranslated + ": " + data.Job.Cargo;
-                            sourceLabel.Text = sourceTranslated + ": " + data.Job.CompanySource + ", " + Cities.GetFullCityName(data.Job.CitySource);
+                            sourceLabel.Text = sourceTranslated + ": " + data.Job.CompanySource + " " + inTranslated + " " + Cities.GetFullCityName(data.Job.CitySource);
                             destinationLabel.Text = destinationTranslated + ": " + data.Job.CompanyDestination + ", " + Cities.GetFullCityName(data.Job.CityDestination);
-                            string distance_unit = (Configuration.UseMetricUnit ? " km" : " " + milesTranslated);
-                            routeLabel.Text = routeTranslated + ": " + Math.Round(Utils.ConvertLength(data.Job.NavigationDistanceLeft), 1) + distance_unit + " " + ofTranslated + " " + Math.Round(Utils.ConvertLength(api.Distance), 1) + distance_unit + "; " + Math.Ceiling(data.Job.NavigationTimeLeft / 60.0f) + " " + minutesTranslated + " " + ofTranslated + " " + Math.Ceiling(api.Time / 60.0f) + " " + minutesTranslated;
-                            yieldLabel.Text = yieldTranslated + ": " + data.Job.Income + "€; " + Math.Round(data.Job.Mass, 1) + " kg";
+                            routeLabel.Text = routeTranslated + ": " + Utils.HumanReadableLength(data.Job.NavigationDistanceLeft) + " " + ofTranslated + " " + Utils.HumanReadableLength(api.Distance) + " (" + ((api.Distance > float.Epsilon) ? 100.0f : ((data.Job.NavigationDistanceLeft * 100.0f) / api.Distance)) + "%)";
+                            timeLabel.Text = timeTranslated + ": " + Utils.HumanReadableTime(data.Job.NavigationTimeLeft) + " " + ofTranslated + " " + Utils.HumanReadableTime(api.Time);
+                            yieldLabel.Text = yieldTranslated + ": " + data.Job.Income + "€";
+                            weightLabel.Text = weightTranslated + ": " + Utils.HumanReadableWeight(data.Job.Mass);
                             deadlineLabel.Text = deadlineTranslated + ": " + ((data.Job.Deadline == -1) ? unlimitedTranslated : data.Job.Deadline.ToString());
                         }
                         else
@@ -479,15 +487,17 @@ namespace TruckingVSConnect2
                             sourceLabel.Text = "";
                             destinationLabel.Text = "";
                             routeLabel.Text = "";
+                            timeLabel.Text = "";
                             yieldLabel.Text = "";
+                            weightLabel.Text = "";
                             deadlineLabel.Text = "";
                         }
-                        cabinLabel.Text = cabinTranslated + ": " + Math.Round(100.0f - (data.Damage.WearCabin * 100.0f), 1) + "%";
-                        chassisLabel.Text = chassisTranslated + ": " + Math.Round(100.0f - (data.Damage.WearChassis * 100.0f), 1) + "%";
-                        engineLabel.Text = engineTranslated + ": " + Math.Round(100.0f - (data.Damage.WearEnigne * 100.0f), 1) + "%";
-                        transmissionLabel.Text = transmissionTranslated + ": " + Math.Round(100.0f - (data.Damage.WearTransmission * 100.0f), 1) + "%";
-                        wheelsLabel.Text = wheelsTranslated + ": " + Math.Round(100.0f - (data.Damage.WearWheels * 100.0f), 1) + "%";
-                        trailerLabel.Text = (data.Job.TrailerAttached) ? (trailerTranslated + ": " + Math.Round(100.0f - (data.Damage.WearTrailer * 100.0f), 1) + "%") : "";
+                        cabinLabel.Text = cabinTranslated + ": " + Math.Round(100.0f - (data.Damage.WearCabin * 100.0f)) + "%";
+                        chassisLabel.Text = chassisTranslated + ": " + Math.Round(100.0f - (data.Damage.WearChassis * 100.0f)) + "%";
+                        engineLabel.Text = engineTranslated + ": " + Math.Round(100.0f - (data.Damage.WearEnigne * 100.0f)) + "%";
+                        transmissionLabel.Text = transmissionTranslated + ": " + Math.Round(100.0f - (data.Damage.WearTransmission * 100.0f)) + "%";
+                        wheelsLabel.Text = wheelsTranslated + ": " + Math.Round(100.0f - (data.Damage.WearWheels * 100.0f)) + "%";
+                        trailerLabel.Text = (data.Job.TrailerAttached) ? (trailerTranslated + ": " + Math.Round(100.0f - (data.Damage.WearTrailer * 100.0f)) + "%") : "";
                         float damage = Math.Max(data.Damage.WearCabin, Math.Max(data.Damage.WearChassis, Math.Max(data.Damage.WearEnigne, Math.Max(data.Damage.WearTransmission, data.Damage.WearWheels))));
                         int image_id = 0;
                         if (damage >= 0.9f)
@@ -548,10 +558,11 @@ namespace TruckingVSConnect2
                         {
                             speedLimitData.RemoveAt(0);
                         }
-                        double fuel_percentage = Math.Round((data.Drivetrain.Fuel * 100.0f) / data.Drivetrain.FuelMax, 1);
-                        fuelLabel.Text = fuelTranslated + ": " + Math.Round(data.Drivetrain.Fuel, 1) + " l " + ofTranslated + " " + Math.Round(data.Drivetrain.FuelMax, 1) + " l (" + Math.Round(data.Drivetrain.FuelAvgConsumption, 1) + " l/km); " + fuel_percentage + "%";
-                        fuelDistanceLabel.Text = fuelDistanceTranslated + ": " + Math.Round(data.Drivetrain.FuelRange, 1) + (Configuration.UseMetricUnit ? " km" : (" " + milesTranslated));
-                        fuelStatusLabel.Text = fuelStatusTranslated + ": " + ((fuel_percentage <= 6.25) ? pleaseRefillFuelTranslated : (data.Job.OnJob ? ((data.Drivetrain.FuelRange < (data.Job.NavigationDistanceLeft * 0.001f)) ? refillLaterTranslated : enoughFuelTranslated) : ((fuel_percentage < 12.5) ? lowFuelTranslated : enoughFuelTranslated)));
+                        double fuel_percentage = Math.Round((data.Drivetrain.Fuel * 100.0f) / data.Drivetrain.FuelMax);
+                        fuelLabel.Text = fuelTranslated + ": " + Math.Round(data.Drivetrain.Fuel) + " l " + ofTranslated + " " + Math.Round(data.Drivetrain.FuelMax) + " l (" + Math.Round(data.Drivetrain.FuelAvgConsumption, 2) + " l/km); " + fuel_percentage + "%";
+                        fuelRemainingDistanceLabel.Text = fuelRemainingDistanceTranslated + ": " + Math.Round(data.Drivetrain.FuelRange) + (Configuration.UseMetricUnit ? " km" : " ml");
+                        fuelStatusLabel.Text = fuelStatusTranslated + ": " + ((fuel_percentage <= 15.0) ? pleaseRefillFuelTranslated : (data.Job.OnJob ? ((data.Drivetrain.FuelRange < (data.Job.NavigationDistanceLeft * 0.001f)) ? refillLaterTranslated : enoughFuelTranslated) : ((fuel_percentage < 30.0) ? lowFuelTranslated : enoughFuelTranslated)));
+                        fuelStatusLabel.ForeColor = ((fuel_percentage <= 15.0) ? Color.Red : Color.White);
                         if (currentGameTime != data.Time)
                         {
                             currentGameTime = data.Time;

@@ -122,6 +122,9 @@
 
 </value>
   </data>
+  <data name="AND" xml:space="preserve">
+    <value>und</value>
+  </data>
   <data name="ASSEMBLY_VERSION" xml:space="preserve">
     <value>Assemblerversion</value>
   </data>
@@ -130,6 +133,9 @@
   </data>
   <data name="AUTO_LOG_IN" xml:space="preserve">
     <value>Automatisch anmelden</value>
+  </data>
+  <data name="BACKWARDS" xml:space="preserve">
+    <value>Rückwärts</value>
   </data>
   <data name="BELGIUM" xml:space="preserve">
     <value>Belgien</value>
@@ -206,8 +212,8 @@
   <data name="FUEL" xml:space="preserve">
     <value>Treibstoff</value>
   </data>
-  <data name="FUEL_DISTANCE" xml:space="preserve">
-    <value>Strecke</value>
+  <data name="FUEL_REMAINING_DISTANCE" xml:space="preserve">
+    <value>Verbleibende Strecke</value>
   </data>
   <data name="FUEL_STATUS" xml:space="preserve">
     <value>Zustand</value>
@@ -233,6 +239,9 @@ Abbrechen, wenn du es später festlegen möchtest.</value>
   <data name="IDLE" xml:space="preserve">
     <value>Keine Lieferung</value>
   </data>
+  <data name="IN" xml:space="preserve">
+    <value>in</value>
+  </data>
   <data name="ITALY" xml:space="preserve">
     <value>Italien</value>
   </data>
@@ -253,9 +262,6 @@ Abbrechen, wenn du es später festlegen möchtest.</value>
   </data>
   <data name="LUXEMBOURG" xml:space="preserve">
     <value>Luxemburg</value>
-  </data>
-  <data name="MILES" xml:space="preserve">
-    <value>Meilen</value>
   </data>
   <data name="MINUTES" xml:space="preserve">
     <value>Minuten</value>
@@ -282,7 +288,7 @@ Abbrechen, wenn du es später festlegen möchtest.</value>
     <value>Produktversion</value>
   </data>
   <data name="REFILL_LATER" xml:space="preserve">
-    <value>Später nachfüllen</value>
+    <value>Nachtanken erforderlich</value>
   </data>
   <data name="ROUTE" xml:space="preserve">
     <value>Fahrtstrecke</value>
@@ -326,6 +332,9 @@ Abbrechen, wenn du es später festlegen möchtest.</value>
   <data name="SWITZERLAND" xml:space="preserve">
     <value>Schweiz</value>
   </data>
+  <data name="TIME" xml:space="preserve">
+    <value>Fahrtzeit</value>
+  </data>
   <data name="TRAILER" xml:space="preserve">
     <value>Anhänger</value>
   </data>
@@ -358,6 +367,9 @@ Möchtest du es wirklich installieren?</value>
   </data>
   <data name="WALES" xml:space="preserve">
     <value>Wales</value>
+  </data>
+  <data name="WEIGHT" xml:space="preserve">
+    <value>Gewicht</value>
   </data>
   <data name="WHEELS" xml:space="preserve">
     <value>Räder</value>

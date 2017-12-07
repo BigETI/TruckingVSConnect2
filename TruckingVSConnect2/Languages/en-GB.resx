@@ -122,6 +122,9 @@
 
 </value>
   </data>
+  <data name="AND" xml:space="preserve">
+    <value>and</value>
+  </data>
   <data name="ASSEMBLY_VERSION" xml:space="preserve">
     <value>Assembly version</value>
   </data>
@@ -130,6 +133,9 @@
   </data>
   <data name="AUTO_LOG_IN" xml:space="preserve">
     <value>Remember me</value>
+  </data>
+  <data name="BACKWARDS" xml:space="preserve">
+    <value>backwards</value>
   </data>
   <data name="BELGIUM" xml:space="preserve">
     <value>Belgium</value>
@@ -206,8 +212,8 @@
   <data name="FUEL" xml:space="preserve">
     <value>Fuel</value>
   </data>
-  <data name="FUEL_DISTANCE" xml:space="preserve">
-    <value>Distance</value>
+  <data name="FUEL_REMAINING_DISTANCE" xml:space="preserve">
+    <value>Remaining distance</value>
   </data>
   <data name="FUEL_STATUS" xml:space="preserve">
     <value>Status</value>
@@ -233,6 +239,9 @@ Cancel, if you want to specify it later.</value>
   <data name="IDLE" xml:space="preserve">
     <value>No delivery</value>
   </data>
+  <data name="IN" xml:space="preserve">
+    <value>in</value>
+  </data>
   <data name="ITALY" xml:space="preserve">
     <value>Italy</value>
   </data>
@@ -253,9 +262,6 @@ Cancel, if you want to specify it later.</value>
   </data>
   <data name="LUXEMBOURG" xml:space="preserve">
     <value>Luxembourg</value>
-  </data>
-  <data name="MILES" xml:space="preserve">
-    <value>miles</value>
   </data>
   <data name="MINUTES" xml:space="preserve">
     <value>minutes</value>
@@ -326,6 +332,9 @@ Cancel, if you want to specify it later.</value>
   <data name="SWITZERLAND" xml:space="preserve">
     <value>Switzerland</value>
   </data>
+  <data name="TIME" xml:space="preserve">
+    <value>Time</value>
+  </data>
   <data name="TRAILER" xml:space="preserve">
     <value>Trailer</value>
   </data>
@@ -358,6 +367,9 @@ Do you want to install it now?</value>
   </data>
   <data name="WALES" xml:space="preserve">
     <value>Wales</value>
+  </data>
+  <data name="WEIGHT" xml:space="preserve">
+    <value>Weight</value>
   </data>
   <data name="WHEELS" xml:space="preserve">
     <value>Wheels</value>

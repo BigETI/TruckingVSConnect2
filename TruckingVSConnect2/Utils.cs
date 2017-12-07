@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
+using WinFormsTranslator;
 
 /// <summary>
 /// Trucking VS Connect² namespace
@@ -22,6 +24,32 @@ namespace TruckingVSConnect2
         /// Running game name
         /// </summary>
         private static string runningGameName;
+
+        /// <summary>
+        /// And translated
+        /// </summary>
+        private static string andTranslated;
+
+        /// <summary>
+        /// Backwards translated
+        /// </summary>
+        private static string backwardsTranslated;
+
+        /// <summary>
+        /// Color gradient
+        /// </summary>
+        /// <param name="fromColor">From color</param>
+        /// <param name="toColor">To color</param>
+        /// <param name="time">Time from 0 to 1</param>
+        /// <returns>Result color</returns>
+        public static Color ColorGradient(Color fromColor, Color toColor, float time)
+        {
+            float t = ((time < 0.0f) ? 0.0f : ((time > 1.0f) ? 1.0f : time));
+            return Color.FromArgb((int)((fromColor.A * (1.0f - t)) + (toColor.A * t)),
+                (int)((fromColor.R * (1.0f - t)) + (toColor.R * t)),
+                (int)((fromColor.G * (1.0f - t)) + (toColor.G * t)),
+                (int)((fromColor.B * (1.0f - t)) + (toColor.B * t)));
+        }
 
         /// <summary>
         /// SHA512 from file
@@ -81,13 +109,53 @@ namespace TruckingVSConnect2
         }
 
         /// <summary>
-        /// Convert meters to kilometers or miles
+        /// Human readable length
         /// </summary>
         /// <param name="length">Length in meters</param>
-        /// <returns>Length in kilometers or miles</returns>
-        public static float ConvertLength(float length)
+        /// <returns>Human readable length in "km and m" or "ml and yd"</returns>
+        public static string HumanReadableLength(float length)
         {
-            return (length * (Configuration.UseMetricUnit ? 0.001f : 0.0006213712f));
+            if (andTranslated == null)
+            {
+                andTranslated = Translator.GetTranslation("AND");
+            }
+            if (backwardsTranslated == null)
+            {
+                backwardsTranslated = Translator.GetTranslation("BACKWARDS");
+            }
+            int l = (int)(Math.Round(Math.Abs(length) * (Configuration.UseMetricUnit ? 1.0f : 1.093613f)));
+            int ngu = (Configuration.UseMetricUnit ? 1000 : 1760);
+            int gl = (l / ngu);
+            return (((gl > 0) ? (gl + (Configuration.UseMetricUnit ? " km " : " ml ") + andTranslated + " ") : "") + (l % ngu) + (Configuration.UseMetricUnit ? " m" : " yd")) + ((length < -float.Epsilon) ? " (" + backwardsTranslated + ")" : "");
+        }
+
+        /// <summary>
+        /// Human readable weight
+        /// </summary>
+        /// <param name="weight">Weight in kg</param>
+        /// <returns>Human readable weight in "t and kg"</returns>
+        public static string HumanReadableWeight(float weight)
+        {
+            if (andTranslated == null)
+            {
+                andTranslated = Translator.GetTranslation("AND");
+            }
+            int w = (int)(Math.Round(Math.Abs(weight)));
+            return ((w / 1000) + " t " + andTranslated + " " + (w % 1000) + " kg");
+        }
+
+        /// <summary>
+        /// Human readable time
+        /// </summary>
+        /// <param name="seconds">Tme in seconds</param>
+        /// <returns>Time in "d h min s"</returns>
+        public static string HumanReadableTime(float seconds)
+        {
+            int s = (int)(Math.Round(seconds));
+            int min = (s / 60) % 60;
+            int h = (s / 3600) % 24;
+            int d = (s / 86400);
+            return (((d > 0) ? (d + " d") : "") + ((min > 0) ? (((d > 0) ? " " : "") + min + " min") : "") + ((((d > 0) || (min > 0)) ? " " : "") + (s % 60) + " s"));
         }
 
         /// <summary>

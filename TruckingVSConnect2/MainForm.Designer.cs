@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.bodyTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.logOutButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.headPanel = new System.Windows.Forms.Panel();
             this.gameNameLabel = new MaterialSkin.Controls.MaterialLabel();
             this.loggedInAsLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -45,11 +44,12 @@
             this.gravatarPictureBox = new System.Windows.Forms.PictureBox();
             this.dataTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.speedPanel = new System.Windows.Forms.Panel();
-            this.switchLengthUnitButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.statusLabel = new MaterialSkin.Controls.MaterialLabel();
             this.speedLabel = new MaterialSkin.Controls.MaterialLabel();
             this.speedLimitLabel = new MaterialSkin.Controls.MaterialLabel();
             this.dataPanel = new System.Windows.Forms.Panel();
+            this.timeLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.weightLabel = new MaterialSkin.Controls.MaterialLabel();
             this.deadlineLabel = new MaterialSkin.Controls.MaterialLabel();
             this.yieldLabel = new MaterialSkin.Controls.MaterialLabel();
             this.routeLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -58,7 +58,7 @@
             this.cargoLabel = new MaterialSkin.Controls.MaterialLabel();
             this.vehicleLabel = new MaterialSkin.Controls.MaterialLabel();
             this.healthPanel = new System.Windows.Forms.Panel();
-            this.fuelDistanceLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.fuelRemainingDistanceLabel = new MaterialSkin.Controls.MaterialLabel();
             this.fuelLabel = new MaterialSkin.Controls.MaterialLabel();
             this.fuelStatusLabel = new MaterialSkin.Controls.MaterialLabel();
             this.trailerLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -69,6 +69,9 @@
             this.cabinLabel = new MaterialSkin.Controls.MaterialLabel();
             this.cargoPictureBox = new System.Windows.Forms.PictureBox();
             this.drivetrainPictureBox = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.logOutButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.switchLengthUnitButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.speedChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.drivetrainImageList = new System.Windows.Forms.ImageList(this.components);
             this.cargoImageList = new System.Windows.Forms.ImageList(this.components);
@@ -82,6 +85,7 @@
             this.healthPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drivetrainPictureBox)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.speedChart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,10 +119,10 @@
             this.bodyTableLayoutPanel.ColumnCount = 2;
             this.bodyTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.55981F));
             this.bodyTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.44019F));
-            this.bodyTableLayoutPanel.Controls.Add(this.logOutButton, 1, 0);
             this.bodyTableLayoutPanel.Controls.Add(this.headPanel, 0, 0);
             this.bodyTableLayoutPanel.Controls.Add(this.dataTableLayoutPanel, 0, 1);
             this.bodyTableLayoutPanel.Controls.Add(this.healthPanel, 1, 1);
+            this.bodyTableLayoutPanel.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.bodyTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bodyTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.bodyTableLayoutPanel.Name = "bodyTableLayoutPanel";
@@ -127,23 +131,6 @@
             this.bodyTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.bodyTableLayoutPanel.Size = new System.Drawing.Size(883, 494);
             this.bodyTableLayoutPanel.TabIndex = 1;
-            // 
-            // logOutButton
-            // 
-            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.logOutButton.AutoSize = true;
-            this.logOutButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.logOutButton.Depth = 0;
-            this.logOutButton.Icon = null;
-            this.logOutButton.Location = new System.Drawing.Point(775, 3);
-            this.logOutButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.logOutButton.Name = "logOutButton";
-            this.logOutButton.Primary = true;
-            this.logOutButton.Size = new System.Drawing.Size(105, 36);
-            this.logOutButton.TabIndex = 3;
-            this.logOutButton.Text = "{$LOG_OUT$}";
-            this.logOutButton.UseVisualStyleBackColor = true;
-            this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
             // 
             // headPanel
             // 
@@ -216,41 +203,22 @@
             this.dataTableLayoutPanel.Location = new System.Drawing.Point(3, 79);
             this.dataTableLayoutPanel.Name = "dataTableLayoutPanel";
             this.dataTableLayoutPanel.RowCount = 2;
-            this.dataTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 144F));
+            this.dataTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.dataTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.dataTableLayoutPanel.Size = new System.Drawing.Size(546, 412);
             this.dataTableLayoutPanel.TabIndex = 4;
             // 
             // speedPanel
             // 
-            this.speedPanel.Controls.Add(this.switchLengthUnitButton);
             this.speedPanel.Controls.Add(this.statusLabel);
             this.speedPanel.Controls.Add(this.speedLabel);
             this.speedPanel.Controls.Add(this.speedLimitLabel);
             this.speedPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.speedPanel.Location = new System.Drawing.Point(3, 3);
             this.speedPanel.Name = "speedPanel";
-            this.speedPanel.Size = new System.Drawing.Size(540, 138);
+            this.speedPanel.Size = new System.Drawing.Size(540, 90);
             this.speedPanel.TabIndex = 2;
             this.speedPanel.Visible = false;
-            // 
-            // switchLengthUnitButton
-            // 
-            this.switchLengthUnitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.switchLengthUnitButton.AutoSize = true;
-            this.switchLengthUnitButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.switchLengthUnitButton.Depth = 0;
-            this.switchLengthUnitButton.Icon = null;
-            this.switchLengthUnitButton.Location = new System.Drawing.Point(4, 96);
-            this.switchLengthUnitButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.switchLengthUnitButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.switchLengthUnitButton.Name = "switchLengthUnitButton";
-            this.switchLengthUnitButton.Primary = false;
-            this.switchLengthUnitButton.Size = new System.Drawing.Size(193, 36);
-            this.switchLengthUnitButton.TabIndex = 5;
-            this.switchLengthUnitButton.Text = "{$SWITCH_LENGTH_UNIT$}";
-            this.switchLengthUnitButton.UseVisualStyleBackColor = true;
-            this.switchLengthUnitButton.Click += new System.EventHandler(this.switchLengthUnitButton_Click);
             // 
             // statusLabel
             // 
@@ -299,6 +267,8 @@
             // 
             // dataPanel
             // 
+            this.dataPanel.Controls.Add(this.timeLabel);
+            this.dataPanel.Controls.Add(this.weightLabel);
             this.dataPanel.Controls.Add(this.deadlineLabel);
             this.dataPanel.Controls.Add(this.yieldLabel);
             this.dataPanel.Controls.Add(this.routeLabel);
@@ -307,11 +277,37 @@
             this.dataPanel.Controls.Add(this.cargoLabel);
             this.dataPanel.Controls.Add(this.vehicleLabel);
             this.dataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataPanel.Location = new System.Drawing.Point(3, 147);
+            this.dataPanel.Location = new System.Drawing.Point(3, 99);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(540, 262);
+            this.dataPanel.Size = new System.Drawing.Size(540, 310);
             this.dataPanel.TabIndex = 3;
             this.dataPanel.Visible = false;
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Depth = 0;
+            this.timeLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.timeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.timeLabel.Location = new System.Drawing.Point(3, 95);
+            this.timeLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(44, 19);
+            this.timeLabel.TabIndex = 8;
+            this.timeLabel.Text = "TIME";
+            // 
+            // weightLabel
+            // 
+            this.weightLabel.AutoSize = true;
+            this.weightLabel.Depth = 0;
+            this.weightLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.weightLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.weightLabel.Location = new System.Drawing.Point(3, 133);
+            this.weightLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.weightLabel.Name = "weightLabel";
+            this.weightLabel.Size = new System.Drawing.Size(65, 19);
+            this.weightLabel.TabIndex = 7;
+            this.weightLabel.Text = "WEIGHT";
             // 
             // deadlineLabel
             // 
@@ -319,7 +315,7 @@
             this.deadlineLabel.Depth = 0;
             this.deadlineLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.deadlineLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.deadlineLabel.Location = new System.Drawing.Point(3, 114);
+            this.deadlineLabel.Location = new System.Drawing.Point(3, 152);
             this.deadlineLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.deadlineLabel.Name = "deadlineLabel";
             this.deadlineLabel.Size = new System.Drawing.Size(80, 19);
@@ -332,7 +328,7 @@
             this.yieldLabel.Depth = 0;
             this.yieldLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.yieldLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.yieldLabel.Location = new System.Drawing.Point(3, 95);
+            this.yieldLabel.Location = new System.Drawing.Point(3, 114);
             this.yieldLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.yieldLabel.Name = "yieldLabel";
             this.yieldLabel.Size = new System.Drawing.Size(49, 19);
@@ -406,7 +402,7 @@
             // 
             // healthPanel
             // 
-            this.healthPanel.Controls.Add(this.fuelDistanceLabel);
+            this.healthPanel.Controls.Add(this.fuelRemainingDistanceLabel);
             this.healthPanel.Controls.Add(this.fuelLabel);
             this.healthPanel.Controls.Add(this.fuelStatusLabel);
             this.healthPanel.Controls.Add(this.trailerLabel);
@@ -424,19 +420,19 @@
             this.healthPanel.TabIndex = 5;
             this.healthPanel.Visible = false;
             // 
-            // fuelDistanceLabel
+            // fuelRemainingDistanceLabel
             // 
-            this.fuelDistanceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.fuelDistanceLabel.AutoSize = true;
-            this.fuelDistanceLabel.Depth = 0;
-            this.fuelDistanceLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.fuelDistanceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.fuelDistanceLabel.Location = new System.Drawing.Point(3, 371);
-            this.fuelDistanceLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.fuelDistanceLabel.Name = "fuelDistanceLabel";
-            this.fuelDistanceLabel.Size = new System.Drawing.Size(123, 19);
-            this.fuelDistanceLabel.TabIndex = 10;
-            this.fuelDistanceLabel.Text = "FUEL_DISTANCE";
+            this.fuelRemainingDistanceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.fuelRemainingDistanceLabel.AutoSize = true;
+            this.fuelRemainingDistanceLabel.Depth = 0;
+            this.fuelRemainingDistanceLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.fuelRemainingDistanceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.fuelRemainingDistanceLabel.Location = new System.Drawing.Point(3, 371);
+            this.fuelRemainingDistanceLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.fuelRemainingDistanceLabel.Name = "fuelRemainingDistanceLabel";
+            this.fuelRemainingDistanceLabel.Size = new System.Drawing.Size(211, 19);
+            this.fuelRemainingDistanceLabel.TabIndex = 10;
+            this.fuelRemainingDistanceLabel.Text = "FUEL_REMAINING_DISTANCE";
             // 
             // fuelLabel
             // 
@@ -564,52 +560,98 @@
             this.drivetrainPictureBox.TabIndex = 0;
             this.drivetrainPictureBox.TabStop = false;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.logOutButton);
+            this.flowLayoutPanel1.Controls.Add(this.switchLengthUnitButton);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(555, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(325, 70);
+            this.flowLayoutPanel1.TabIndex = 6;
+            // 
+            // logOutButton
+            // 
+            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.logOutButton.AutoSize = true;
+            this.logOutButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.logOutButton.Depth = 0;
+            this.logOutButton.Icon = null;
+            this.logOutButton.Location = new System.Drawing.Point(217, 3);
+            this.logOutButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.logOutButton.Name = "logOutButton";
+            this.logOutButton.Primary = true;
+            this.logOutButton.Size = new System.Drawing.Size(105, 36);
+            this.logOutButton.TabIndex = 3;
+            this.logOutButton.Text = "{$LOG_OUT$}";
+            this.logOutButton.UseVisualStyleBackColor = true;
+            this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
+            // 
+            // switchLengthUnitButton
+            // 
+            this.switchLengthUnitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.switchLengthUnitButton.AutoSize = true;
+            this.switchLengthUnitButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.switchLengthUnitButton.Depth = 0;
+            this.switchLengthUnitButton.Icon = null;
+            this.switchLengthUnitButton.Location = new System.Drawing.Point(17, 6);
+            this.switchLengthUnitButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.switchLengthUnitButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.switchLengthUnitButton.Name = "switchLengthUnitButton";
+            this.switchLengthUnitButton.Primary = false;
+            this.switchLengthUnitButton.Size = new System.Drawing.Size(193, 36);
+            this.switchLengthUnitButton.TabIndex = 5;
+            this.switchLengthUnitButton.Text = "{$SWITCH_LENGTH_UNIT$}";
+            this.switchLengthUnitButton.UseVisualStyleBackColor = true;
+            this.switchLengthUnitButton.Click += new System.EventHandler(this.switchLengthUnitButton_Click);
+            // 
             // speedChart
             // 
             this.speedChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.speedChart.BorderlineColor = System.Drawing.Color.Black;
-            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea2.AxisX.LineColor = System.Drawing.Color.Gray;
-            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisX.TitleForeColor = System.Drawing.Color.White;
-            chartArea2.AxisX2.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisX2.TitleForeColor = System.Drawing.Color.White;
-            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea2.AxisY.LineColor = System.Drawing.Color.Gray;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea2.AxisY2.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisY2.TitleForeColor = System.Drawing.Color.White;
-            chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            chartArea2.Name = "ChartArea";
-            this.speedChart.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX2.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisX2.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY2.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            chartArea1.Name = "ChartArea";
+            this.speedChart.ChartAreas.Add(chartArea1);
             this.speedChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            legend2.ForeColor = System.Drawing.Color.White;
-            legend2.Name = "Legend";
-            legend2.Title = "SPEED";
-            legend2.TitleForeColor = System.Drawing.Color.White;
-            this.speedChart.Legends.Add(legend2);
+            legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            legend1.ForeColor = System.Drawing.Color.White;
+            legend1.Name = "Legend";
+            legend1.Title = "SPEED";
+            legend1.TitleForeColor = System.Drawing.Color.White;
+            this.speedChart.Legends.Add(legend1);
             this.speedChart.Location = new System.Drawing.Point(3, 503);
             this.speedChart.Name = "speedChart";
             this.speedChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.speedChart.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.DeepSkyBlue,
         System.Drawing.Color.DarkRed};
-            series3.BorderWidth = 5;
-            series3.ChartArea = "ChartArea";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series3.Legend = "Legend";
-            series3.Name = "CURRENT";
-            series4.BorderWidth = 5;
-            series4.ChartArea = "ChartArea";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series4.Legend = "Legend";
-            series4.Name = "LIMIT";
-            this.speedChart.Series.Add(series3);
-            this.speedChart.Series.Add(series4);
+            series1.BorderWidth = 5;
+            series1.ChartArea = "ChartArea";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.Legend = "Legend";
+            series1.Name = "CURRENT";
+            series2.BorderWidth = 5;
+            series2.ChartArea = "ChartArea";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series2.Legend = "Legend";
+            series2.Name = "LIMIT";
+            this.speedChart.Series.Add(series1);
+            this.speedChart.Series.Add(series2);
             this.speedChart.Size = new System.Drawing.Size(883, 114);
             this.speedChart.TabIndex = 2;
             this.speedChart.Visible = false;
@@ -648,19 +690,19 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.bodyTableLayoutPanel.ResumeLayout(false);
-            this.bodyTableLayoutPanel.PerformLayout();
             this.headPanel.ResumeLayout(false);
             this.headPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gravatarPictureBox)).EndInit();
             this.dataTableLayoutPanel.ResumeLayout(false);
             this.speedPanel.ResumeLayout(false);
-            this.speedPanel.PerformLayout();
             this.dataPanel.ResumeLayout(false);
             this.dataPanel.PerformLayout();
             this.healthPanel.ResumeLayout(false);
             this.healthPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drivetrainPictureBox)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.speedChart)).EndInit();
             this.ResumeLayout(false);
 
@@ -704,7 +746,10 @@
         private MaterialSkin.Controls.MaterialLabel fuelLabel;
         private MaterialSkin.Controls.MaterialLabel fuelStatusLabel;
         private MaterialSkin.Controls.MaterialLabel gameNameLabel;
-        private MaterialSkin.Controls.MaterialLabel fuelDistanceLabel;
+        private MaterialSkin.Controls.MaterialLabel fuelRemainingDistanceLabel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private MaterialSkin.Controls.MaterialLabel weightLabel;
+        private MaterialSkin.Controls.MaterialLabel timeLabel;
     }
 }
 

@@ -72,6 +72,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die and ähnelt.
+        /// </summary>
+        internal static string AND {
+            get {
+                return ResourceManager.GetString("AND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Assembly version ähnelt.
         /// </summary>
         internal static string ASSEMBLY_VERSION {
@@ -95,6 +104,15 @@ namespace TruckingVSConnect2.Languages {
         internal static string AUTO_LOG_IN {
             get {
                 return ResourceManager.GetString("AUTO_LOG_IN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die backwards ähnelt.
+        /// </summary>
+        internal static string BACKWARDS {
+            get {
+                return ResourceManager.GetString("BACKWARDS", resourceCulture);
             }
         }
         
@@ -324,11 +342,11 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Distance ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remaining distance ähnelt.
         /// </summary>
-        internal static string FUEL_DISTANCE {
+        internal static string FUEL_REMAINING_DISTANCE {
             get {
-                return ResourceManager.GetString("FUEL_DISTANCE", resourceCulture);
+                return ResourceManager.GetString("FUEL_REMAINING_DISTANCE", resourceCulture);
             }
         }
         
@@ -399,6 +417,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die in ähnelt.
+        /// </summary>
+        internal static string IN {
+            get {
+                return ResourceManager.GetString("IN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Italy ähnelt.
         /// </summary>
         internal static string ITALY {
@@ -458,15 +485,6 @@ namespace TruckingVSConnect2.Languages {
         internal static string LUXEMBOURG {
             get {
                 return ResourceManager.GetString("LUXEMBOURG", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die miles ähnelt.
-        /// </summary>
-        internal static string MILES {
-            get {
-                return ResourceManager.GetString("MILES", resourceCulture);
             }
         }
         
@@ -678,6 +696,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Time ähnelt.
+        /// </summary>
+        internal static string TIME {
+            get {
+                return ResourceManager.GetString("TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Trailer ähnelt.
         /// </summary>
         internal static string TRAILER {
@@ -767,6 +794,15 @@ namespace TruckingVSConnect2.Languages {
         internal static string WALES {
             get {
                 return ResourceManager.GetString("WALES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Weight ähnelt.
+        /// </summary>
+        internal static string WEIGHT {
+            get {
+                return ResourceManager.GetString("WEIGHT", resourceCulture);
             }
         }
         
