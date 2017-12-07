@@ -288,7 +288,7 @@ namespace TruckingVSConnect2
             wheelsTranslated = Translator.GetTranslation("WHEELS");
             trailerTranslated = Translator.GetTranslation("TRAILER");
             fuelTranslated = Translator.GetTranslation("FUEL");
-            fuelRemainingDistanceTranslated = Translator.GetTranslation("FUEL_DISTANCE");
+            fuelRemainingDistanceTranslated = Translator.GetTranslation("FUEL_REMAINING_DISTANCE");
             fuelStatusTranslated = Translator.GetTranslation("FUEL_STATUS");
             pleaseRefillFuelTranslated = Translator.GetTranslation("PLEASE_REFILL_FUEL");
             lowFuelTranslated = Translator.GetTranslation("LOW_FUEL");
