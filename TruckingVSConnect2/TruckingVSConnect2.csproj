@@ -154,6 +154,14 @@
     <None Include="plugins\Win64\ets2-telemetry.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="CargoDamaged.png" />
+    <None Include="CargoFullyDamaged.png" />
+    <None Include="CargoHeavilyDamaged.png" />
+    <None Include="CargoSlightlyDamaged.png" />
+    <None Include="DrivetrainDamaged.png" />
+    <None Include="DrivetrainFullyDamaged.png" />
+    <None Include="DrivetrainHeavilyDamaged.png" />
+    <None Include="DrivetrainSlightlyDamaged.png" />
     <Content Include="TruckingVSConnect2.ico" />
     <None Include="TruckingVSConnect2Updater.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

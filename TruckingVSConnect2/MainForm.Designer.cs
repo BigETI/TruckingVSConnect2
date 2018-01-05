@@ -41,7 +41,6 @@
             this.gameNameLabel = new MaterialSkin.Controls.MaterialLabel();
             this.loggedInAsLabel = new MaterialSkin.Controls.MaterialLabel();
             this.loggedInAsTitleLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.gravatarPictureBox = new System.Windows.Forms.PictureBox();
             this.dataTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.speedPanel = new System.Windows.Forms.Panel();
             this.statusLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -58,6 +57,7 @@
             this.cargoLabel = new MaterialSkin.Controls.MaterialLabel();
             this.vehicleLabel = new MaterialSkin.Controls.MaterialLabel();
             this.healthPanel = new System.Windows.Forms.Panel();
+            this.averageLabel = new MaterialSkin.Controls.MaterialLabel();
             this.fuelRemainingDistanceLabel = new MaterialSkin.Controls.MaterialLabel();
             this.fuelLabel = new MaterialSkin.Controls.MaterialLabel();
             this.fuelStatusLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -67,26 +67,25 @@
             this.engineLabel = new MaterialSkin.Controls.MaterialLabel();
             this.chassisLabel = new MaterialSkin.Controls.MaterialLabel();
             this.cabinLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.cargoPictureBox = new System.Windows.Forms.PictureBox();
-            this.drivetrainPictureBox = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.logOutButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.switchLengthUnitButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.speedChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.drivetrainImageList = new System.Windows.Forms.ImageList(this.components);
-            this.cargoImageList = new System.Windows.Forms.ImageList(this.components);
+            this.gravatarPictureBox = new System.Windows.Forms.PictureBox();
+            this.drivetrainPanel = new System.Windows.Forms.Panel();
+            this.cargoPictureBox = new System.Windows.Forms.PictureBox();
             this.mainTableLayoutPanel.SuspendLayout();
             this.bodyTableLayoutPanel.SuspendLayout();
             this.headPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gravatarPictureBox)).BeginInit();
             this.dataTableLayoutPanel.SuspendLayout();
             this.speedPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
             this.healthPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drivetrainPictureBox)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.speedChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gravatarPictureBox)).BeginInit();
+            this.drivetrainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // updateTimer
@@ -183,15 +182,6 @@
             this.loggedInAsTitleLabel.Size = new System.Drawing.Size(140, 19);
             this.loggedInAsTitleLabel.TabIndex = 1;
             this.loggedInAsTitleLabel.Text = "{$LOGGED_IN_AS$}";
-            // 
-            // gravatarPictureBox
-            // 
-            this.gravatarPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.gravatarPictureBox.Name = "gravatarPictureBox";
-            this.gravatarPictureBox.Size = new System.Drawing.Size(64, 64);
-            this.gravatarPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.gravatarPictureBox.TabIndex = 0;
-            this.gravatarPictureBox.TabStop = false;
             // 
             // dataTableLayoutPanel
             // 
@@ -402,6 +392,8 @@
             // 
             // healthPanel
             // 
+            this.healthPanel.Controls.Add(this.averageLabel);
+            this.healthPanel.Controls.Add(this.drivetrainPanel);
             this.healthPanel.Controls.Add(this.fuelRemainingDistanceLabel);
             this.healthPanel.Controls.Add(this.fuelLabel);
             this.healthPanel.Controls.Add(this.fuelStatusLabel);
@@ -411,14 +403,25 @@
             this.healthPanel.Controls.Add(this.engineLabel);
             this.healthPanel.Controls.Add(this.chassisLabel);
             this.healthPanel.Controls.Add(this.cabinLabel);
-            this.healthPanel.Controls.Add(this.cargoPictureBox);
-            this.healthPanel.Controls.Add(this.drivetrainPictureBox);
             this.healthPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.healthPanel.Location = new System.Drawing.Point(555, 79);
             this.healthPanel.Name = "healthPanel";
             this.healthPanel.Size = new System.Drawing.Size(325, 412);
             this.healthPanel.TabIndex = 5;
             this.healthPanel.Visible = false;
+            // 
+            // averageLabel
+            // 
+            this.averageLabel.AutoSize = true;
+            this.averageLabel.Depth = 0;
+            this.averageLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.averageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.averageLabel.Location = new System.Drawing.Point(3, 282);
+            this.averageLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.averageLabel.Name = "averageLabel";
+            this.averageLabel.Size = new System.Drawing.Size(76, 19);
+            this.averageLabel.TabIndex = 11;
+            this.averageLabel.Text = "AVERAGE";
             // 
             // fuelRemainingDistanceLabel
             // 
@@ -468,7 +471,7 @@
             this.trailerLabel.Depth = 0;
             this.trailerLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.trailerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.trailerLabel.Location = new System.Drawing.Point(3, 99);
+            this.trailerLabel.Location = new System.Drawing.Point(3, 301);
             this.trailerLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.trailerLabel.Name = "trailerLabel";
             this.trailerLabel.Size = new System.Drawing.Size(67, 19);
@@ -539,26 +542,6 @@
             this.cabinLabel.Size = new System.Drawing.Size(53, 19);
             this.cabinLabel.TabIndex = 2;
             this.cabinLabel.Text = "CABIN";
-            // 
-            // cargoPictureBox
-            // 
-            this.cargoPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cargoPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.NoCargo;
-            this.cargoPictureBox.Location = new System.Drawing.Point(226, 64);
-            this.cargoPictureBox.Name = "cargoPictureBox";
-            this.cargoPictureBox.Size = new System.Drawing.Size(96, 256);
-            this.cargoPictureBox.TabIndex = 1;
-            this.cargoPictureBox.TabStop = false;
-            // 
-            // drivetrainPictureBox
-            // 
-            this.drivetrainPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.drivetrainPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.Drivetrain;
-            this.drivetrainPictureBox.Location = new System.Drawing.Point(226, 3);
-            this.drivetrainPictureBox.Name = "drivetrainPictureBox";
-            this.drivetrainPictureBox.Size = new System.Drawing.Size(96, 64);
-            this.drivetrainPictureBox.TabIndex = 0;
-            this.drivetrainPictureBox.TabStop = false;
             // 
             // flowLayoutPanel1
             // 
@@ -656,26 +639,34 @@
             this.speedChart.TabIndex = 2;
             this.speedChart.Visible = false;
             // 
-            // drivetrainImageList
+            // gravatarPictureBox
             // 
-            this.drivetrainImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("drivetrainImageList.ImageStream")));
-            this.drivetrainImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.drivetrainImageList.Images.SetKeyName(0, "Drivetrain.png");
-            this.drivetrainImageList.Images.SetKeyName(1, "DrivetrainSlightlyDamaged.png");
-            this.drivetrainImageList.Images.SetKeyName(2, "DrivetrainDamaged.png");
-            this.drivetrainImageList.Images.SetKeyName(3, "DrivetrainHeavilyDamaged.png");
-            this.drivetrainImageList.Images.SetKeyName(4, "DrivetrainFullyDamaged.png");
+            this.gravatarPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.gravatarPictureBox.Name = "gravatarPictureBox";
+            this.gravatarPictureBox.Size = new System.Drawing.Size(64, 64);
+            this.gravatarPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.gravatarPictureBox.TabIndex = 0;
+            this.gravatarPictureBox.TabStop = false;
             // 
-            // cargoImageList
+            // drivetrainPanel
             // 
-            this.cargoImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("cargoImageList.ImageStream")));
-            this.cargoImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.cargoImageList.Images.SetKeyName(0, "NoCargo.png");
-            this.cargoImageList.Images.SetKeyName(1, "Cargo.png");
-            this.cargoImageList.Images.SetKeyName(2, "CargoSlightlyDamaged.png");
-            this.cargoImageList.Images.SetKeyName(3, "CargoDamaged.png");
-            this.cargoImageList.Images.SetKeyName(4, "CargoHeavilyDamaged.png");
-            this.cargoImageList.Images.SetKeyName(5, "CargoFullyDamaged.png");
+            this.drivetrainPanel.BackgroundImage = global::TruckingVSConnect2.Properties.Resources.Drivetrain;
+            this.drivetrainPanel.Controls.Add(this.cargoPictureBox);
+            this.drivetrainPanel.Location = new System.Drawing.Point(7, 101);
+            this.drivetrainPanel.Name = "drivetrainPanel";
+            this.drivetrainPanel.Size = new System.Drawing.Size(352, 96);
+            this.drivetrainPanel.TabIndex = 12;
+            // 
+            // cargoPictureBox
+            // 
+            this.cargoPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cargoPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.cargoPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.NoCargo;
+            this.cargoPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.cargoPictureBox.Name = "cargoPictureBox";
+            this.cargoPictureBox.Size = new System.Drawing.Size(352, 96);
+            this.cargoPictureBox.TabIndex = 1;
+            this.cargoPictureBox.TabStop = false;
             // 
             // MainForm
             // 
@@ -692,18 +683,18 @@
             this.bodyTableLayoutPanel.ResumeLayout(false);
             this.headPanel.ResumeLayout(false);
             this.headPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gravatarPictureBox)).EndInit();
             this.dataTableLayoutPanel.ResumeLayout(false);
             this.speedPanel.ResumeLayout(false);
             this.dataPanel.ResumeLayout(false);
             this.dataPanel.PerformLayout();
             this.healthPanel.ResumeLayout(false);
             this.healthPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drivetrainPictureBox)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.speedChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gravatarPictureBox)).EndInit();
+            this.drivetrainPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -733,9 +724,6 @@
         private MaterialSkin.Controls.MaterialLabel cargoLabel;
         private System.Windows.Forms.Panel healthPanel;
         private System.Windows.Forms.PictureBox cargoPictureBox;
-        private System.Windows.Forms.PictureBox drivetrainPictureBox;
-        private System.Windows.Forms.ImageList drivetrainImageList;
-        private System.Windows.Forms.ImageList cargoImageList;
         private MaterialSkin.Controls.MaterialLabel cabinLabel;
         private MaterialSkin.Controls.MaterialLabel chassisLabel;
         private MaterialSkin.Controls.MaterialLabel engineLabel;
@@ -750,6 +738,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private MaterialSkin.Controls.MaterialLabel weightLabel;
         private MaterialSkin.Controls.MaterialLabel timeLabel;
+        private MaterialSkin.Controls.MaterialLabel averageLabel;
+        private System.Windows.Forms.Panel drivetrainPanel;
     }
 }
 

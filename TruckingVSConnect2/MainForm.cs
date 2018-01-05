@@ -6,6 +6,7 @@ using WinFormsTranslator;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using TruckingVSConnect2.Properties;
 
 /// <summary>
 /// Trucking VS Connect² namespace
@@ -71,6 +72,16 @@ namespace TruckingVSConnect2
         /// Speed limit data
         /// </summary>
         private List<double> speedLimitData = new List<double>();
+
+        /// <summary>
+        /// Drivetrain images
+        /// </summary>
+        private Image[] drivetrainImages;
+
+        /// <summary>
+        /// CargoImaghes
+        /// </summary>
+        private Image[] cargoImages;
 
         /// <summary>
         /// Start game now translated
@@ -153,6 +164,11 @@ namespace TruckingVSConnect2
         private string deadlineTranslated;
 
         /// <summary>
+        /// Deadline available translated
+        /// </summary>
+        private string deadlineAvailableTranslated;
+
+        /// <summary>
         /// Idle translated
         /// </summary>
         private string idleTranslated;
@@ -191,6 +207,11 @@ namespace TruckingVSConnect2
         /// Trailer translated
         /// </summary>
         private string trailerTranslated;
+
+        /// <summary>
+        /// Average translated
+        /// </summary>
+        private string averageTranslated;
 
         /// <summary>
         /// Fuel translated
@@ -279,6 +300,7 @@ namespace TruckingVSConnect2
             yieldTranslated = Translator.GetTranslation("YIELD");
             weightTranslated = Translator.GetTranslation("WEIGHT");
             deadlineTranslated = Translator.GetTranslation("DEADLINE");
+            deadlineAvailableTranslated = Translator.GetTranslation("DEADLINE_AVAILABLE");
             idleTranslated = Translator.GetTranslation("IDLE");
             unlimitedTranslated = Translator.GetTranslation("UNLIMITED");
             cabinTranslated = Translator.GetTranslation("CABIN");
@@ -287,6 +309,7 @@ namespace TruckingVSConnect2
             transmissionTranslated = Translator.GetTranslation("TRANSMISSION");
             wheelsTranslated = Translator.GetTranslation("WHEELS");
             trailerTranslated = Translator.GetTranslation("TRAILER");
+            averageTranslated = Translator.GetTranslation("AVERAGE");
             fuelTranslated = Translator.GetTranslation("FUEL");
             fuelRemainingDistanceTranslated = Translator.GetTranslation("FUEL_REMAINING_DISTANCE");
             fuelStatusTranslated = Translator.GetTranslation("FUEL_STATUS");
@@ -308,6 +331,24 @@ namespace TruckingVSConnect2
             speedChart.Legends[0].Title = Translator.GetTranslation(Configuration.UseMetricUnit ? "SPEED_IN_KMH" : "SPEED_IN_MPH");
             speedChart.Series[0].Name = Translator.GetTranslation("CURRENT");
             speedChart.Series[1].Name = Translator.GetTranslation("LIMIT");
+
+            drivetrainImages = new Image[]
+            {
+                Resources.Drivetrain,
+                Resources.DrivetrainSlightlyDamaged,
+                Resources.DrivetrainDamaged,
+                Resources.DrivetrainHeavilyDamaged,
+                Resources.DrivetrainFullyDamaged
+            };
+            cargoImages = new Image[]
+            {
+                Resources.NoCargo,
+                Resources.Cargo,
+                Resources.CargoSlightlyDamaged,
+                Resources.CargoDamaged,
+                Resources.CargoHeavilyDamaged,
+                Resources.CargoFullyDamaged
+            };
         }
 
         /// <summary>
@@ -463,7 +504,7 @@ namespace TruckingVSConnect2
                     gameNameLabel.Text = Utils.IsAGameRunning ? Utils.RunningGameName : startGameNowTranslated;
                     if (game_running)
                     {
-                        speedLabel.Text = (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.SpeedKmh) + " km/h") : (Math.Round(data.Drivetrain.SpeedMph) + " mph")) + (data.Drivetrain.CruiseControl ? ("; " + cruiseControlTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.CruiseControlSpeedKmh) + " km/h") : (Math.Round(data.Drivetrain.CruiseControlSpeedMph) + " mph"))) : "");
+                        speedLabel.Text = (Configuration.UseMetricUnit ? (Math.Round(Math.Abs(data.Drivetrain.SpeedKmh)) + " km/h") : (Math.Round(Math.Abs(data.Drivetrain.SpeedMph)) + " mph")) + (data.Drivetrain.CruiseControl ? ("; " + cruiseControlTranslated + ": " + (Configuration.UseMetricUnit ? (Math.Round(data.Drivetrain.CruiseControlSpeedKmh) + " km/h") : (Math.Round(data.Drivetrain.CruiseControlSpeedMph) + " mph"))) : "");
                         float delta_speed_limit = data.Drivetrain.Speed - data.Job.SpeedLimit;
                         speedLabel.ForeColor = ((data.Job.SpeedLimit <= 0.0f) ? Color.White : Utils.ColorGradient(Color.White, Color.Red, delta_speed_limit / 1.4f));
                         speedLimitLabel.Text = speedLimitTranslated + ": " + ((data.Job.SpeedLimit == -1.0f) ? unlimitedTranslated : Math.Round(Utils.ConvertSpeed(data.Job.SpeedLimit)) + (Configuration.UseMetricUnit ? " km/h" : " mph"));
@@ -473,12 +514,12 @@ namespace TruckingVSConnect2
                             statusLabel.Text = statusTranslated + ": " + deliverCargoTranslated;
                             cargoLabel.Text = cargoTranslated + ": " + data.Job.Cargo;
                             sourceLabel.Text = sourceTranslated + ": " + data.Job.CompanySource + " " + inTranslated + " " + Cities.GetFullCityName(data.Job.CitySource);
-                            destinationLabel.Text = destinationTranslated + ": " + data.Job.CompanyDestination + ", " + Cities.GetFullCityName(data.Job.CityDestination);
+                            destinationLabel.Text = destinationTranslated + ": " + data.Job.CompanyDestination + " " + inTranslated + " " + Cities.GetFullCityName(data.Job.CityDestination);
                             routeLabel.Text = routeTranslated + ": " + Utils.HumanReadableLength(data.Job.NavigationDistanceLeft) + " " + ofTranslated + " " + Utils.HumanReadableLength(api.Distance) + " (" + ((api.Distance > float.Epsilon) ? 100.0f : ((data.Job.NavigationDistanceLeft * 100.0f) / api.Distance)) + "%)";
                             timeLabel.Text = timeTranslated + ": " + Utils.HumanReadableTime(data.Job.NavigationTimeLeft) + " " + ofTranslated + " " + Utils.HumanReadableTime(api.Time);
                             yieldLabel.Text = yieldTranslated + ": " + data.Job.Income + "€";
-                            weightLabel.Text = weightTranslated + ": " + Utils.HumanReadableWeight(data.Job.Mass);
-                            deadlineLabel.Text = deadlineTranslated + ": " + ((data.Job.Deadline == -1) ? unlimitedTranslated : data.Job.Deadline.ToString());
+                            weightLabel.Text = weightTranslated + ": " + Math.Round(data.Job.Mass).ToString("N0") + " kg";
+                            deadlineLabel.Text = deadlineTranslated + ": " + ((data.Job.Deadline == -1) ? unlimitedTranslated : deadlineAvailableTranslated);
                         }
                         else
                         {
@@ -498,49 +539,50 @@ namespace TruckingVSConnect2
                         transmissionLabel.Text = transmissionTranslated + ": " + Math.Round(100.0f - (data.Damage.WearTransmission * 100.0f)) + "%";
                         wheelsLabel.Text = wheelsTranslated + ": " + Math.Round(100.0f - (data.Damage.WearWheels * 100.0f)) + "%";
                         trailerLabel.Text = (data.Job.TrailerAttached) ? (trailerTranslated + ": " + Math.Round(100.0f - (data.Damage.WearTrailer * 100.0f)) + "%") : "";
-                        float damage = Math.Max(data.Damage.WearCabin, Math.Max(data.Damage.WearChassis, Math.Max(data.Damage.WearEnigne, Math.Max(data.Damage.WearTransmission, data.Damage.WearWheels))));
+                        averageLabel.Text = averageTranslated + ": " + Math.Round((data.Damage.WearCabin + data.Damage.WearChassis + data.Damage.WearEnigne + data.Damage.WearTransmission + data.Damage.WearWheels) * 20.0f) + "%";
+                        float max_damage = Math.Max(data.Damage.WearCabin, Math.Max(data.Damage.WearChassis, Math.Max(data.Damage.WearEnigne, Math.Max(data.Damage.WearTransmission, data.Damage.WearWheels))));
                         int image_id = 0;
-                        if (damage >= 0.9f)
+                        if (max_damage >= 0.9f)
                         {
                             image_id = 4;
                         }
-                        else if (damage >= 0.7f)
+                        else if (max_damage >= 0.7f)
                         {
                             image_id = 3;
                         }
-                        else if (damage >= 0.5f)
+                        else if (max_damage >= 0.5f)
                         {
                             image_id = 2;
                         }
-                        else if (damage >= 0.3f)
+                        else if (max_damage >= 0.3f)
                         {
                             image_id = 1;
                         }
-                        else if (damage >= 0.0f)
+                        else if (max_damage >= 0.0f)
                         {
                             image_id = 0;
                         }
-                        drivetrainPictureBox.Image = drivetrainImageList.Images[image_id];
-                        damage = data.Damage.WearTrailer;
+                        drivetrainPanel.BackgroundImage = drivetrainImages[image_id];
+                        max_damage = data.Damage.WearTrailer;
                         if (data.Job.TrailerAttached)
                         {
-                            if (damage >= 0.9f)
+                            if (max_damage >= 0.9f)
                             {
                                 image_id = 5;
                             }
-                            else if (damage >= 0.7f)
+                            else if (max_damage >= 0.7f)
                             {
                                 image_id = 4;
                             }
-                            else if (damage >= 0.5f)
+                            else if (max_damage >= 0.5f)
                             {
                                 image_id = 3;
                             }
-                            else if (damage >= 0.3f)
+                            else if (max_damage >= 0.3f)
                             {
                                 image_id = 2;
                             }
-                            else if (damage >= 0.0f)
+                            else if (max_damage >= 0.0f)
                             {
                                 image_id = 1;
                             }
@@ -549,7 +591,7 @@ namespace TruckingVSConnect2
                         {
                             image_id = 0;
                         }
-                        cargoPictureBox.Image = cargoImageList.Images[image_id];
+                        cargoPictureBox.Image = cargoImages[image_id];
                         while (currentSpeedData.Count >= chartPointCountLimit)
                         {
                             currentSpeedData.RemoveAt(0);
@@ -570,8 +612,8 @@ namespace TruckingVSConnect2
                             if ((chartUpdateTickCounter % 2) == 0)
                             {
                                 chartUpdateTickCounter = 0;
-                                currentSpeedData.Add(Configuration.UseMetricUnit ? data.Drivetrain.SpeedKmh : data.Drivetrain.SpeedMph);
-                                speedLimitData.Add(Utils.ConvertSpeed((data.Job.SpeedLimit == -1.0f) ? 0.0f : data.Job.SpeedLimit));
+                                currentSpeedData.Add(Math.Round(Configuration.UseMetricUnit ? data.Drivetrain.SpeedKmh : data.Drivetrain.SpeedMph, 2));
+                                speedLimitData.Add(Math.Abs(Utils.ConvertSpeed((data.Job.SpeedLimit == -1.0f) ? 0.0f : data.Job.SpeedLimit)));
                                 speedChart.Series[0].Points.DataBindY(currentSpeedData);
                                 speedChart.Series[1].Points.DataBindY(speedLimitData);
                             }

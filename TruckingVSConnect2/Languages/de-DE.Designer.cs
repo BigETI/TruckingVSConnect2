@@ -108,6 +108,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Durchschnitt ähnelt.
+        /// </summary>
+        internal static string AVERAGE {
+            get {
+                return ResourceManager.GetString("AVERAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Rückwärts ähnelt.
         /// </summary>
         internal static string BACKWARDS {
@@ -203,6 +212,15 @@ namespace TruckingVSConnect2.Languages {
         internal static string DEADLINE {
             get {
                 return ResourceManager.GetString("DEADLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Verfügbar ähnelt.
+        /// </summary>
+        internal static string DEADLINE_AVAILABLE {
+            get {
+                return ResourceManager.GetString("DEADLINE_AVAILABLE", resourceCulture);
             }
         }
         

@@ -28,7 +28,7 @@ namespace TruckingVSConnect2
         /// <summary>
         /// And translated
         /// </summary>
-        private static string andTranslated;
+        //private static string andTranslated;
 
         /// <summary>
         /// Backwards translated
@@ -112,50 +112,45 @@ namespace TruckingVSConnect2
         /// Human readable length
         /// </summary>
         /// <param name="length">Length in meters</param>
-        /// <returns>Human readable length in "km and m" or "ml and yd"</returns>
+        /// <returns>Human readable length in "km or m" or "ml or yd"</returns>
         public static string HumanReadableLength(float length)
         {
-            if (andTranslated == null)
-            {
-                andTranslated = Translator.GetTranslation("AND");
-            }
             if (backwardsTranslated == null)
             {
                 backwardsTranslated = Translator.GetTranslation("BACKWARDS");
             }
-            int l = (int)(Math.Round(Math.Abs(length) * (Configuration.UseMetricUnit ? 1.0f : 1.093613f)));
+            int l = (int)(Math.Ceiling(Math.Abs(length) * (Configuration.UseMetricUnit ? 1.0f : 1.093613f)));
             int ngu = (Configuration.UseMetricUnit ? 1000 : 1760);
             int gl = (l / ngu);
-            return (((gl > 0) ? (gl + (Configuration.UseMetricUnit ? " km " : " ml ") + andTranslated + " ") : "") + (l % ngu) + (Configuration.UseMetricUnit ? " m" : " yd")) + ((length < -float.Epsilon) ? " (" + backwardsTranslated + ")" : "");
+            return (((gl > 0) ? (gl + (Configuration.UseMetricUnit ? " km" : " ml")) : ((l % ngu) + (Configuration.UseMetricUnit ? " m" : " yd"))) + ((length < 0.0f) ? (" (" + backwardsTranslated + ")") : ""));
         }
 
         /// <summary>
         /// Human readable weight
         /// </summary>
         /// <param name="weight">Weight in kg</param>
-        /// <returns>Human readable weight in "t and kg"</returns>
+        /// <returns>Human readable weight in "t" or "kg"</returns>
         public static string HumanReadableWeight(float weight)
         {
-            if (andTranslated == null)
-            {
-                andTranslated = Translator.GetTranslation("AND");
-            }
-            int w = (int)(Math.Round(Math.Abs(weight)));
-            return ((w / 1000) + " t " + andTranslated + " " + (w % 1000) + " kg");
+            int w = (int)weight;
+            int t = w / 1000;
+            int kg = w % 1000;
+            return ((t > 0) ? (Math.Round(t + (kg / 1000.0), 2) + " t") : (Math.Round(kg + (weight - w), 2) + " kg"));
         }
 
         /// <summary>
         /// Human readable time
         /// </summary>
-        /// <param name="seconds">Tme in seconds</param>
-        /// <returns>Time in "d h min s"</returns>
-        public static string HumanReadableTime(float seconds)
+        /// <param name="time">Time in seconds</param>
+        /// <returns>Human readable time in "d", "h", "min" or "s"</returns>
+        public static string HumanReadableTime(float time)
         {
-            int s = (int)(Math.Round(seconds));
+            int s = (int)(Math.Ceiling(time));
             int min = (s / 60) % 60;
             int h = (s / 3600) % 24;
             int d = (s / 86400);
-            return (((d > 0) ? (d + " d") : "") + ((min > 0) ? (((d > 0) ? " " : "") + min + " min") : "") + ((((d > 0) || (min > 0)) ? " " : "") + (s % 60) + " s"));
+            return ((d > 0) ? (d + " d") : ((h > 0) ? (h + " h") : ((min > 0) ? (min + " min") : (s + " s"))));
+            //return ((d > 0) ? (d + " d") : "") + ((h > 0) ? (((d > 0) ? " " : "") + h + " h") : "") + ((min > 0) ? ((((d > 0) || (h > 0)) ? " " : "") + min + " min") : "") + ((s > 0) ? ((((d > 0) || (h > 0) || (min > 0)) ? " " : "") + s + " s") : "");
         }
 
         /// <summary>

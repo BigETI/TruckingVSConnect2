@@ -134,6 +134,9 @@
   <data name="AUTO_LOG_IN" xml:space="preserve">
     <value>Remember me</value>
   </data>
+  <data name="AVERAGE" xml:space="preserve">
+    <value>Average</value>
+  </data>
   <data name="BACKWARDS" xml:space="preserve">
     <value>backwards</value>
   </data>
@@ -166,6 +169,9 @@
   </data>
   <data name="DEADLINE" xml:space="preserve">
     <value>Deadline</value>
+  </data>
+  <data name="DEADLINE_AVAILABLE" xml:space="preserve">
+    <value>Available</value>
   </data>
   <data name="DELIVER_CARGO" xml:space="preserve">
     <value>Deliver cargo</value>
