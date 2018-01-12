@@ -122,6 +122,9 @@
 
 </value>
   </data>
+  <data name="ADD_USER" xml:space="preserve">
+    <value>Add user</value>
+  </data>
   <data name="AND" xml:space="preserve">
     <value>and</value>
   </data>
@@ -145,6 +148,9 @@
   </data>
   <data name="CABIN" xml:space="preserve">
     <value>Cabin</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="CARGO" xml:space="preserve">
     <value>Cargo</value>
@@ -239,6 +245,9 @@ Cancel, if you want to specify it later.</value>
   <data name="GERMANY" xml:space="preserve">
     <value>Germany</value>
   </data>
+  <data name="GROUP_TITLE" xml:space="preserve">
+    <value>Group</value>
+  </data>
   <data name="HUNGARY" xml:space="preserve">
     <value>Hungary</value>
   </data>
@@ -253,6 +262,9 @@ Cancel, if you want to specify it later.</value>
   </data>
   <data name="LIMIT" xml:space="preserve">
     <value>Limit</value>
+  </data>
+  <data name="LIVE_MAP" xml:space="preserve">
+    <value>Live map</value>
   </data>
   <data name="LOGGED_IN_AS" xml:space="preserve">
     <value>Logged in as</value>
@@ -272,14 +284,29 @@ Cancel, if you want to specify it later.</value>
   <data name="MINUTES" xml:space="preserve">
     <value>minutes</value>
   </data>
+  <data name="NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="NETHERLANDS" xml:space="preserve">
     <value>Netherlands</value>
   </data>
   <data name="NORWAY" xml:space="preserve">
     <value>Norway</value>
   </data>
+  <data name="NOT_AVAILABLE" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="NO_GAME_IS_RUNNING" xml:space="preserve">
+    <value>No game is running</value>
+  </data>
+  <data name="NO_LIVE_MAP_FOR_GAME" xml:space="preserve">
+    <value>There is no live map for {0} yet</value>
+  </data>
   <data name="OF" xml:space="preserve">
     <value>of</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="PASSWORD_HINT" xml:space="preserve">
     <value>Password...</value>
@@ -296,6 +323,9 @@ Cancel, if you want to specify it later.</value>
   <data name="REFILL_LATER" xml:space="preserve">
     <value>Refill later</value>
   </data>
+  <data name="REMAINING_TIME" xml:space="preserve">
+    <value>Remaining time</value>
+  </data>
   <data name="ROUTE" xml:space="preserve">
     <value>Route</value>
   </data>
@@ -308,11 +338,17 @@ Cancel, if you want to specify it later.</value>
   <data name="SELECT_LANGUAGE" xml:space="preserve">
     <value>Select language</value>
   </data>
+  <data name="SHOW_GROUP" xml:space="preserve">
+    <value>Show group</value>
+  </data>
   <data name="SLOVAKIA" xml:space="preserve">
     <value>Slovakia</value>
   </data>
   <data name="SOURCE" xml:space="preserve">
     <value>Source</value>
+  </data>
+  <data name="SPEED" xml:space="preserve">
+    <value>Speed</value>
   </data>
   <data name="SPEED_IN_KMH" xml:space="preserve">
     <value>Speed in km/h</value>
@@ -338,8 +374,14 @@ Cancel, if you want to specify it later.</value>
   <data name="SWITZERLAND" xml:space="preserve">
     <value>Switzerland</value>
   </data>
-  <data name="TIME" xml:space="preserve">
-    <value>Time</value>
+  <data name="TOTAL_ROUTE" xml:space="preserve">
+    <value>Total route</value>
+  </data>
+  <data name="TOTAL_WEIGHT" xml:space="preserve">
+    <value>Total weight</value>
+  </data>
+  <data name="TOTAL_YIELD" xml:space="preserve">
+    <value>Total yield</value>
   </data>
   <data name="TRAILER" xml:space="preserve">
     <value>Trailer</value>
@@ -352,6 +394,9 @@ Cancel, if you want to specify it later.</value>
   </data>
   <data name="TRUCKING_VS_LOGIN" xml:space="preserve">
     <value>Trucking VS login</value>
+  </data>
+  <data name="UNITED_KINGDOM" xml:space="preserve">
+    <value>United Kingdom</value>
   </data>
   <data name="UNKNOWN" xml:space="preserve">
     <value>Unknown</value>
@@ -368,6 +413,15 @@ Version: {0}
 
 Do you want to install it now?</value>
   </data>
+  <data name="USERNAME_ALREADY_EXISTS" xml:space="preserve">
+    <value>Username already exists</value>
+  </data>
+  <data name="USERNAME_ALREADY_EXISTS_MESSAGE" xml:space="preserve">
+    <value>This username already exists in your group.</value>
+  </data>
+  <data name="USERNAME_HINT" xml:space="preserve">
+    <value>Username...</value>
+  </data>
   <data name="VEHICLE" xml:space="preserve">
     <value>Vehicle</value>
   </data>
@@ -380,7 +434,16 @@ Do you want to install it now?</value>
   <data name="WHEELS" xml:space="preserve">
     <value>Wheels</value>
   </data>
+  <data name="WINDOW_SIZE_TOO_SMALL" xml:space="preserve">
+    <value>Window size is too small</value>
+  </data>
   <data name="YIELD" xml:space="preserve">
     <value>Yield</value>
+  </data>
+  <data name="YOU_CAN_NOT_ADD_YOURSELF" xml:space="preserve">
+    <value>You can't add yourself</value>
+  </data>
+  <data name="YOU_CAN_NOT_ADD_YOURSELF_MESSAGE" xml:space="preserve">
+    <value>You can't add yourself to the group.</value>
   </data>
 </root>

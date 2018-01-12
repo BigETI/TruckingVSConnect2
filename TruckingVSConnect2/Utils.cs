@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
+using System.Windows.Forms;
+using TruckingVSConnect2.Properties;
 using WinFormsTranslator;
 
 /// <summary>
@@ -21,9 +24,9 @@ namespace TruckingVSConnect2
         private static DateTime lastGameCheckTimestamp;
 
         /// <summary>
-        /// Running game name
+        /// Running game
         /// </summary>
-        private static string runningGameName;
+        private static EGame runningGame;
 
         /// <summary>
         /// And translated
@@ -34,6 +37,19 @@ namespace TruckingVSConnect2
         /// Backwards translated
         /// </summary>
         private static string backwardsTranslated;
+
+        /// <summary>
+        /// Clamp
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="val"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static T Clamp<T>(this T val, T min, T max) where T : IComparable<T>
+        {
+            return (val.CompareTo(min) < 0) ? min : ((val.CompareTo(max) > 0) ? max : val);
+        }
 
         /// <summary>
         /// Color gradient
@@ -77,7 +93,7 @@ namespace TruckingVSConnect2
             }
             catch (Exception e)
             {
-                Debug.Print(e.Message);
+                Console.Error.WriteLine(e.Message);
             }
             return ret;
         }
@@ -94,7 +110,7 @@ namespace TruckingVSConnect2
             }
             catch (Exception e)
             {
-                Debug.Print(e.Message);
+                Console.Error.WriteLine(e.Message);
             }
         }
 
@@ -132,10 +148,12 @@ namespace TruckingVSConnect2
         /// <returns>Human readable weight in "t" or "kg"</returns>
         public static string HumanReadableWeight(float weight)
         {
-            int w = (int)weight;
+            return Math.Round(weight * 0.001f, 2).ToString() + " t";
+
+            /*int w = (int)weight;
             int t = w / 1000;
             int kg = w % 1000;
-            return ((t > 0) ? (Math.Round(t + (kg / 1000.0), 2) + " t") : (Math.Round(kg + (weight - w), 2) + " kg"));
+            return ((t > 0) ? (Math.Round(t + (kg / 1000.0), 2) + " t") : (Math.Round(kg + (weight - w), 2) + " kg"));*/
         }
 
         /// <summary>
@@ -147,10 +165,51 @@ namespace TruckingVSConnect2
         {
             int s = (int)(Math.Ceiling(time));
             int min = (s / 60) % 60;
+            int h = (s / 3600);
+            return string.Format((h < 100) ? "{0:00}:{1:00}h" : "{0}:{1:00}h", h, min);
+
+            /*int s = (int)(Math.Ceiling(time));
+            int min = (s / 60) % 60;
             int h = (s / 3600) % 24;
             int d = (s / 86400);
-            return ((d > 0) ? (d + " d") : ((h > 0) ? (h + " h") : ((min > 0) ? (min + " min") : (s + " s"))));
-            //return ((d > 0) ? (d + " d") : "") + ((h > 0) ? (((d > 0) ? " " : "") + h + " h") : "") + ((min > 0) ? ((((d > 0) || (h > 0)) ? " " : "") + min + " min") : "") + ((s > 0) ? ((((d > 0) || (h > 0) || (min > 0)) ? " " : "") + s + " s") : "");
+            return ((d > 0) ? (d + " d") : ((h > 0) ? (h + " h") : ((min > 0) ? (min + " min") : (s + " s"))));*/
+        }
+
+        /// <summary>
+        /// Running game
+        /// </summary>
+        public static EGame RunningGame
+        {
+            get
+            {
+                if ((DateTime.Now - lastGameCheckTimestamp).TotalSeconds > 2)
+                {
+                    EGame game = EGame.Nothing;
+                    lastGameCheckTimestamp = DateTime.Now;
+                    foreach (Process process in Process.GetProcesses())
+                    {
+                        try
+                        {
+                            if (process.ProcessName == "eurotrucks2")
+                            {
+                                game = EGame.ETS2;
+                                break;
+                            }
+                            else if (process.ProcessName == "amtrucks")
+                            {
+                                game = EGame.ATS;
+                                break;
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.Error.WriteLine(e.Message);
+                        }
+                    }
+                    runningGame = game;
+                }
+                return runningGame;
+            }
         }
 
         /// <summary>
@@ -160,33 +219,38 @@ namespace TruckingVSConnect2
         {
             get
             {
-                if ((DateTime.Now - lastGameCheckTimestamp).TotalSeconds > 2)
+                string ret = null;
+                switch (RunningGame)
                 {
-                    string game_name = null;
-                    lastGameCheckTimestamp = DateTime.Now;
-                    foreach (Process process in Process.GetProcesses())
-                    {
-                        try
-                        {
-                            if (process.ProcessName == "eurotrucks2")
-                            {
-                                game_name = "Euro Truck Simulator 2";
-                                break;
-                            }
-                            else if (process.ProcessName == "amtrucks")
-                            {
-                                game_name = "American Truck Simulator";
-                                break;
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Debug.Print(e.Message);
-                        }
-                    }
-                    runningGameName = game_name;
+                    case EGame.ETS2:
+                        ret = "Euro Truck Simulator 2";
+                        break;
+                    case EGame.ATS:
+                        ret = "American Truck Simulator";
+                        break;
+                    default:
+                        ret = "";
+                        break;
                 }
-                return runningGameName;
+                return ret;
+            }
+        }
+
+        /// <summary>
+        /// Running game live map image
+        /// </summary>
+        public static Image RunningGameLiveMapImage
+        {
+            get
+            {
+                Image ret = null;
+                switch (RunningGame)
+                {
+                    case EGame.ETS2:
+                        ret = Resources.ETS2LiveMap;
+                        break;
+                }
+                return ret;
             }
         }
 
@@ -197,7 +261,7 @@ namespace TruckingVSConnect2
         {
             get
             {
-                return (RunningGameName != null);
+                return (RunningGame != EGame.Nothing);
             }
         }
 
@@ -219,6 +283,46 @@ namespace TruckingVSConnect2
                     break;
             }
             return ret;
+        }
+
+        /// <summary>
+        /// Show add user dialog
+        /// </summary>
+        public static void ShowAddUserDialog()
+        {
+            if (MainForm.API != null)
+            {
+                TextEditForm tef = new TextEditForm("", Translator.GetTranslation("ADD_USER"), Translator.GetTranslation("USERNAME_HINT"));
+                if (tef.ShowDialog() == DialogResult.OK)
+                {
+                    string value = tef.Value;
+                    UserConfigData user_config = Configuration.GetUserConfigData(MainForm.API.Username);
+                    string[] users = user_config.Following;
+                    bool success = true;
+                    if (value.ToLower() == MainForm.API.Username.ToLower())
+                    {
+                        MessageBox.Show(Translator.GetTranslation("YOU_CAN_NOT_ADD_YOURSELF_MESSAGE"), Translator.GetTranslation("YOU_CAN_NOT_ADD_YOURSELF"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        success = false;
+                    }
+                    foreach (string user in users)
+                    {
+                        if (user.ToLower() == value.ToLower())
+                        {
+                            MessageBox.Show(Translator.GetTranslation("USERNAME_ALREADY_EXISTS_MESSAGE"), Translator.GetTranslation("USERNAME_ALREADY_EXISTS"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            success = false;
+                            break;
+                        }
+                    }
+                    if (success)
+                    {
+                        List<string> u = new List<string>(users);
+                        u.Add(value);
+                        user_config.Following = u.ToArray();
+                        u.Clear();
+                        Configuration.Save();
+                    }
+                }
+            }
         }
     }
 }

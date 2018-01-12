@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Security.Cryptography;
@@ -56,6 +55,16 @@ namespace TruckingVSConnect2
         private float distance;
 
         /// <summary>
+        /// Weight
+        /// </summary>
+        private float weight;
+
+        /// <summary>
+        /// Yield
+        /// </summary>
+        private int yield;
+
+        /// <summary>
         /// Time
         /// </summary>
         private float time;
@@ -105,6 +114,28 @@ namespace TruckingVSConnect2
             get
             {
                 return distance;
+            }
+        }
+
+        /// <summary>
+        /// Weight
+        /// </summary>
+        public float Weight
+        {
+            get
+            {
+                return weight;
+            }
+        }
+
+        /// <summary>
+        /// Yield
+        /// </summary>
+        public int Yield
+        {
+            get
+            {
+                return yield;
             }
         }
 
@@ -220,7 +251,7 @@ namespace TruckingVSConnect2
             }
             catch (Exception e)
             {
-                Debug.Print(e.Message);
+                Console.Error.WriteLine(e.Message);
             }
             return ret;
         }
@@ -274,9 +305,10 @@ namespace TruckingVSConnect2
         /// <param name="telemetryData">Telemetry data</param>
         private void NewJob(Ets2Telemetry telemetryData)
         {
-            Debug.Print("NewJob");
             CancelJob();
             distance = telemetryData.Job.NavigationDistanceLeft;
+            weight = telemetryData.Job.Mass;
+            yield = telemetryData.Job.Income;
             time = telemetryData.Job.NavigationTimeLeft;
             if (distance > float.Epsilon)
             {
@@ -305,7 +337,6 @@ namespace TruckingVSConnect2
         {
             if (jobID != null)
             {
-                Debug.Print("UpdateJobData : " + DateTime.Now.ToLongTimeString());
                 int percentage = (int)(Math.Round(((distance - telemetryData.Job.NavigationDistanceLeft) * 100.0f) / distance));
                 if (percentage > 0)
                 {
@@ -328,7 +359,6 @@ namespace TruckingVSConnect2
         {
             if (jobID != null)
             {
-                Debug.Print("FinishJob");
                 HTTPPostRequest(new Dictionary<string, string>()
                     {
                         { "event", "finishJob" },
@@ -349,7 +379,6 @@ namespace TruckingVSConnect2
         {
             if (jobID != null)
             {
-                Debug.Print("CancelJob\r\n");
                 HTTPPostRequest(new Dictionary<string, string>()
                     {
                         { "event", "cancelJob" },

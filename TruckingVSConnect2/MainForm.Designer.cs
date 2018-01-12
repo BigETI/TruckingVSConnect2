@@ -47,7 +47,10 @@
             this.speedLabel = new MaterialSkin.Controls.MaterialLabel();
             this.speedLimitLabel = new MaterialSkin.Controls.MaterialLabel();
             this.dataPanel = new System.Windows.Forms.Panel();
-            this.timeLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.totalYieldLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.totalWeightLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.totalRouteLabel = new MaterialSkin.Controls.MaterialLabel();
+            this.remainingTimeLabel = new MaterialSkin.Controls.MaterialLabel();
             this.weightLabel = new MaterialSkin.Controls.MaterialLabel();
             this.deadlineLabel = new MaterialSkin.Controls.MaterialLabel();
             this.yieldLabel = new MaterialSkin.Controls.MaterialLabel();
@@ -71,7 +74,11 @@
             this.logOutButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.switchLengthUnitButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.speedChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupPictureBox = new System.Windows.Forms.PictureBox();
+            this.liveMapPictureBox = new System.Windows.Forms.PictureBox();
             this.gravatarPictureBox = new System.Windows.Forms.PictureBox();
+            this.fuelGaugePanel = new System.Windows.Forms.Panel();
+            this.fuelGaugeNeedlePictureBox = new System.Windows.Forms.PictureBox();
             this.drivetrainPanel = new System.Windows.Forms.Panel();
             this.cargoPictureBox = new System.Windows.Forms.PictureBox();
             this.mainTableLayoutPanel.SuspendLayout();
@@ -83,7 +90,11 @@
             this.healthPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.speedChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.liveMapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gravatarPictureBox)).BeginInit();
+            this.fuelGaugePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fuelGaugeNeedlePictureBox)).BeginInit();
             this.drivetrainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -116,8 +127,8 @@
             // bodyTableLayoutPanel
             // 
             this.bodyTableLayoutPanel.ColumnCount = 2;
-            this.bodyTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.55981F));
-            this.bodyTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.44019F));
+            this.bodyTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.bodyTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.bodyTableLayoutPanel.Controls.Add(this.headPanel, 0, 0);
             this.bodyTableLayoutPanel.Controls.Add(this.dataTableLayoutPanel, 0, 1);
             this.bodyTableLayoutPanel.Controls.Add(this.healthPanel, 1, 1);
@@ -133,6 +144,8 @@
             // 
             // headPanel
             // 
+            this.headPanel.Controls.Add(this.groupPictureBox);
+            this.headPanel.Controls.Add(this.liveMapPictureBox);
             this.headPanel.Controls.Add(this.gameNameLabel);
             this.headPanel.Controls.Add(this.loggedInAsLabel);
             this.headPanel.Controls.Add(this.loggedInAsTitleLabel);
@@ -140,7 +153,7 @@
             this.headPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.headPanel.Location = new System.Drawing.Point(3, 3);
             this.headPanel.Name = "headPanel";
-            this.headPanel.Size = new System.Drawing.Size(546, 70);
+            this.headPanel.Size = new System.Drawing.Size(477, 70);
             this.headPanel.TabIndex = 1;
             // 
             // gameNameLabel
@@ -195,7 +208,7 @@
             this.dataTableLayoutPanel.RowCount = 2;
             this.dataTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.dataTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.dataTableLayoutPanel.Size = new System.Drawing.Size(546, 412);
+            this.dataTableLayoutPanel.Size = new System.Drawing.Size(477, 412);
             this.dataTableLayoutPanel.TabIndex = 4;
             // 
             // speedPanel
@@ -206,7 +219,7 @@
             this.speedPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.speedPanel.Location = new System.Drawing.Point(3, 3);
             this.speedPanel.Name = "speedPanel";
-            this.speedPanel.Size = new System.Drawing.Size(540, 90);
+            this.speedPanel.Size = new System.Drawing.Size(471, 90);
             this.speedPanel.TabIndex = 2;
             this.speedPanel.Visible = false;
             // 
@@ -220,7 +233,7 @@
             this.statusLabel.Location = new System.Drawing.Point(3, 66);
             this.statusLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(534, 24);
+            this.statusLabel.Size = new System.Drawing.Size(465, 24);
             this.statusLabel.TabIndex = 4;
             this.statusLabel.Text = "STATUS";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -235,7 +248,7 @@
             this.speedLabel.Location = new System.Drawing.Point(3, 3);
             this.speedLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.speedLabel.Name = "speedLabel";
-            this.speedLabel.Size = new System.Drawing.Size(534, 39);
+            this.speedLabel.Size = new System.Drawing.Size(465, 39);
             this.speedLabel.TabIndex = 2;
             this.speedLabel.Text = "SPEED";
             this.speedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -250,14 +263,17 @@
             this.speedLimitLabel.Location = new System.Drawing.Point(3, 42);
             this.speedLimitLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.speedLimitLabel.Name = "speedLimitLabel";
-            this.speedLimitLabel.Size = new System.Drawing.Size(534, 24);
+            this.speedLimitLabel.Size = new System.Drawing.Size(465, 24);
             this.speedLimitLabel.TabIndex = 3;
             this.speedLimitLabel.Text = "SPEED_LIMIT";
             this.speedLimitLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // dataPanel
             // 
-            this.dataPanel.Controls.Add(this.timeLabel);
+            this.dataPanel.Controls.Add(this.totalYieldLabel);
+            this.dataPanel.Controls.Add(this.totalWeightLabel);
+            this.dataPanel.Controls.Add(this.totalRouteLabel);
+            this.dataPanel.Controls.Add(this.remainingTimeLabel);
             this.dataPanel.Controls.Add(this.weightLabel);
             this.dataPanel.Controls.Add(this.deadlineLabel);
             this.dataPanel.Controls.Add(this.yieldLabel);
@@ -269,22 +285,64 @@
             this.dataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataPanel.Location = new System.Drawing.Point(3, 99);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(540, 310);
+            this.dataPanel.Size = new System.Drawing.Size(471, 310);
             this.dataPanel.TabIndex = 3;
             this.dataPanel.Visible = false;
             // 
-            // timeLabel
+            // totalYieldLabel
             // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Depth = 0;
-            this.timeLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.timeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.timeLabel.Location = new System.Drawing.Point(3, 95);
-            this.timeLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(44, 19);
-            this.timeLabel.TabIndex = 8;
-            this.timeLabel.Text = "TIME";
+            this.totalYieldLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.totalYieldLabel.AutoSize = true;
+            this.totalYieldLabel.Depth = 0;
+            this.totalYieldLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.totalYieldLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.totalYieldLabel.Location = new System.Drawing.Point(3, 291);
+            this.totalYieldLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.totalYieldLabel.Name = "totalYieldLabel";
+            this.totalYieldLabel.Size = new System.Drawing.Size(102, 19);
+            this.totalYieldLabel.TabIndex = 11;
+            this.totalYieldLabel.Text = "TOTAL_YIELD";
+            // 
+            // totalWeightLabel
+            // 
+            this.totalWeightLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.totalWeightLabel.AutoSize = true;
+            this.totalWeightLabel.Depth = 0;
+            this.totalWeightLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.totalWeightLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.totalWeightLabel.Location = new System.Drawing.Point(3, 272);
+            this.totalWeightLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.totalWeightLabel.Name = "totalWeightLabel";
+            this.totalWeightLabel.Size = new System.Drawing.Size(118, 19);
+            this.totalWeightLabel.TabIndex = 10;
+            this.totalWeightLabel.Text = "TOTAL_WEIGHT";
+            // 
+            // totalRouteLabel
+            // 
+            this.totalRouteLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.totalRouteLabel.AutoSize = true;
+            this.totalRouteLabel.Depth = 0;
+            this.totalRouteLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.totalRouteLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.totalRouteLabel.Location = new System.Drawing.Point(3, 253);
+            this.totalRouteLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.totalRouteLabel.Name = "totalRouteLabel";
+            this.totalRouteLabel.Size = new System.Drawing.Size(109, 19);
+            this.totalRouteLabel.TabIndex = 9;
+            this.totalRouteLabel.Text = "TOTAL_ROUTE";
+            // 
+            // remainingTimeLabel
+            // 
+            this.remainingTimeLabel.AutoSize = true;
+            this.remainingTimeLabel.Depth = 0;
+            this.remainingTimeLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.remainingTimeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.remainingTimeLabel.Location = new System.Drawing.Point(3, 95);
+            this.remainingTimeLabel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.remainingTimeLabel.Name = "remainingTimeLabel";
+            this.remainingTimeLabel.Size = new System.Drawing.Size(132, 19);
+            this.remainingTimeLabel.TabIndex = 8;
+            this.remainingTimeLabel.Text = "REMAINING_TIME";
             // 
             // weightLabel
             // 
@@ -392,6 +450,7 @@
             // 
             // healthPanel
             // 
+            this.healthPanel.Controls.Add(this.fuelGaugePanel);
             this.healthPanel.Controls.Add(this.averageLabel);
             this.healthPanel.Controls.Add(this.drivetrainPanel);
             this.healthPanel.Controls.Add(this.fuelRemainingDistanceLabel);
@@ -404,9 +463,9 @@
             this.healthPanel.Controls.Add(this.chassisLabel);
             this.healthPanel.Controls.Add(this.cabinLabel);
             this.healthPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.healthPanel.Location = new System.Drawing.Point(555, 79);
+            this.healthPanel.Location = new System.Drawing.Point(486, 79);
             this.healthPanel.Name = "healthPanel";
-            this.healthPanel.Size = new System.Drawing.Size(325, 412);
+            this.healthPanel.Size = new System.Drawing.Size(394, 412);
             this.healthPanel.TabIndex = 5;
             this.healthPanel.Visible = false;
             // 
@@ -416,7 +475,7 @@
             this.averageLabel.Depth = 0;
             this.averageLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.averageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.averageLabel.Location = new System.Drawing.Point(3, 282);
+            this.averageLabel.Location = new System.Drawing.Point(3, 200);
             this.averageLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.averageLabel.Name = "averageLabel";
             this.averageLabel.Size = new System.Drawing.Size(76, 19);
@@ -471,7 +530,7 @@
             this.trailerLabel.Depth = 0;
             this.trailerLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.trailerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.trailerLabel.Location = new System.Drawing.Point(3, 301);
+            this.trailerLabel.Location = new System.Drawing.Point(150, 200);
             this.trailerLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.trailerLabel.Name = "trailerLabel";
             this.trailerLabel.Size = new System.Drawing.Size(67, 19);
@@ -549,9 +608,9 @@
             this.flowLayoutPanel1.Controls.Add(this.switchLengthUnitButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(555, 3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(486, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(325, 70);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(394, 70);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // logOutButton
@@ -561,7 +620,7 @@
             this.logOutButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.logOutButton.Depth = 0;
             this.logOutButton.Icon = null;
-            this.logOutButton.Location = new System.Drawing.Point(217, 3);
+            this.logOutButton.Location = new System.Drawing.Point(286, 3);
             this.logOutButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.logOutButton.Name = "logOutButton";
             this.logOutButton.Primary = true;
@@ -578,7 +637,7 @@
             this.switchLengthUnitButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.switchLengthUnitButton.Depth = 0;
             this.switchLengthUnitButton.Icon = null;
-            this.switchLengthUnitButton.Location = new System.Drawing.Point(17, 6);
+            this.switchLengthUnitButton.Location = new System.Drawing.Point(86, 6);
             this.switchLengthUnitButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.switchLengthUnitButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.switchLengthUnitButton.Name = "switchLengthUnitButton";
@@ -639,6 +698,32 @@
             this.speedChart.TabIndex = 2;
             this.speedChart.Visible = false;
             // 
+            // groupPictureBox
+            // 
+            this.groupPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.GroupIcon;
+            this.groupPictureBox.Location = new System.Drawing.Point(337, 3);
+            this.groupPictureBox.Name = "groupPictureBox";
+            this.groupPictureBox.Size = new System.Drawing.Size(64, 64);
+            this.groupPictureBox.TabIndex = 5;
+            this.groupPictureBox.TabStop = false;
+            this.groupPictureBox.Click += new System.EventHandler(this.groupPictureBox_Click);
+            this.groupPictureBox.MouseEnter += new System.EventHandler(this.genericPictureBox_MouseEnter);
+            this.groupPictureBox.MouseLeave += new System.EventHandler(this.genericPictureBox_MouseLeave);
+            // 
+            // liveMapPictureBox
+            // 
+            this.liveMapPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.liveMapPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.MapIcon;
+            this.liveMapPictureBox.Location = new System.Drawing.Point(407, 3);
+            this.liveMapPictureBox.Name = "liveMapPictureBox";
+            this.liveMapPictureBox.Size = new System.Drawing.Size(64, 64);
+            this.liveMapPictureBox.TabIndex = 4;
+            this.liveMapPictureBox.TabStop = false;
+            this.liveMapPictureBox.Click += new System.EventHandler(this.liveMapPictureBox_Click);
+            this.liveMapPictureBox.MouseEnter += new System.EventHandler(this.genericPictureBox_MouseEnter);
+            this.liveMapPictureBox.MouseLeave += new System.EventHandler(this.genericPictureBox_MouseLeave);
+            // 
             // gravatarPictureBox
             // 
             this.gravatarPictureBox.Location = new System.Drawing.Point(3, 3);
@@ -647,6 +732,24 @@
             this.gravatarPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gravatarPictureBox.TabIndex = 0;
             this.gravatarPictureBox.TabStop = false;
+            // 
+            // fuelGaugePanel
+            // 
+            this.fuelGaugePanel.BackgroundImage = global::TruckingVSConnect2.Properties.Resources.FuelGauge;
+            this.fuelGaugePanel.Controls.Add(this.fuelGaugeNeedlePictureBox);
+            this.fuelGaugePanel.Location = new System.Drawing.Point(7, 295);
+            this.fuelGaugePanel.Name = "fuelGaugePanel";
+            this.fuelGaugePanel.Size = new System.Drawing.Size(129, 54);
+            this.fuelGaugePanel.TabIndex = 13;
+            // 
+            // fuelGaugeNeedlePictureBox
+            // 
+            this.fuelGaugeNeedlePictureBox.Image = global::TruckingVSConnect2.Properties.Resources.FuelGaugeNeedle;
+            this.fuelGaugeNeedlePictureBox.Location = new System.Drawing.Point(7, 16);
+            this.fuelGaugeNeedlePictureBox.Name = "fuelGaugeNeedlePictureBox";
+            this.fuelGaugeNeedlePictureBox.Size = new System.Drawing.Size(5, 23);
+            this.fuelGaugeNeedlePictureBox.TabIndex = 0;
+            this.fuelGaugeNeedlePictureBox.TabStop = false;
             // 
             // drivetrainPanel
             // 
@@ -692,7 +795,11 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.speedChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.liveMapPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gravatarPictureBox)).EndInit();
+            this.fuelGaugePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fuelGaugeNeedlePictureBox)).EndInit();
             this.drivetrainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -737,9 +844,16 @@
         private MaterialSkin.Controls.MaterialLabel fuelRemainingDistanceLabel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private MaterialSkin.Controls.MaterialLabel weightLabel;
-        private MaterialSkin.Controls.MaterialLabel timeLabel;
+        private MaterialSkin.Controls.MaterialLabel remainingTimeLabel;
         private MaterialSkin.Controls.MaterialLabel averageLabel;
         private System.Windows.Forms.Panel drivetrainPanel;
+        private System.Windows.Forms.Panel fuelGaugePanel;
+        private System.Windows.Forms.PictureBox fuelGaugeNeedlePictureBox;
+        private MaterialSkin.Controls.MaterialLabel totalYieldLabel;
+        private MaterialSkin.Controls.MaterialLabel totalWeightLabel;
+        private MaterialSkin.Controls.MaterialLabel totalRouteLabel;
+        private System.Windows.Forms.PictureBox liveMapPictureBox;
+        private System.Windows.Forms.PictureBox groupPictureBox;
     }
 }
 

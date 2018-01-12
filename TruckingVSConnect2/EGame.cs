@@ -9,6 +9,11 @@ namespace TruckingVSConnect2
     public enum EGame
     {
         /// <summary>
+        /// Nothing
+        /// </summary>
+        Nothing,
+
+        /// <summary>
         /// Euro Truck Simulator 2
         /// </summary>
         ETS2,

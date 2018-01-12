@@ -73,7 +73,32 @@
     <Compile Include="Country.cs" />
     <Compile Include="EGame.cs" />
     <Compile Include="ETruckingVSAPIJobDataType.cs" />
+    <Compile Include="GroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GroupForm.Designer.cs">
+      <DependentUpon>GroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestData.cs" />
+    <Compile Include="RequestGetUsersData.cs" />
+    <Compile Include="ResponseData.cs" />
+    <Compile Include="UserConfigData.cs" />
+    <Compile Include="UserData.cs" />
+    <Compile Include="LiveMapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LiveMapForm.Designer.cs">
+      <DependentUpon>LiveMapForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PluginManager.cs" />
+    <Compile Include="PointOfInterestData.cs" />
+    <Compile Include="TextEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextEditForm.Designer.cs">
+      <DependentUpon>TextEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Truckers2ConnectAPI.cs" />
     <Compile Include="TruckingVSAPI.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Languages\de-DE.Designer.cs">
@@ -102,7 +127,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TranslatorInterface.cs" />
     <Compile Include="TruckingVSAPIJobData.cs" />
+    <Compile Include="UsersData.cs" />
     <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="GroupForm.resx">
+      <DependentUpon>GroupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Languages\de-DE.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>de-DE.Designer.cs</LastGenOutput>
@@ -110,6 +139,9 @@
     <EmbeddedResource Include="Languages\en-GB.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LiveMapForm.resx">
+      <DependentUpon>LiveMapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -127,6 +159,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TextEditForm.resx">
+      <DependentUpon>TextEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ETS2PointsOfInterests.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -162,6 +200,14 @@
     <None Include="DrivetrainFullyDamaged.png" />
     <None Include="DrivetrainHeavilyDamaged.png" />
     <None Include="DrivetrainSlightlyDamaged.png" />
+    <None Include="FuelGauge.png" />
+    <None Include="FuelGaugeNeedle.png" />
+    <None Include="ETS2LiveMap.png" />
+    <None Include="MapPointer.png" />
+    <None Include="MapIcon.png" />
+    <None Include="MapPointerIdle.png" />
+    <None Include="GroupIcon.png" />
+    <None Include="AddUserIcon.png" />
     <Content Include="TruckingVSConnect2.ico" />
     <None Include="TruckingVSConnect2Updater.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

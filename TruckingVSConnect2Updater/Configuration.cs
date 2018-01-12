@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -75,7 +74,7 @@ namespace TruckingVSConnect2Updater
                         }
                         catch (Exception e)
                         {
-                            Debug.Print(e.Message);
+                            Console.Error.WriteLine(e.Message);
                         }
                     }
                     if (instance == null)

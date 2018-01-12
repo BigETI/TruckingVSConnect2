@@ -72,6 +72,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add user ähnelt.
+        /// </summary>
+        internal static string ADD_USER {
+            get {
+                return ResourceManager.GetString("ADD_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die and ähnelt.
         /// </summary>
         internal static string AND {
@@ -140,6 +149,15 @@ namespace TruckingVSConnect2.Languages {
         internal static string CABIN {
             get {
                 return ResourceManager.GetString("CABIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cancel ähnelt.
+        /// </summary>
+        internal static string CANCEL {
+            get {
+                return ResourceManager.GetString("CANCEL", resourceCulture);
             }
         }
         
@@ -417,6 +435,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Group ähnelt.
+        /// </summary>
+        internal static string GROUP_TITLE {
+            get {
+                return ResourceManager.GetString("GROUP_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Hungary ähnelt.
         /// </summary>
         internal static string HUNGARY {
@@ -458,6 +485,15 @@ namespace TruckingVSConnect2.Languages {
         internal static string LIMIT {
             get {
                 return ResourceManager.GetString("LIMIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Live map ähnelt.
+        /// </summary>
+        internal static string LIVE_MAP {
+            get {
+                return ResourceManager.GetString("LIVE_MAP", resourceCulture);
             }
         }
         
@@ -516,11 +552,38 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
+        /// </summary>
+        internal static string NAME {
+            get {
+                return ResourceManager.GetString("NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Netherlands ähnelt.
         /// </summary>
         internal static string NETHERLANDS {
             get {
                 return ResourceManager.GetString("NETHERLANDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No game is running ähnelt.
+        /// </summary>
+        internal static string NO_GAME_IS_RUNNING {
+            get {
+                return ResourceManager.GetString("NO_GAME_IS_RUNNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die There is no live map for {0} yet ähnelt.
+        /// </summary>
+        internal static string NO_LIVE_MAP_FOR_GAME {
+            get {
+                return ResourceManager.GetString("NO_LIVE_MAP_FOR_GAME", resourceCulture);
             }
         }
         
@@ -534,11 +597,29 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die N/A ähnelt.
+        /// </summary>
+        internal static string NOT_AVAILABLE {
+            get {
+                return ResourceManager.GetString("NOT_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die of ähnelt.
         /// </summary>
         internal static string OF {
             get {
                 return ResourceManager.GetString("OF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die OK ähnelt.
+        /// </summary>
+        internal static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
             }
         }
         
@@ -588,6 +669,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remaining time ähnelt.
+        /// </summary>
+        internal static string REMAINING_TIME {
+            get {
+                return ResourceManager.GetString("REMAINING_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Route ähnelt.
         /// </summary>
         internal static string ROUTE {
@@ -624,6 +714,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Show group ähnelt.
+        /// </summary>
+        internal static string SHOW_GROUP {
+            get {
+                return ResourceManager.GetString("SHOW_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Slovakia ähnelt.
         /// </summary>
         internal static string SLOVAKIA {
@@ -638,6 +737,15 @@ namespace TruckingVSConnect2.Languages {
         internal static string SOURCE {
             get {
                 return ResourceManager.GetString("SOURCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Speed ähnelt.
+        /// </summary>
+        internal static string SPEED {
+            get {
+                return ResourceManager.GetString("SPEED", resourceCulture);
             }
         }
         
@@ -714,11 +822,29 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Time ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Total route ähnelt.
         /// </summary>
-        internal static string TIME {
+        internal static string TOTAL_ROUTE {
             get {
-                return ResourceManager.GetString("TIME", resourceCulture);
+                return ResourceManager.GetString("TOTAL_ROUTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Total weight ähnelt.
+        /// </summary>
+        internal static string TOTAL_WEIGHT {
+            get {
+                return ResourceManager.GetString("TOTAL_WEIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Total yield ähnelt.
+        /// </summary>
+        internal static string TOTAL_YIELD {
+            get {
+                return ResourceManager.GetString("TOTAL_YIELD", resourceCulture);
             }
         }
         
@@ -755,6 +881,15 @@ namespace TruckingVSConnect2.Languages {
         internal static string TRUCKING_VS_LOGIN {
             get {
                 return ResourceManager.GetString("TRUCKING_VS_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die United Kingdom ähnelt.
+        /// </summary>
+        internal static string UNITED_KINGDOM {
+            get {
+                return ResourceManager.GetString("UNITED_KINGDOM", resourceCulture);
             }
         }
         
@@ -798,6 +933,33 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Username already exists ähnelt.
+        /// </summary>
+        internal static string USERNAME_ALREADY_EXISTS {
+            get {
+                return ResourceManager.GetString("USERNAME_ALREADY_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die This username already exists in your group. ähnelt.
+        /// </summary>
+        internal static string USERNAME_ALREADY_EXISTS_MESSAGE {
+            get {
+                return ResourceManager.GetString("USERNAME_ALREADY_EXISTS_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Username... ähnelt.
+        /// </summary>
+        internal static string USERNAME_HINT {
+            get {
+                return ResourceManager.GetString("USERNAME_HINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Vehicle ähnelt.
         /// </summary>
         internal static string VEHICLE {
@@ -834,11 +996,38 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Window size is too small ähnelt.
+        /// </summary>
+        internal static string WINDOW_SIZE_TOO_SMALL {
+            get {
+                return ResourceManager.GetString("WINDOW_SIZE_TOO_SMALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Yield ähnelt.
         /// </summary>
         internal static string YIELD {
             get {
                 return ResourceManager.GetString("YIELD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You can&apos;t add yourself ähnelt.
+        /// </summary>
+        internal static string YOU_CAN_NOT_ADD_YOURSELF {
+            get {
+                return ResourceManager.GetString("YOU_CAN_NOT_ADD_YOURSELF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You can&apos;t add yourself to the group. ähnelt.
+        /// </summary>
+        internal static string YOU_CAN_NOT_ADD_YOURSELF_MESSAGE {
+            get {
+                return ResourceManager.GetString("YOU_CAN_NOT_ADD_YOURSELF_MESSAGE", resourceCulture);
             }
         }
     }

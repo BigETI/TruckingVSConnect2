@@ -1,11 +1,9 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Threading;
-using VDF;
 
 /// <summary>
 /// Trucking VS Connect² namespace
@@ -65,6 +63,12 @@ namespace TruckingVSConnect2
         /// </summary>
         [DataMember(EmitDefaultValue = true)]
         private bool useMetricUnit = true;
+
+        /// <summary>
+        /// Users
+        /// </summary>
+        [DataMember(EmitDefaultValue = true)]
+        private Dictionary<string, UserConfigData> users = new Dictionary<string, UserConfigData>();
 
         /// <summary>
         /// Instance
@@ -267,7 +271,7 @@ namespace TruckingVSConnect2
                         }
                         catch (Exception e)
                         {
-                            Debug.Print(e.Message);
+                            Console.Error.WriteLine(e.Message);
                         }
                     }
                     if (instance == null)
@@ -377,6 +381,51 @@ namespace TruckingVSConnect2
         }
 
         /// <summary>
+        /// Get user config data
+        /// </summary>
+        /// <param name="username">Username</param>
+        /// <returns>User config data</returns>
+        public static UserConfigData GetUserConfigData(string username)
+        {
+            UserConfigData ret = null;
+            if (username != null)
+            {
+                if (username.Length > 0)
+                {
+                    if (Instance != null)
+                    {
+                        if (Instance.users == null)
+                        {
+                            Instance.users = new Dictionary<string, UserConfigData>();
+                        }
+                        if (Instance.users.ContainsKey(username))
+                        {
+                            ret = Instance.users[username];
+                        }
+                        else
+                        {
+                            ret = new UserConfigData();
+                            Instance.users.Add(username, ret);
+                        }
+                    }
+                    else
+                    {
+                        ret = new UserConfigData();
+                    }
+                }
+                else
+                {
+                    ret = new UserConfigData();
+                }
+            }
+            else
+            {
+                ret = new UserConfigData();
+            }
+            return ret;
+        }
+
+        /// <summary>
         /// Save configuration
         /// </summary>
         public static void Save()
@@ -394,7 +443,7 @@ namespace TruckingVSConnect2
             }
             catch (Exception e)
             {
-                Debug.Print(e.Message);
+                Console.Error.WriteLine(e.Message);
             }
         }
     }

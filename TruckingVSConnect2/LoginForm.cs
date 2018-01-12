@@ -63,7 +63,7 @@ namespace TruckingVSConnect2
             }
             else
             {
-                MainForm.Auth = auth;
+                MainForm.API = auth;
                 Configuration.EmailUsername = saveEmailUsernameCheckBox.Checked ? email_username : "";
                 Configuration.Password = autoLogInCheckBox.Checked ? TruckingVSAPI.SHA256String(password) : "";
                 Configuration.Save();

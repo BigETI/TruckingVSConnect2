@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using VDF;
@@ -157,7 +156,7 @@ namespace TruckingVSConnect2
                     }
                     catch (Exception e)
                     {
-                        Debug.Print(e.Message);
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
                 return steamGamesPaths;
@@ -317,7 +316,7 @@ namespace TruckingVSConnect2
                     catch (Exception e)
                     {
                         success = false;
-                        Debug.Print(e.Message);
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
                 if (success && (!(Directory.Exists(x64_plugins_path))))
@@ -329,7 +328,7 @@ namespace TruckingVSConnect2
                     catch (Exception e)
                     {
                         success = false;
-                        Debug.Print(e.Message);
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
                 if (success)
@@ -362,7 +361,7 @@ namespace TruckingVSConnect2
                         }
                         catch (Exception e)
                         {
-                            Debug.Print(e.Message);
+                            Console.Error.WriteLine(e.Message);
                         }
                     }
                 }
@@ -377,7 +376,7 @@ namespace TruckingVSConnect2
                     }
                     catch (Exception e)
                     {
-                        Debug.Print(e.Message);
+                        Console.Error.WriteLine(e.Message);
                     }
                 }
             }
