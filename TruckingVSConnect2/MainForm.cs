@@ -307,6 +307,11 @@ namespace TruckingVSConnect2
         private LiveMapForm liveMapForm;
 
         /// <summary>
+        /// Find users form
+        /// </summary>
+        private FindUsersForm findUsersForm;
+
+        /// <summary>
         /// Users
         /// </summary>
         private UserData[] users = new UserData[0];
@@ -482,6 +487,51 @@ namespace TruckingVSConnect2
         }
 
         /// <summary>
+        /// Open live map
+        /// </summary>
+        private void OpenLiveMap()
+        {
+            CloseLiveMap();
+            liveMapForm = new LiveMapForm();
+            liveMapForm.Show();
+        }
+
+        /// <summary>
+        /// Close live map
+        /// </summary>
+        private void CloseLiveMap()
+        {
+            if (liveMapForm != null)
+            {
+                liveMapForm.Close();
+                liveMapForm = null;
+            }
+        }
+
+        /// <summary>
+        /// Toggle live map
+        /// </summary>
+        public void ToggleLiveMap()
+        {
+            if (liveMapForm != null)
+            {
+                bool visible = liveMapForm.Visible;
+                liveMapForm.Close();
+                liveMapForm = null;
+                if (!visible)
+                {
+                    liveMapForm = new LiveMapForm();
+                    liveMapForm.Show();
+                }
+            }
+            else
+            {
+                liveMapForm = new LiveMapForm();
+                liveMapForm.Show();
+            }
+        }
+
+        /// <summary>
         /// Show group
         /// </summary>
         public void ShowGroup()
@@ -541,32 +591,39 @@ namespace TruckingVSConnect2
         }
 
         /// <summary>
-        /// Main form form closed event
+        /// Close find users
         /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event arguments</param>
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        public void CloseFindUsers()
         {
-            CloseLiveMap();
-            CloseGroup();
-            Configuration.Save();
-            if (api != null)
+            if (findUsersForm != null)
             {
-                api.Dispose();
-                api = null;
+                findUsersForm.Close();
+                findUsersForm = null;
             }
-            currentSpeedData.Clear();
-            speedLimitData.Clear();
-            if (thread != null)
+        }
+
+        /// <summary>
+        /// Toggle find users
+        /// </summary>
+        public void ToggleFindUsers()
+        {
+            if (findUsersForm == null)
             {
-                isThreadRunning = false;
-                try
+                findUsersForm = new FindUsersForm();
+                findUsersForm.Show();
+            }
+            else
+            {
+                if (findUsersForm.Visible)
                 {
-                    thread.Join();
+                    findUsersForm.Close();
+                    findUsersForm = null;
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.Error.WriteLine(ex.Message);
+                    findUsersForm.Close();
+                    findUsersForm = new FindUsersForm();
+                    findUsersForm.Show();
                 }
             }
         }
@@ -603,51 +660,6 @@ namespace TruckingVSConnect2
         private string GetJobData(Ets2Telemetry telemetryData)
         {
             return telemetryData.Job.Cargo + ";" + telemetryData.Job.CitySource + ";" + telemetryData.Job.CityDestination + ";" + telemetryData.Job.Mass;
-        }
-
-        /// <summary>
-        /// Open live map
-        /// </summary>
-        private void OpenLiveMap()
-        {
-            CloseLiveMap();
-            liveMapForm = new LiveMapForm();
-            liveMapForm.Show();
-        }
-
-        /// <summary>
-        /// Close live map
-        /// </summary>
-        private void CloseLiveMap()
-        {
-            if (liveMapForm != null)
-            {
-                liveMapForm.Close();
-                liveMapForm = null;
-            }
-        }
-
-        /// <summary>
-        /// Toggle live map
-        /// </summary>
-        public void ToggleLiveMap()
-        {
-            if (liveMapForm != null)
-            {
-                bool visible = liveMapForm.Visible;
-                liveMapForm.Close();
-                liveMapForm = null;
-                if (!visible)
-                {
-                    liveMapForm = new LiveMapForm();
-                    liveMapForm.Show();
-                }
-            }
-            else
-            {
-                liveMapForm = new LiveMapForm();
-                liveMapForm.Show();
-            }
         }
 
         /// <summary>
@@ -692,6 +704,38 @@ namespace TruckingVSConnect2
             catch (Exception e)
             {
                 Console.Error.WriteLine(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Main form form closed event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CloseLiveMap();
+            CloseGroup();
+            CloseFindUsers();
+            Configuration.Save();
+            if (api != null)
+            {
+                api.Dispose();
+                api = null;
+            }
+            currentSpeedData.Clear();
+            speedLimitData.Clear();
+            if (thread != null)
+            {
+                isThreadRunning = false;
+                try
+                {
+                    thread.Join();
+                }
+                catch (Exception ex)
+                {
+                    Console.Error.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -842,10 +886,10 @@ namespace TruckingVSConnect2
                             cargoLabel.Text = cargoTranslated + ": " + data.Job.Cargo;
                             sourceLabel.Text = sourceTranslated + ": " + data.Job.CompanySource + " " + inTranslated + " " + Cities.GetFullCityName(data.Job.CitySource);
                             destinationLabel.Text = destinationTranslated + ": " + data.Job.CompanyDestination + " " + inTranslated + " " + Cities.GetFullCityName(data.Job.CityDestination);
-                            routeLabel.Text = routeTranslated + ": " + Utils.HumanReadableLength(Utils.Clamp(api.Distance - data.Job.NavigationDistanceLeft, 0.0f, api.Distance)) + " " + ofTranslated + " " + Utils.HumanReadableLength(api.Distance) + " (" + ((api.Distance > float.Epsilon) ? 100.0f : ((data.Job.NavigationDistanceLeft * 100.0f) / api.Distance)) + "%)";
+                            routeLabel.Text = routeTranslated + ": " + Utils.HumanReadableLength(Utils.Clamp(api.Distance - data.Job.NavigationDistanceLeft, 0.0f, api.Distance)) + " " + ofTranslated + " " + Utils.HumanReadableLength(api.Distance) + " (" + ((api.Distance > float.Epsilon) ? Math.Round((data.Job.NavigationDistanceLeft * 100.0f) / api.Distance) : 100.0f) + "%)";
                             remainingTimeLabel.Text = remainingTimeTranslated + ": " + Utils.HumanReadableTime(data.Job.NavigationTimeLeft);
                             //timeLabel.Text = timeTranslated + ": " + Utils.HumanReadableTime(data.Job.NavigationTimeLeft) + " " + ofTranslated + " " + Utils.HumanReadableTime(api.Time);
-                            yieldLabel.Text = yieldTranslated + ": " + data.Job.Income + "€";
+                            yieldLabel.Text = yieldTranslated + ": " + data.Job.Income.ToString("N0") + "€";
                             weightLabel.Text = weightTranslated + ": " + Utils.HumanReadableWeight(data.Job.Mass);
                             deadlineLabel.Text = deadlineTranslated + ": " + ((data.Job.Deadline == -1) ? unlimitedTranslated : deadlineAvailableTranslated);
                         }
@@ -963,6 +1007,8 @@ namespace TruckingVSConnect2
         private void logOutButton_Click(object sender, EventArgs e)
         {
             CloseLiveMap();
+            CloseGroup();
+            CloseFindUsers();
             Configuration.Password = "";
             Configuration.Save();
             if (api != null)

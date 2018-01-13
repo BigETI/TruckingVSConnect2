@@ -73,6 +73,13 @@
     <Compile Include="Country.cs" />
     <Compile Include="EGame.cs" />
     <Compile Include="ETruckingVSAPIJobDataType.cs" />
+    <Compile Include="FindUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindUsersForm.Designer.cs">
+      <DependentUpon>FindUsersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FoundUsersData.cs" />
     <Compile Include="GroupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +87,7 @@
       <DependentUpon>GroupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RequestData.cs" />
+    <Compile Include="RequestFindUsersData.cs" />
     <Compile Include="RequestGetUsersData.cs" />
     <Compile Include="ResponseData.cs" />
     <Compile Include="UserConfigData.cs" />
@@ -129,6 +137,9 @@
     <Compile Include="TruckingVSAPIJobData.cs" />
     <Compile Include="UsersData.cs" />
     <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="FindUsersForm.resx">
+      <DependentUpon>FindUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GroupForm.resx">
       <DependentUpon>GroupForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +219,7 @@
     <None Include="MapPointerIdle.png" />
     <None Include="GroupIcon.png" />
     <None Include="AddUserIcon.png" />
+    <None Include="FindUsersIcon.png" />
     <Content Include="TruckingVSConnect2.ico" />
     <None Include="TruckingVSConnect2Updater.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -28,31 +28,31 @@ namespace TruckingVSConnect2
         /// Position X
         /// </summary>
         [DataMember]
-        private float posX;
+        private double posX;
 
         /// <summary>
         /// Position Y
         /// </summary>
         [DataMember]
-        private float posY;
+        private double posY;
 
         /// <summary>
         /// Position Z
         /// </summary>
         [DataMember]
-        private float posZ;
+        private double posZ;
 
         /// <summary>
         /// Speed
         /// </summary>
         [DataMember]
-        private float speed;
+        private double speed;
 
         /// <summary>
         /// Speed limit
         /// </summary>
         [DataMember]
-        private float speedLimit;
+        private double speedLimit;
 
         /// <summary>
         /// Manufacturer
@@ -106,19 +106,19 @@ namespace TruckingVSConnect2
         /// Navigation distance left
         /// </summary>
         [DataMember]
-        private float navigationDistanceLeft;
+        private double navigationDistanceLeft;
 
         /// <summary>
         /// Distance
         /// </summary>
         [DataMember]
-        private float distance;
+        private double distance;
 
         /// <summary>
         /// Navigation time left
         /// </summary>
         [DataMember]
-        private float navigationTimeLeft;
+        private double navigationTimeLeft;
 
         /// <summary>
         /// Income
@@ -130,7 +130,7 @@ namespace TruckingVSConnect2
         /// Mass
         /// </summary>
         [DataMember]
-        private float mass;
+        private double mass;
 
         /// <summary>
         /// Name
@@ -161,7 +161,7 @@ namespace TruckingVSConnect2
         {
             get
             {
-                return posX;
+                return (float)posX;
             }
         }
 
@@ -172,7 +172,7 @@ namespace TruckingVSConnect2
         {
             get
             {
-                return posY;
+                return (float)posY;
             }
         }
 
@@ -183,7 +183,7 @@ namespace TruckingVSConnect2
         {
             get
             {
-                return posZ;
+                return (float)posZ;
             }
         }
 
@@ -194,7 +194,7 @@ namespace TruckingVSConnect2
         {
             get
             {
-                return speed;
+                return (float)speed;
             }
         }
 
@@ -205,7 +205,7 @@ namespace TruckingVSConnect2
         {
             get
             {
-                return speedLimit;
+                return (float)speedLimit;
             }
         }
 
@@ -304,7 +304,7 @@ namespace TruckingVSConnect2
         {
             get
             {
-                return navigationDistanceLeft;
+                return (float)navigationDistanceLeft;
             }
         }
 
@@ -315,7 +315,7 @@ namespace TruckingVSConnect2
         {
             get
             {
-                return distance;
+                return (float)distance;
             }
         }
 
@@ -326,7 +326,7 @@ namespace TruckingVSConnect2
         {
             get
             {
-                return navigationTimeLeft;
+                return (float)navigationTimeLeft;
             }
         }
 
@@ -348,7 +348,7 @@ namespace TruckingVSConnect2
         {
             get
             {
-                return mass;
+                return (float)mass;
             }
         }
 
@@ -370,7 +370,7 @@ namespace TruckingVSConnect2
             posX = telemetryData.Physics.CoordinateX;
             posY = telemetryData.Physics.CoordinateY;
             posZ = telemetryData.Physics.CoordinateZ;
-            speed = telemetryData.Physics.Speed;
+            speed = telemetryData.Drivetrain.Speed;
             speedLimit = telemetryData.Job.SpeedLimit;
             manufacturer = telemetryData.Manufacturer;
             truck = telemetryData.Truck;

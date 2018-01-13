@@ -201,7 +201,7 @@ namespace TruckingVSConnect2
         /// <param name="e">Paint event arguments</param>
         private void LiveMapForm_Paint(object sender, PaintEventArgs e)
         {
-            Image live_map = Utils.RunningGameLiveMapImage;
+            Image live_map = Resources.ETS2LiveMap;//Utils.RunningGameLiveMapImage;
             xSize = 0;
             ySize = 0;
             xOffset = 0;

@@ -183,6 +183,16 @@ namespace TruckingVSConnect2.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FindUsersIcon {
+            get {
+                object obj = ResourceManager.GetObject("FindUsersIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FuelGauge {
             get {
                 object obj = ResourceManager.GetObject("FuelGauge", resourceCulture);

@@ -215,6 +215,9 @@
   <data name="FILE_VERSION" xml:space="preserve">
     <value>Dateiversion</value>
   </data>
+  <data name="FIND_USERS" xml:space="preserve">
+    <value>Benutzer finden</value>
+  </data>
   <data name="FORGOT_PASSWORD" xml:space="preserve">
     <value>Passwort vergessen?</value>
   </data>
@@ -421,6 +424,12 @@ Möchtest du es wirklich installieren?</value>
   </data>
   <data name="USERNAME_HINT" xml:space="preserve">
     <value>Benutzername...</value>
+  </data>
+  <data name="USER_NOT_FOUND" xml:space="preserve">
+    <value>Benutzer nicht gefunden</value>
+  </data>
+  <data name="USER_NOT_FOUND_MESSAGE" xml:space="preserve">
+    <value>Benutzer {0} wurde nicht gefunden.</value>
   </data>
   <data name="VEHICLE" xml:space="preserve">
     <value>Fahrzeug</value>

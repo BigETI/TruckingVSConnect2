@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupForm));
             this.mainPanel = new System.Windows.Forms.Panel();
             this.usersGridView = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +62,7 @@
             this.massUserDataColumn = new System.Data.DataColumn();
             this.topLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.addUserPictureBox = new System.Windows.Forms.PictureBox();
+            this.findUsersPictureBox = new System.Windows.Forms.PictureBox();
             this.liveMapPictureBox = new System.Windows.Forms.PictureBox();
             this.threadTimer = new System.Windows.Forms.Timer(this.components);
             this.mainPanel.SuspendLayout();
@@ -70,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.usersDataTable)).BeginInit();
             this.topLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addUserPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.findUsersPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.liveMapPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,8 +94,8 @@
             this.usersGridView.AllowUserToAddRows = false;
             this.usersGridView.AllowUserToDeleteRows = false;
             this.usersGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
-            this.usersGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
+            this.usersGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.usersGridView.AutoGenerateColumns = false;
             this.usersGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.usersGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -100,14 +103,14 @@
             this.usersGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.usersGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.usersGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.usersGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.usersGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.usersGridView.ColumnHeadersHeight = 32;
             this.usersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.usersGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -123,14 +126,14 @@
             this.incomeDataGridViewTextBoxColumn,
             this.massDataGridViewTextBoxColumn});
             this.usersGridView.DataSource = this.usersBindingSource;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.usersGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.usersGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.usersGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.usersGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.usersGridView.EnableHeadersVisualStyles = false;
@@ -230,7 +233,7 @@
             // 
             // usersDataSet
             // 
-            this.usersDataSet.DataSetName = "NewDataSet";
+            this.usersDataSet.DataSetName = "UsersDataSet";
             this.usersDataSet.Tables.AddRange(new System.Data.DataTable[] {
             this.usersDataTable});
             // 
@@ -297,6 +300,7 @@
             // topLayoutPanel
             // 
             this.topLayoutPanel.Controls.Add(this.addUserPictureBox);
+            this.topLayoutPanel.Controls.Add(this.findUsersPictureBox);
             this.topLayoutPanel.Controls.Add(this.liveMapPictureBox);
             this.topLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -316,11 +320,23 @@
             this.addUserPictureBox.MouseEnter += new System.EventHandler(this.genericPictureBox_MouseEnter);
             this.addUserPictureBox.MouseLeave += new System.EventHandler(this.genericPictureBox_MouseLeave);
             // 
+            // findUsersPictureBox
+            // 
+            this.findUsersPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.FindUsersIcon;
+            this.findUsersPictureBox.Location = new System.Drawing.Point(73, 3);
+            this.findUsersPictureBox.Name = "findUsersPictureBox";
+            this.findUsersPictureBox.Size = new System.Drawing.Size(64, 64);
+            this.findUsersPictureBox.TabIndex = 6;
+            this.findUsersPictureBox.TabStop = false;
+            this.findUsersPictureBox.Click += new System.EventHandler(this.findUsersPictureBox_Click);
+            this.findUsersPictureBox.MouseEnter += new System.EventHandler(this.genericPictureBox_MouseEnter);
+            this.findUsersPictureBox.MouseLeave += new System.EventHandler(this.genericPictureBox_MouseLeave);
+            // 
             // liveMapPictureBox
             // 
             this.liveMapPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.liveMapPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.MapIcon;
-            this.liveMapPictureBox.Location = new System.Drawing.Point(73, 3);
+            this.liveMapPictureBox.Location = new System.Drawing.Point(143, 3);
             this.liveMapPictureBox.Name = "liveMapPictureBox";
             this.liveMapPictureBox.Size = new System.Drawing.Size(64, 64);
             this.liveMapPictureBox.TabIndex = 5;
@@ -331,6 +347,7 @@
             // 
             // threadTimer
             // 
+            this.threadTimer.Enabled = true;
             this.threadTimer.Interval = 20;
             this.threadTimer.Tick += new System.EventHandler(this.threadTimer_Tick);
             // 
@@ -340,6 +357,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(891, 509);
             this.Controls.Add(this.mainPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GroupForm";
             this.Text = "{$GROUP_TITLE$}";
             this.mainPanel.ResumeLayout(false);
@@ -349,6 +367,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.usersDataTable)).EndInit();
             this.topLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.addUserPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.findUsersPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.liveMapPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -387,5 +406,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn massDataGridViewTextBoxColumn;
         private System.Windows.Forms.Timer threadTimer;
         private System.Windows.Forms.PictureBox liveMapPictureBox;
+        private System.Windows.Forms.PictureBox findUsersPictureBox;
     }
 }

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextEditForm));
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.valueTextField = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.okButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cancelButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.okButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.valueTextField = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +49,38 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(376, 71);
             this.mainPanel.TabIndex = 0;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.AutoSize = true;
+            this.cancelButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cancelButton.Depth = 0;
+            this.cancelButton.Icon = null;
+            this.cancelButton.Location = new System.Drawing.Point(73, 32);
+            this.cancelButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Primary = true;
+            this.cancelButton.Size = new System.Drawing.Size(98, 36);
+            this.cancelButton.TabIndex = 2;
+            this.cancelButton.Text = "{$CANCEL$}";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // okButton
+            // 
+            this.okButton.AutoSize = true;
+            this.okButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.okButton.Depth = 0;
+            this.okButton.Icon = null;
+            this.okButton.Location = new System.Drawing.Point(3, 32);
+            this.okButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.okButton.Name = "okButton";
+            this.okButton.Primary = true;
+            this.okButton.Size = new System.Drawing.Size(64, 36);
+            this.okButton.TabIndex = 1;
+            this.okButton.Text = "{$OK$}";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // valueTextField
             // 
@@ -69,44 +102,13 @@
             this.valueTextField.UseSystemPasswordChar = false;
             this.valueTextField.KeyUp += new System.Windows.Forms.KeyEventHandler(this.valueTextField_KeyUp);
             // 
-            // okButton
-            // 
-            this.okButton.AutoSize = true;
-            this.okButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.okButton.Depth = 0;
-            this.okButton.Icon = null;
-            this.okButton.Location = new System.Drawing.Point(3, 32);
-            this.okButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.okButton.Name = "okButton";
-            this.okButton.Primary = true;
-            this.okButton.Size = new System.Drawing.Size(64, 36);
-            this.okButton.TabIndex = 1;
-            this.okButton.Text = "{$OK$}";
-            this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.AutoSize = true;
-            this.cancelButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cancelButton.Depth = 0;
-            this.cancelButton.Icon = null;
-            this.cancelButton.Location = new System.Drawing.Point(73, 32);
-            this.cancelButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Primary = true;
-            this.cancelButton.Size = new System.Drawing.Size(98, 36);
-            this.cancelButton.TabIndex = 2;
-            this.cancelButton.Text = "{$CANCEL$}";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
             // TextEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 147);
             this.Controls.Add(this.mainPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1200, 147);
             this.MinimumSize = new System.Drawing.Size(400, 147);
             this.Name = "TextEditForm";

@@ -288,11 +288,11 @@ namespace TruckingVSConnect2
         /// <summary>
         /// Show add user dialog
         /// </summary>
-        public static void ShowAddUserDialog()
+        public static void ShowAddUserDialog(string defaultName = "")
         {
             if (MainForm.API != null)
             {
-                TextEditForm tef = new TextEditForm("", Translator.GetTranslation("ADD_USER"), Translator.GetTranslation("USERNAME_HINT"));
+                TextEditForm tef = new TextEditForm(defaultName, Translator.GetTranslation("ADD_USER"), Translator.GetTranslation("USERNAME_HINT"));
                 if (tef.ShowDialog() == DialogResult.OK)
                 {
                     string value = tef.Value;
@@ -315,11 +315,28 @@ namespace TruckingVSConnect2
                     }
                     if (success)
                     {
-                        List<string> u = new List<string>(users);
-                        u.Add(value);
-                        user_config.Following = u.ToArray();
-                        u.Clear();
-                        Configuration.Save();
+                        string[] found_users = Truckers2ConnectAPI.FindUsers(value);
+                        success = false;
+                        foreach (string found_user in found_users)
+                        {
+                            if (found_user.ToLower() == value.ToLower())
+                            {
+                                success = true;
+                                break;
+                            }
+                        }
+                        if (success)
+                        {
+                            List<string> u = new List<string>(users);
+                            u.Add(value);
+                            user_config.Following = u.ToArray();
+                            u.Clear();
+                            Configuration.Save();
+                        }
+                        else
+                        {
+                            MessageBox.Show(string.Format(Translator.GetTranslation("USER_NOT_FOUND_MESSAGE"), value), Translator.GetTranslation("USER_NOT_FOUND"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }

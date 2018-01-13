@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -56,14 +57,21 @@ namespace TruckingVSConnect2
         public T GetContent<T>() where T : class
         {
             T ret = default(T);
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
-            byte[] bytes = Encoding.UTF8.GetBytes(content);
-            using (MemoryStream stream = new MemoryStream())
+            try
             {
-                stream.Write(bytes, 0, bytes.Length);
-                stream.Seek(0, SeekOrigin.Begin);
-                object obj = serializer.ReadObject(stream);
-                ret = obj as T;
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
+                byte[] bytes = Encoding.UTF8.GetBytes(content);
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    stream.Write(bytes, 0, bytes.Length);
+                    stream.Seek(0, SeekOrigin.Begin);
+                    object obj = serializer.ReadObject(stream);
+                    ret = obj as T;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
             }
             return ret;
         }

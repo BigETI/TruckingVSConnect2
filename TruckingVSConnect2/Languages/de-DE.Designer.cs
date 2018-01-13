@@ -351,6 +351,15 @@ namespace TruckingVSConnect2.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Benutzer finden ähnelt.
+        /// </summary>
+        internal static string FIND_USERS {
+            get {
+                return ResourceManager.GetString("FIND_USERS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Passwort vergessen? ähnelt.
         /// </summary>
         internal static string FORGOT_PASSWORD {
@@ -929,6 +938,24 @@ namespace TruckingVSConnect2.Languages {
         internal static string UPDATE_MESSAGE {
             get {
                 return ResourceManager.GetString("UPDATE_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Benutzer nicht gefunden ähnelt.
+        /// </summary>
+        internal static string USER_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("USER_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Benutzer {0} wurde nicht gefunden. ähnelt.
+        /// </summary>
+        internal static string USER_NOT_FOUND_MESSAGE {
+            get {
+                return ResourceManager.GetString("USER_NOT_FOUND_MESSAGE", resourceCulture);
             }
         }
         
