@@ -45,6 +45,16 @@ namespace TruckingVSConnect2
         private Uri gravatarURI;
 
         /// <summary>
+        /// User ID
+        /// </summary>
+        private int userID;
+
+        /// <summary>
+        /// User company ID
+        /// </summary>
+        private int userCompanyID;
+
+        /// <summary>
         /// Job ID
         /// </summary>
         private string jobID;
@@ -107,6 +117,28 @@ namespace TruckingVSConnect2
         }
 
         /// <summary>
+        /// User ID
+        /// </summary>
+        public int UserID
+        {
+            get
+            {
+                return userID;
+            }
+        }
+
+        /// <summary>
+        /// User company ID
+        /// </summary>
+        public int UserCompanyID
+        {
+            get
+            {
+                return userCompanyID;
+            }
+        }
+
+        /// <summary>
         /// Distance
         /// </summary>
         public float Distance
@@ -161,11 +193,15 @@ namespace TruckingVSConnect2
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="userID">User ID</param>
+        /// <param name="userCompanyID">User company ID</param>
         /// <param name="authCode">Auth codee</param>
         /// <param name="username">Username</param>
         /// <param name="gravatarURI">Gravatar URL</param>
-        private TruckingVSAPI(string authCode, string username, Uri gravatarURI)
+        private TruckingVSAPI(int userID, int userCompanyID, string authCode, string username, Uri gravatarURI)
         {
+            this.userID = userID;
+            this.userCompanyID = userCompanyID;
             this.authCode = authCode;
             this.username = username;
             this.gravatarURI = gravatarURI;
@@ -282,16 +318,20 @@ namespace TruckingVSConnect2
                     }).Split(',');
                 if (result != null)
                 {
-                    if (result.Length == 2)
+                    if (result.Length == 4)
                     {
-                        Uri gravatar_uri = new Uri(result[1]);
+                        int user_id = 0;
+                        int user_company_id = 0;
+                        Uri gravatar_uri = new Uri(result[3]);
+                        int.TryParse(result[0], out user_id);
+                        int.TryParse(result[1], out user_company_id);
                         if (gravatar_uri != null)
                         {
                             NameValueCollection query = HttpUtility.ParseQueryString(gravatar_uri.Query);
                             query.Clear();
                             query["s"] = "64";
                             gravatar_uri = new Uri((query.Count > 0) ? (gravatar_uri.GetLeftPart(UriPartial.Path) + "?" + query) : gravatar_uri.GetLeftPart(UriPartial.Path));
-                            ret = new TruckingVSAPI(auth_code, result[0], gravatar_uri);
+                            ret = new TruckingVSAPI(user_id, user_company_id, auth_code, result[2], gravatar_uri);
                         }
                     }
                 }

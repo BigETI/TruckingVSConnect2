@@ -98,7 +98,7 @@ namespace TruckingVSConnect2
                 data[4] = user.OnJob ? user.Cargo : notAvailableTranslated;
                 data[5] = user.OnJob ? (user.CompanySource + " " + inTranslated + " " + Cities.GetFullCityName(user.CitySource)) : notAvailableTranslated;
                 data[6] = user.OnJob ? (user.CompanyDestination + " " + inTranslated + " " + Cities.GetFullCityName(user.CityDestination)) : notAvailableTranslated;
-                data[7] = user.OnJob ? (Utils.HumanReadableLength(Utils.Clamp(user.Distance - user.NavigationDistanceLeft, 0.0f, user.Distance)) + " " + ofTranslated + " " + Utils.HumanReadableLength(user.Distance) + " (" + ((user.Distance > float.Epsilon) ? Math.Round((user.NavigationDistanceLeft * 100.0f) / user.Distance) : 100.0f) + "%)") : notAvailableTranslated;
+                data[7] = user.OnJob ? (Utils.HumanReadableLength(Utils.Clamp(user.Distance - user.NavigationDistanceLeft, 0.0f, user.Distance)) + " " + ofTranslated + " " + Utils.HumanReadableLength(user.Distance) + " (" + ((user.Distance > float.Epsilon) ? Math.Round(((user.Distance - user.NavigationDistanceLeft) * 100.0f) / user.Distance) : 100.0f) + "%)") : notAvailableTranslated;
                 data[8] = user.OnJob ? (Utils.HumanReadableTime(user.NavigationTimeLeft)) : notAvailableTranslated;
                 data[9] = user.OnJob ? (user.Income.ToString("N0") + "€") : notAvailableTranslated;
                 data[10] = user.OnJob ? Utils.HumanReadableWeight(user.Mass) : notAvailableTranslated;
@@ -119,26 +119,6 @@ namespace TruckingVSConnect2
                 updateUsers = false;
                 UpdateRows();
             }
-        }
-
-        /// <summary>
-        /// Generic picture box mouse enter event
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event arguments</param>
-        private void genericPictureBox_MouseEnter(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.Hand;
-        }
-
-        /// <summary>
-        /// Generic picture box mouse leave event
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event arguments</param>
-        private void genericPictureBox_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.Default;
         }
 
         /// <summary>

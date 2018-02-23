@@ -886,7 +886,7 @@ namespace TruckingVSConnect2
                             cargoLabel.Text = cargoTranslated + ": " + data.Job.Cargo;
                             sourceLabel.Text = sourceTranslated + ": " + data.Job.CompanySource + " " + inTranslated + " " + Cities.GetFullCityName(data.Job.CitySource);
                             destinationLabel.Text = destinationTranslated + ": " + data.Job.CompanyDestination + " " + inTranslated + " " + Cities.GetFullCityName(data.Job.CityDestination);
-                            routeLabel.Text = routeTranslated + ": " + Utils.HumanReadableLength(Utils.Clamp(api.Distance - data.Job.NavigationDistanceLeft, 0.0f, api.Distance)) + " " + ofTranslated + " " + Utils.HumanReadableLength(api.Distance) + " (" + ((api.Distance > float.Epsilon) ? Math.Round((data.Job.NavigationDistanceLeft * 100.0f) / api.Distance) : 100.0f) + "%)";
+                            routeLabel.Text = routeTranslated + ": " + Utils.HumanReadableLength(Utils.Clamp(api.Distance - data.Job.NavigationDistanceLeft, 0.0f, api.Distance)) + " " + ofTranslated + " " + Utils.HumanReadableLength(api.Distance) + " (" + ((api.Distance > float.Epsilon) ? Math.Round(((api.Distance - data.Job.NavigationDistanceLeft) * 100.0f) / api.Distance) : 100.0f) + "%)";
                             remainingTimeLabel.Text = remainingTimeTranslated + ": " + Utils.HumanReadableTime(data.Job.NavigationTimeLeft);
                             //timeLabel.Text = timeTranslated + ": " + Utils.HumanReadableTime(data.Job.NavigationTimeLeft) + " " + ofTranslated + " " + Utils.HumanReadableTime(api.Time);
                             yieldLabel.Text = yieldTranslated + ": " + data.Job.Income.ToString("N0") + "€";
@@ -1080,6 +1080,26 @@ namespace TruckingVSConnect2
         private void groupPictureBox_Click(object sender, EventArgs e)
         {
             ToggleGroup();
+        }
+
+        /// <summary>
+        /// Gravatar picture box click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void gravatarPictureBox_Click(object sender, EventArgs e)
+        {
+            Utils.Execute("https://trucking-vs.de/user/" + api.UserID);
+        }
+
+        /// <summary>
+        /// Company picure box click event
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event arguments</param>
+        private void companyPictureBox_Click(object sender, EventArgs e)
+        {
+            Utils.Execute("https://trucking-vs.de/company/" + api.UserCompanyID);
         }
     }
 }

@@ -123,6 +123,16 @@ namespace TruckingVSConnect2.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CompanyIcon {
+            get {
+                object obj = ResourceManager.GetObject("CompanyIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Drivetrain {
             get {
                 object obj = ResourceManager.GetObject("Drivetrain", resourceCulture);

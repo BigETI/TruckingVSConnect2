@@ -62,26 +62,6 @@ namespace TruckingVSConnect2
         }
 
         /// <summary>
-        /// Generic picture box mouse enter event
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event arguments</param>
-        private void genericPictureBox_MouseEnter(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.Hand;
-        }
-
-        /// <summary>
-        /// Generic picture box mouse leave event
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event arguments</param>
-        private void genericPictureBox_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.Default;
-        }
-
-        /// <summary>
         /// Add user picture box click event
         /// </summary>
         /// <param name="sender">Sender</param>

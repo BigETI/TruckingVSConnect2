@@ -220,6 +220,7 @@
     <None Include="GroupIcon.png" />
     <None Include="AddUserIcon.png" />
     <None Include="FindUsersIcon.png" />
+    <None Include="CompanyIcon.png" />
     <Content Include="TruckingVSConnect2.ico" />
     <None Include="TruckingVSConnect2Updater.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

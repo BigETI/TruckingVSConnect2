@@ -310,6 +310,7 @@
             // 
             // addUserPictureBox
             // 
+            this.addUserPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addUserPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.AddUserIcon;
             this.addUserPictureBox.Location = new System.Drawing.Point(3, 3);
             this.addUserPictureBox.Name = "addUserPictureBox";
@@ -317,11 +318,10 @@
             this.addUserPictureBox.TabIndex = 0;
             this.addUserPictureBox.TabStop = false;
             this.addUserPictureBox.Click += new System.EventHandler(this.addUserPictureBox_Click);
-            this.addUserPictureBox.MouseEnter += new System.EventHandler(this.genericPictureBox_MouseEnter);
-            this.addUserPictureBox.MouseLeave += new System.EventHandler(this.genericPictureBox_MouseLeave);
             // 
             // findUsersPictureBox
             // 
+            this.findUsersPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.findUsersPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.FindUsersIcon;
             this.findUsersPictureBox.Location = new System.Drawing.Point(73, 3);
             this.findUsersPictureBox.Name = "findUsersPictureBox";
@@ -329,12 +329,11 @@
             this.findUsersPictureBox.TabIndex = 6;
             this.findUsersPictureBox.TabStop = false;
             this.findUsersPictureBox.Click += new System.EventHandler(this.findUsersPictureBox_Click);
-            this.findUsersPictureBox.MouseEnter += new System.EventHandler(this.genericPictureBox_MouseEnter);
-            this.findUsersPictureBox.MouseLeave += new System.EventHandler(this.genericPictureBox_MouseLeave);
             // 
             // liveMapPictureBox
             // 
             this.liveMapPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.liveMapPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.liveMapPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.MapIcon;
             this.liveMapPictureBox.Location = new System.Drawing.Point(143, 3);
             this.liveMapPictureBox.Name = "liveMapPictureBox";
@@ -342,8 +341,6 @@
             this.liveMapPictureBox.TabIndex = 5;
             this.liveMapPictureBox.TabStop = false;
             this.liveMapPictureBox.Click += new System.EventHandler(this.liveMapPictureBox_Click);
-            this.liveMapPictureBox.MouseEnter += new System.EventHandler(this.genericPictureBox_MouseEnter);
-            this.liveMapPictureBox.MouseLeave += new System.EventHandler(this.genericPictureBox_MouseLeave);
             // 
             // threadTimer
             // 

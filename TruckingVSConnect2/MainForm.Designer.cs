@@ -81,6 +81,7 @@
             this.fuelGaugeNeedlePictureBox = new System.Windows.Forms.PictureBox();
             this.drivetrainPanel = new System.Windows.Forms.Panel();
             this.cargoPictureBox = new System.Windows.Forms.PictureBox();
+            this.companyPictureBox = new System.Windows.Forms.PictureBox();
             this.mainTableLayoutPanel.SuspendLayout();
             this.bodyTableLayoutPanel.SuspendLayout();
             this.headPanel.SuspendLayout();
@@ -97,6 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.fuelGaugeNeedlePictureBox)).BeginInit();
             this.drivetrainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // updateTimer
@@ -450,6 +452,7 @@
             // 
             // healthPanel
             // 
+            this.healthPanel.Controls.Add(this.companyPictureBox);
             this.healthPanel.Controls.Add(this.fuelGaugePanel);
             this.healthPanel.Controls.Add(this.averageLabel);
             this.healthPanel.Controls.Add(this.drivetrainPanel);
@@ -701,6 +704,7 @@
             // groupPictureBox
             // 
             this.groupPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.groupPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.GroupIcon;
             this.groupPictureBox.Location = new System.Drawing.Point(337, 3);
             this.groupPictureBox.Name = "groupPictureBox";
@@ -708,12 +712,11 @@
             this.groupPictureBox.TabIndex = 5;
             this.groupPictureBox.TabStop = false;
             this.groupPictureBox.Click += new System.EventHandler(this.groupPictureBox_Click);
-            this.groupPictureBox.MouseEnter += new System.EventHandler(this.genericPictureBox_MouseEnter);
-            this.groupPictureBox.MouseLeave += new System.EventHandler(this.genericPictureBox_MouseLeave);
             // 
             // liveMapPictureBox
             // 
             this.liveMapPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.liveMapPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.liveMapPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.MapIcon;
             this.liveMapPictureBox.Location = new System.Drawing.Point(407, 3);
             this.liveMapPictureBox.Name = "liveMapPictureBox";
@@ -721,17 +724,17 @@
             this.liveMapPictureBox.TabIndex = 4;
             this.liveMapPictureBox.TabStop = false;
             this.liveMapPictureBox.Click += new System.EventHandler(this.liveMapPictureBox_Click);
-            this.liveMapPictureBox.MouseEnter += new System.EventHandler(this.genericPictureBox_MouseEnter);
-            this.liveMapPictureBox.MouseLeave += new System.EventHandler(this.genericPictureBox_MouseLeave);
             // 
             // gravatarPictureBox
             // 
+            this.gravatarPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gravatarPictureBox.Location = new System.Drawing.Point(3, 3);
             this.gravatarPictureBox.Name = "gravatarPictureBox";
             this.gravatarPictureBox.Size = new System.Drawing.Size(64, 64);
             this.gravatarPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gravatarPictureBox.TabIndex = 0;
             this.gravatarPictureBox.TabStop = false;
+            this.gravatarPictureBox.Click += new System.EventHandler(this.gravatarPictureBox_Click);
             // 
             // fuelGaugePanel
             // 
@@ -771,6 +774,18 @@
             this.cargoPictureBox.TabIndex = 1;
             this.cargoPictureBox.TabStop = false;
             // 
+            // companyPictureBox
+            // 
+            this.companyPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.companyPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.companyPictureBox.Image = global::TruckingVSConnect2.Properties.Resources.CompanyIcon;
+            this.companyPictureBox.Location = new System.Drawing.Point(327, 6);
+            this.companyPictureBox.Name = "companyPictureBox";
+            this.companyPictureBox.Size = new System.Drawing.Size(64, 64);
+            this.companyPictureBox.TabIndex = 14;
+            this.companyPictureBox.TabStop = false;
+            this.companyPictureBox.Click += new System.EventHandler(this.companyPictureBox_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -802,6 +817,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.fuelGaugeNeedlePictureBox)).EndInit();
             this.drivetrainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cargoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -854,6 +870,7 @@
         private MaterialSkin.Controls.MaterialLabel totalRouteLabel;
         private System.Windows.Forms.PictureBox liveMapPictureBox;
         private System.Windows.Forms.PictureBox groupPictureBox;
+        private System.Windows.Forms.PictureBox companyPictureBox;
     }
 }
 
